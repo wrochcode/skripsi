@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\About;
 use Illuminate\View\Component;
 
 class footer extends Component
@@ -23,6 +24,8 @@ class footer extends Component
      */
     public function render()
     {
+        // $task =About::where('id', $id)->first();
+        $about = About::where('name', 'namecompany');
         $navbar = [
             'Beranda' => '/',
             'Produk' => '/product',
@@ -30,6 +33,6 @@ class footer extends Component
             'Artikel' => '/article',
             'Kalkulator Sehat' => '/recomendation',
         ];
-        return view('components.footer', compact('navbar'));
+        return view('components.footer', compact('navbar', 'about'));
     }
 }

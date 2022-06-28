@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class headerhome extends Component
+class ProductHeader extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class headerhome extends Component
      */
     public function render()
     {
-        return view('components.headerhome');
+        return view('components.header.produkheader');
     }
 }

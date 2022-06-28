@@ -1,4 +1,4 @@
 <x-app-layout title="Home Page">
-    <x-headerhome></x-headerhome>
+    <x-home-header></x-home-header>
     
 </x-app-layout>

@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class navbar extends Component
+class AboutHeader extends Component
 {
     /**
      * Create a new component instance.
@@ -23,13 +23,6 @@ class navbar extends Component
      */
     public function render()
     {
-        $navbar = [
-            'Beranda' => '/',
-            'Produk' => '/product',
-            'Profil' => '/about',
-            'Artikel' => '/article',
-            'Kalkulator Sehat' => '/recomendation',
-        ];
-        return view('components.navbar', compact('navbar'));
+        return view('components.header.aboutheader');
     }
 }

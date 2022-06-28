@@ -1,4 +1,4 @@
 <x-app-layout title="Produk">
-    <x-header></x-header>
+    <x-product-header></x-product-header>
     
 </x-app-layout>

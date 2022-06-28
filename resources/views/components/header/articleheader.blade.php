@@ -7,7 +7,7 @@
                 <ol class="breadcrumb text-uppercase">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                    <li class="breadcrumb-item text-body active" aria-current="page">Produk</li>
+                    <li class="breadcrumb-item text-body active" aria-current="page">Article</li>
                 </ol>
             </nav>
         </div>
@@ -18,4 +18,3 @@
     
 </div>
 <!-- Header End -->
-{{-- {{ dd($pages) }} --}}
