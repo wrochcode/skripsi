@@ -14,7 +14,7 @@
             <div class="icon p-2 me-2">
                 <img class="img-fluid" src="img/icon-deal.png" alt="Icon" style="width: 30px; height: 30px;">
             </div>
-            <h1 class="m-0 text-primary">SehatYokk</h1>
+            <a href="/"><h1 class="m-0 text-primary">{{ $namecompany->value }}</h1></a>
         </a>
         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>

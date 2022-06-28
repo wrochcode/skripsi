@@ -29,6 +29,12 @@ class AboutSeeder extends Seeder
             'keterangan' => '',
             'created_at' => now(),
             'updated_at' => now(),
+        ],[
+            'name' => 'telp',
+            'value' => '0895326920220',
+            'keterangan' => '',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]
         ])->each(function($about){
             // About::create($about);

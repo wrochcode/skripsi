@@ -3,6 +3,7 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use Illuminate\Support\Facades\DB;
 
 class navbar extends Component
 {
@@ -23,6 +24,8 @@ class navbar extends Component
      */
     public function render()
     {
+        $namecompany = DB::table('abouts')->where('name', 'namecompany')->first();
+        $address = DB::table('abouts')->where('name', 'namecompany')->first();
         $navbar = [
             'Beranda' => '/',
             'Produk' => '/product',
@@ -30,6 +33,6 @@ class navbar extends Component
             'Artikel' => '/article',
             'Kalkulator Sehat' => '/recomendation',
         ];
-        return view('components.navbar', compact('navbar'));
+        return view('components.navbar', compact('navbar', 'namecompany', 'address'));
     }
 }

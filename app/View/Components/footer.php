@@ -4,6 +4,7 @@ namespace App\View\Components;
 
 use App\Models\About;
 use Illuminate\View\Component;
+use Illuminate\Support\Facades\DB;
 
 class footer extends Component
 {
@@ -24,8 +25,9 @@ class footer extends Component
      */
     public function render()
     {
-        // $task =About::where('id', $id)->first();
-        $about = About::where('name', 'namecompany');
+        $namecompany = DB::table('abouts')->where('name', 'namecompany')->first();
+        $address = DB::table('abouts')->where('name', 'address')->first();
+        $telp = DB::table('abouts')->where('name', 'telp')->first();
         $navbar = [
             'Beranda' => '/',
             'Produk' => '/product',
@@ -33,6 +35,6 @@ class footer extends Component
             'Artikel' => '/article',
             'Kalkulator Sehat' => '/recomendation',
         ];
-        return view('components.footer', compact('navbar', 'about'));
+        return view('components.footer', compact('navbar', 'namecompany', 'address', 'telp'));
     }
 }
