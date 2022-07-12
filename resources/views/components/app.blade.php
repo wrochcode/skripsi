@@ -11,11 +11,9 @@
     <meta content="" name="description">
 
     {{-- icon --}}
-    {{-- <link rel="shortcut icon" href="{{ asset('/img/icon-deal.png') }}"> --}}
-    <link rel="shortcut icon" type="image/x-icon" href="{{ URL::to('img/icon-deal.png') }}"/>
-    {{-- <link rel="icon" 
-    type="image/png" 
-    href="/img/icon-deal.png" />  --}}
+    <link rel="shortcut icon" href="/img/icon-deal.png">
+    <link rel="icon" href="/img/icon-deal.png" type="image/x-icon">
+
 
 
     <!-- Favicon -->

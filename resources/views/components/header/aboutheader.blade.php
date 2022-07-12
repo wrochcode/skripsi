@@ -2,7 +2,7 @@
     <!-- Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less. - Marie Curie -->
 </div><!-- Header Start -->
 <div class="container-fluid header bg-white p-0">
-    <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
+    <div class="row mt-lg-5 g-0 align-items-center flex-column-reverse flex-md-row">
         <div class="col-md-6 p-5 mt-lg-5">
             <h1 class="display-5 animated fadeIn mb-4">About Us</h1> 
                 <nav aria-label="breadcrumb animated fadeIn">
@@ -13,8 +13,8 @@
                 </ol>
             </nav>
         </div>
-        <div class="col-md-6 animated fadeIn">
-            <img class="img-fluid" src="img/header.jpg" alt="">
+        <div class="mt-lg-5 col-md-6 animated fadeIn">
+            <img class="img-fluid" src="img/gym3.png" alt="">
         </div>
     </div>
     

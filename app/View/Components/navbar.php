@@ -28,7 +28,7 @@ class navbar extends Component
         $address = DB::table('abouts')->where('name', 'namecompany')->first();
         $navbar = [
             'Beranda' => '/',
-            'Produk' => '/product',
+            // 'Produk' => '/product',
             'Profil' => '/about',
             'Artikel' => '/article',
             'Kalkulator Sehat' => '/recomendation',
