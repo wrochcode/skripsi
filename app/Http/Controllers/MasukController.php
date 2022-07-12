@@ -9,6 +9,6 @@ class MasukController extends Controller
     public function create()
     {
         $pages = 'Produk';
-        return view('about', ['pages' => $pages]);
+        return view('auth.login', ['pages' => $pages]);
     }
 }
