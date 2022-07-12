@@ -11,9 +11,11 @@ class AppAuth extends Component
      *
      * @return void
      */
-    public function __construct()
+    public $title;
+    public function __construct($title = null)
     {
-        //
+        // $this->title = $title ? $title : "Excel";
+        $this->title = $title ?? "Home";
     }
 
     /**
@@ -23,6 +25,6 @@ class AppAuth extends Component
      */
     public function render()
     {
-        return view('components.app');
+        return view('components.appauth');
     }
 }
