@@ -10,8 +10,16 @@
     <meta content="" name="keywords">
     <meta content="" name="description">
 
+    {{-- icon --}}
+    {{-- <link rel="shortcut icon" href="{{ asset('/img/icon-deal.png') }}"> --}}
+    <link rel="shortcut icon" type="image/x-icon" href="{{ URL::to('img/icon-deal.png') }}"/>
+    {{-- <link rel="icon" 
+    type="image/png" 
+    href="/img/icon-deal.png" />  --}}
+
+
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    {{-- <link href="/img/favicon.ico" rel="icon"> --}}
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

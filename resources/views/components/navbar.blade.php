@@ -28,7 +28,8 @@
                 @endforeach
                 
             </div>
-            <a href="" class="btn btn-primary px-3 d-none d-lg-flex">Login</a>
+            {{-- <a href="{{ route('register') }}">Register</a> --}}
+            <a href="{{ route('login') }}" class="btn btn-primary px-3 d-none d-lg-flex">Login</a>
         </div>
     </nav>
 </div>
