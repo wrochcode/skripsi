@@ -11,13 +11,16 @@
     <meta content="" name="description">
 
     {{-- icon --}}
-    <link rel="shortcut icon" href="/img/icon-deal.png">
-    <link rel="icon" href="/img/icon-deal.png" type="image/x-icon">
-
+    {{-- <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" href="{{  asset('favicon.png') }}" type="image/png"> --}}
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/img/site.webmanifest">
 
 
     <!-- Favicon -->
-    {{-- <link href="/img/favicon.ico" rel="icon"> --}}
+    <link href="/img/favico.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
