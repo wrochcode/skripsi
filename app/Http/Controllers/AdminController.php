@@ -6,14 +6,10 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function __construct()
-    {
-        // Auth::guest()
-    }
 
     public function index()
     {
-        //
+        return view('admin.admin');
     }
 
     public function create()
