@@ -21,7 +21,7 @@ class MasukController extends Controller
         ]);
         
         if(Auth::attempt($attributes)){
-            return redirect(RouteServiceProvider::HOME)->with('success', 'You are now logded in');
+            return redirect('admin')->with('success', 'You are now logded in');
         }
 
         throw ValidationException::withMessages([
