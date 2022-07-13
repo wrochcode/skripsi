@@ -33,7 +33,6 @@
 
     <div class="container">
         {{ $slot }}
-
     </div>
 
     <!-- Bootstrap core JavaScript-->

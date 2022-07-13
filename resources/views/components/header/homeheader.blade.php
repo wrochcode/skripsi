@@ -2,6 +2,11 @@
 <div class="container-fluid header bg-white p-0">
     <div class="row mt-lg-5 g-0 align-items-center flex-column-reverse flex-md-row">
         <div class="col-md-5 p-5 mt-lg-5">
+            @if (session()->has('success'))
+                <div class="alert alert-success" role="alert">
+                    {{ session()->get('success') }}
+                </div>
+            @endif
             <h1 class="display-5 animated fadeIn mb-4">Cari <span class="text-primary">Cara Sehat Terbaik</span> dengan gayamu sendiri</h1>
             <p class="animated fadeIn mb-4 pb-2">Temukan kebiasaan baru untuk hidup sehat, tubuh sehat aktifitas lancar.</p>
             <a href="" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">Get Started</a>
