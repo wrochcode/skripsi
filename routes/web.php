@@ -35,7 +35,7 @@ Route::middleware('auth')->group(function(){
     Route::get('food', [FoodController::class, 'index'])->name('food.index');
     Route::post('food', [FoodController::class, 'store'])->name('food.store');
     Route::get('food/{id}/edit', [FoodController::class, 'edit'])->name('food.edit');
-    Route::put('food/{id}', [FoodController::class, 'update']);
+    Route::put('food/{id}', [FoodController::class, 'update'])->name('food.update');
     Route::delete('food/{id}', [FoodController::class, 'destroy'])->name('food.destroy');
 
     Route::resource('recomendation', RecomendationController::class);
