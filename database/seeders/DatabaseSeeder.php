@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             AboutSeeder::class,
             CriteriaSeeder::class,
             UserSeeder::class,
+            FoodSeeder::class,
         ]);
     }
 }

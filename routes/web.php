@@ -5,6 +5,8 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\FoodController;
+use App\Http\Controllers\FoodRecomendationController;
+use App\Http\Controllers\FoodUserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\MasukController;
@@ -31,12 +33,26 @@ Route::middleware('auth')->group(function(){
     Route::get('user', [UserController::class, 'index'])->name('user.index');
     Route::post('user', [UserController::class, 'store'])->name('user.store');
 
-    //food
+    //food Main
     Route::get('food', [FoodController::class, 'index'])->name('food.index');
     Route::post('food', [FoodController::class, 'store'])->name('food.store');
     Route::get('food/{id}/edit', [FoodController::class, 'edit'])->name('food.edit');
     Route::put('food/{id}', [FoodController::class, 'update'])->name('food.update');
     Route::delete('food/{id}', [FoodController::class, 'destroy'])->name('food.destroy');
+    
+    //food recomen
+    Route::get('food', [FoodRecomendationController::class, 'index'])->name('food.index');
+    Route::post('food', [FoodRecomendationController::class, 'store'])->name('food.store');
+    Route::get('food/{id}/edit', [FoodRecomendationController::class, 'edit'])->name('food.edit');
+    Route::put('food/{id}', [FoodRecomendationController::class, 'update'])->name('food.update');
+    Route::delete('food/{id}', [FoodRecomendationController::class, 'destroy'])->name('food.destroy');
+    
+    //food user
+    Route::get('food', [FoodUserController::class, 'index'])->name('food.index');
+    Route::post('food', [FoodUserController::class, 'store'])->name('food.store');
+    Route::get('food/{id}/edit', [FoodUserController::class, 'edit'])->name('food.edit');
+    Route::put('food/{id}', [FoodUserController::class, 'update'])->name('food.update');
+    Route::delete('food/{id}', [FoodUserController::class, 'destroy'])->name('food.destroy');
 
     Route::resource('recomendation', RecomendationController::class);
     // logout
