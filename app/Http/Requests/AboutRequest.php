@@ -24,10 +24,9 @@ class AboutRequest extends FormRequest
     public function rules()
     {
         return [
-            'username'=> ['required'],
-            'name'=> ['required', 'min:3', 'string'],
-            'email'=> ['required', 'unique:users', 'email'],
-            'password'=> ['required', 'min:8'],
+            'name'=> ['required'],
+            'value'=> ['required', 'min:3', 'string'],
+            'keterangan'=> [''],
         ];
     }
 }

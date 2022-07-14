@@ -22,14 +22,16 @@ Route::resource('about', AboutController::class);
 Route::resource('article', ArticleController::class);
 
 // admin
-Route::resource('aboutadmin', AboutAdmin::class);
 
 
 // login
 Route::middleware('auth')->group(function(){
-    Route::resource('recomendation', RecomendationController::class);
-    // Route::resource('admin', UserController::class);
+    // admin
     Route::resource('admin', AdminController::class);
+    Route::resource('aboutadmins', AboutAdmin::class);
+
+    Route::resource('recomendation', RecomendationController::class);
+    // logout
     Route::post('logout', LogoutController::class)->name('logout');
 });
 

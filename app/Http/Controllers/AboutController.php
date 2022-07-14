@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
 use Illuminate\Http\Request;
 
 class AboutController extends Controller
 {
     public function index()
     {
-        $pages = 'Produk';
-        return view('about', ['pages' => $pages]);
+        $about = About::all();
     }
 }
