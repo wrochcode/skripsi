@@ -9,8 +9,8 @@ class CreateMemberController extends Controller
 {
     public function index()
     {
-        return view('admin.about', [
-            'abouts' => User::orderby('id', 'asc')->get(),
+        return view('admin.user', [
+            'Users' => User::get(),
         ]);
     }
 }

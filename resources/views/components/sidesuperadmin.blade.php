@@ -13,7 +13,7 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Perusahaan
                 </a>
-                <a class="nav-link collapsed" href="{{ route }}" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                <a class="nav-link collapsed" href="" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                         Keanggotaan
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -21,7 +21,7 @@
                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="layout-static.html">Admin</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Member</a>
+                        <a class="nav-link" href="{{ route('user.index') }}">Member</a>
                     </nav>
                 </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
@@ -31,8 +31,7 @@
                 </a>
                 <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="layout-static.html">User</a>
-                        <a class="nav-link" href="layout-static.html">Food</a>
+                        <a class="nav-link" href="{{ route('food.index') }}">Food</a>
                         <a class="nav-link" href="layout-sidenav-light.html">Event</a>
                     </nav>
                 </div>

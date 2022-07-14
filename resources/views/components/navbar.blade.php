@@ -28,23 +28,9 @@
                 @endforeach
             </div>
             @guest
-            <a href="{{ route('masuk') }}" class="btn btn-primary px-3 d-none d-lg-flex">Login</a>
+                <a href="{{ route('masuk') }}" class="btn btn-primary px-3 d-none d-lg-flex">Login</a>
             @else
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  {{ Auth::user()->name }} </a>
-              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li>
-                  <form action="{{ route('logout') }}" method="post">
-                    @csrf
-                    <button type="submit" class="dropdown-item">Logout</button>
-                  </form>
-                </li>
-              </ul>
-            </li>
+                <a href="{{ route('admin.index') }}" class="btn btn-primary px-3 d-none d-lg-flex">{{ Auth::user()->name }} </a></a>
             @endguest
         </div>
     </nav>
