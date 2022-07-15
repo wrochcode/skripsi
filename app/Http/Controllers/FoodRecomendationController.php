@@ -53,10 +53,54 @@ class FoodRecomendationController extends Controller
             $temp = $temp + (($Food->carb/$max2)*$c2);
             $temp += (($Food->fat/$max3)*$c3);
             $temp += (($Food->protein/$max4)*$c4);
-            $normalisasi[$alternatif] = round($temp,4);
+            $normalisasi[$alternatif]['nilai'] = round($temp,4);
+            $normalisasi[$alternatif]['name'] = $Food->name;
+            $normalisasi[$alternatif]['calorie'] = $Food->calorie;
+            $normalisasi[$alternatif]['carb'] = $Food->carb;
+            $normalisasi[$alternatif]['fat'] = $Food->fat;
+            $normalisasi[$alternatif]['protein'] = $Food->protein;
             $alternatif++;
         }
-        dd($normalisasi);
+        $totaldata = count($Foods);
+        // dd($totaldata);
+        // dd($normalisasi);
+        // for($i= 0 ;$i<$totaldata;$i++){
+        //     echo $normalisasi[$i].'<br>';
+        // }
+        echo '<br><br><br>';
+        for($i= 0 ;$i<$totaldata;$i++){
+            for($j=0;$j<$totaldata-$i-1;$j++){
+                if($normalisasi[$j]['nilai']<$normalisasi[$j+1]['nilai']){
+                    $temp = $normalisasi[$j]['nilai'];
+                    $normalisasi[$j]['nilai'] = $normalisasi[$j+1]['nilai'];
+                    $normalisasi[$j+1]['nilai'] = $temp;
+
+                    $temp = $normalisasi[$j]['name'];
+                    $normalisasi[$j]['name'] = $normalisasi[$j+1]['name'];
+                    $normalisasi[$j+1]['name'] = $temp;
+
+                    $temp = $normalisasi[$j]['calorie'];
+                    $normalisasi[$j]['calorie'] = $normalisasi[$j+1]['calorie'];
+                    $normalisasi[$j+1]['calorie'] = $temp;
+
+                    $temp = $normalisasi[$j]['carb'];
+                    $normalisasi[$j]['carb'] = $normalisasi[$j+1]['carb'];
+                    $normalisasi[$j+1]['carb'] = $temp;
+
+                    $temp = $normalisasi[$j]['fat'];
+                    $normalisasi[$j]['fat'] = $normalisasi[$j+1]['fat'];
+                    $normalisasi[$j+1]['fat'] = $temp;
+
+                    $temp = $normalisasi[$j]['protein'];
+                    $normalisasi[$j]['protein'] = $normalisasi[$j+1]['protein'];
+                    $normalisasi[$j+1]['protein'] = $temp;
+                }
+            }
+        }
+        // for($i= 0 ;$i<$totaldata;$i++){
+        //     echo $normalisasi[$i]['name'].' - ',$normalisasi[$i]['nilai'].'<br>';
+        // }
+
         // dd($c1,$c2,$c3, $c4);
         // dd($max1,$max2,$max3, $max4);
 
@@ -81,13 +125,13 @@ class FoodRecomendationController extends Controller
         $poincriteria [2] = ', Lemak: '. strval($point->fat);
         $poincriteria [3] = ', Karbohidrat: '. strval($point->carb);
         $poincriteria [4] = ', Protein: '. strval($point->protein);
-
-        // return view('admin.foodrecomendation', [
-        //     'foods' => Foodrec::all(),
-        //     // 'recs' => $rec,
-        //     'criterias' => $poincriteria,
-        //     'metode' => $metode,
-        // ]);
+        // dd($normalisasi);
+        return view('admin.foodrecomendation', [
+            'foods' => Foodrec::all(),
+            'recs' => $normalisasi,
+            'criterias' => $poincriteria,
+            'metode' => $metode,
+        ]);
         // dd($c1, $c2, $c3, $c4, $max1, $max2, $max3, $max4);
         
     }

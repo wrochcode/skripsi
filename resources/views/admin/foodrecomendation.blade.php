@@ -6,7 +6,6 @@
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item active">Food Control</li>
                 </ol>
-                
                 <div class="card mb-4">
                     <div class="card-header">
                         <i class="fas fa-table me-1"></i> Tambah Data Makanan
@@ -90,27 +89,29 @@
                         <i class="fas fa-table me-1"></i> Data Rakomendasi Menggunakan SAW
                     </div>
                     <div class="card-body">
-                        {{-- <form action="{{ route('food.store') }}" style="margin-bottom: 20px" method="post">
-                            @csrf --}}
-                            <div class="row ms-1 mb-3">
-                                {{ $metode }} Criteria: <br>
-                                @foreach ($criterias as $index =>  $criteria)
-                                    {{ $criteria }}
-                                @endforeach
-                            </div>
-                            <div class="row mb-3">
-                                <?php $number = 1;?>
-                                {{-- @foreach ($recs as $rec)
-                                    <div class="col-md-3 mt-2">
-                                        <div class="form-floating mb-3 mb-md-0">
-                                            <input value="{{ $rec->name }}" name="name" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
-                                            <label for="inputFirstName">Rank {{ $number }}</label>
-                                        </div>
-                                        <?php $number++;?>
+                        <div class="row ms-1 mb-3">
+                            {{ $metode }} Metode<br>Criteria: 
+                            @foreach ($criterias as $index =>  $criteria)
+                                {{ $criteria }}
+                            @endforeach
+                        </div>
+                        <div class="row mb-3">
+                            <?php $number = 1; ?>
+                            @for ($i= 0 ;$i<5;$i++)
+                                <div class="col-md-3 mt-2">
+                                    <div class="form-floating mb-3 mb-md-0">
+                                        <input value="<?php echo $recs[$i]['name'];?>" name="name" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
+                                        <label for="inputFirstName">Rank {{ $number }}</label>
                                     </div>
-                                @endforeach --}}
+                                    <?php $number++;?>
+                                </div>
+                            @endfor
+                            <div class="col-md-1">
+                                <div class="form-floating mb-3 ">
+                                    <a class="btn btn-primary mt-2" type="submit">Lihat Semua</a>
+                                </div>
                             </div>
-                        {{-- </form> --}}
+                        </div>
                     </div>
                 </div>
                 <div class="card mb-4">
@@ -147,8 +148,8 @@
                                         <td>{{ $food->carb }}</td>
                                         <td>{{ $food->fat }}</td>
                                         <td>{{ $food->protein }}</td>
-                                        <td class="d-flex"><a class="btn btn-primary me-2"href="{{ route('foodrecomend.edit',$food->id) }}">Edit</a>
-                                            <form action="{{ route('foodrecomend.destroy',$food->id) }}" method="POST">
+                                        <td class="d-flex"><a class="btn btn-primary me-2"href="{{ route('food.edit',$food->id) }}">Edit</a>
+                                            <form action="{{ route('food.destroy',$food->id) }}" method="POST">
                                                 @csrf
                                                 @method("delete")
                                                 <button type="submit" class="btn btn-danger">Hapus</button>
