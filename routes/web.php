@@ -20,10 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', HomeController::class);
 Route::resource('about', AboutController::class);
 Route::resource('article', ArticleController::class);
-
-// user
-// Route::get('users', [UserController::class, 'index'] );
-
+Route::resource('recomendation', RecomendationController::class);
 
 // login
 Route::middleware('auth')->group(function(){
@@ -41,20 +38,19 @@ Route::middleware('auth')->group(function(){
     Route::delete('food/{id}', [FoodController::class, 'destroy'])->name('food.destroy');
     
     //food recomen
-    Route::get('food', [FoodRecomendationController::class, 'index'])->name('food.index');
-    Route::post('food', [FoodRecomendationController::class, 'store'])->name('food.store');
-    Route::get('food/{id}/edit', [FoodRecomendationController::class, 'edit'])->name('food.edit');
-    Route::put('food/{id}', [FoodRecomendationController::class, 'update'])->name('food.update');
-    Route::delete('food/{id}', [FoodRecomendationController::class, 'destroy'])->name('food.destroy');
+    Route::get('foodrecomen', [FoodRecomendationController::class, 'index'])->name('foodrecomend.index');
+    Route::post('foodrecomen', [FoodRecomendationController::class, 'store'])->name('foodrecomend.store');
+    Route::get('foodrecomen/{id}/edit', [FoodRecomendationController::class, 'edit'])->name('foodrecomend.edit');
+    Route::put('foodrecomen/{id}', [FoodRecomendationController::class, 'update'])->name('foodrecomend.update');
+    Route::delete('foodrecomen/{id}', [FoodRecomendationController::class, 'destroy'])->name('foodrecomend.destroy');
     
     //food user
-    Route::get('food', [FoodUserController::class, 'index'])->name('food.index');
-    Route::post('food', [FoodUserController::class, 'store'])->name('food.store');
-    Route::get('food/{id}/edit', [FoodUserController::class, 'edit'])->name('food.edit');
-    Route::put('food/{id}', [FoodUserController::class, 'update'])->name('food.update');
-    Route::delete('food/{id}', [FoodUserController::class, 'destroy'])->name('food.destroy');
-
-    Route::resource('recomendation', RecomendationController::class);
+    Route::get('fooduser', [FoodUserController::class, 'index'])->name('fooduser.index');
+    Route::post('fooduser', [FoodUserController::class, 'store'])->name('fooduser.store');
+    Route::get('fooduser/{id}/edit', [FoodUserController::class, 'edit'])->name('fooduser.edit');
+    Route::put('fooduser/{id}', [FoodUserController::class, 'update'])->name('fooduser.update');
+    Route::delete('fooduser/{id}', [FoodUserController::class, 'destroy'])->name('fooduser.destroy');
+    
     // logout
     Route::post('logout', LogoutController::class)->name('logout');
 });

@@ -34,7 +34,7 @@
             <button class="btn mt-3">Login</button>
         </form>
         <div class="text-center mt-lg-1 fs-6">
-            Belum Punya Akun?<a href="{{ route('register') }}">Daftar disini!</a>
+            Belum Punya Akun?<a href="https://api.whatsapp.com/send?phone=62895326920220&text=Halo,%20saya%20ingin%20daftar%20member%20gym">Daftar disini!</a>
         </div>
     </div>
 </x-app-auth>

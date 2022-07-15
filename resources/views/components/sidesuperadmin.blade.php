@@ -26,12 +26,13 @@
                 </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                     <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                    Data
+                        Data
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
                 <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="{{ route('food.index') }}">Food</a>
+                        <a class="nav-link" href="{{ route('foodrecomend.index') }}">Food Recomend</a>
                         <a class="nav-link" href="layout-sidenav-light.html">Event</a>
                     </nav>
                 </div>

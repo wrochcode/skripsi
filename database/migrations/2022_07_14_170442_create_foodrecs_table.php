@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('foodsrecomendation', function (Blueprint $table) {
+        Schema::create('foodrecs', function (Blueprint $table) {
             $table->id();
             $table->string('name',191);
             $table->bigInteger('calorie');
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('foodsrecomendation');
+        Schema::dropIfExists('foodrecs');
     }
 };
