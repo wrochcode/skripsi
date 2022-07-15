@@ -10,8 +10,25 @@ class UserController extends Controller
 {
     public function index()
     {
+        // dd(count(User::all()));
+        $string = strlen(count(User::all())+1);
+        $batas= 5 - $string;
+        if($batas == 1){
+            $string = "0".count(User::all())+1;
+        }
+        if($batas == 2){
+            $string = "00".count(User::all())+1;
+        }
+        if($batas == 3){
+            $string = "000".count(User::all())+1;
+        }
+        if($batas == 4){
+            $string = "0000".count(User::all())+1;
+        }
+        // dd($string);
         return view('admin.user', [
             'users' => User::all(),
+            'total' => $string,
         ]);
     }
 

@@ -22,7 +22,7 @@
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="{{ route('food.index') }}">Food</a>
                         <a class="nav-link" href="{{ route('foodrecomend.index') }}">Food Recomend</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Event</a>
+                        <a class="nav-link" href="{{ route('event.index') }}">Event</a>
                     </nav>
                 </div>
                 <div class="sb-sidenav-menu-heading">Admin</div>

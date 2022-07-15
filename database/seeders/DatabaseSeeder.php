@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             FoodSeeder::class,
             FoodrecSeeder::class,
+            EventSeeder::class,
         ]);
     }
 }

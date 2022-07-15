@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutAdmin;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\FoodRecomendationController;
 use App\Http\Controllers\FoodUserController;
@@ -50,6 +51,13 @@ Route::middleware('auth')->group(function(){
     Route::get('fooduser/{id}/edit', [FoodUserController::class, 'edit'])->name('fooduser.edit');
     Route::put('fooduser/{id}', [FoodUserController::class, 'update'])->name('fooduser.update');
     Route::delete('fooduser/{id}', [FoodUserController::class, 'destroy'])->name('fooduser.destroy');
+    
+    //food user
+    Route::get('event', [EventController::class, 'index'])->name('event.index');
+    Route::post('event', [EventController::class, 'store'])->name('event.store');
+    Route::get('event/{id}/edit', [EventController::class, 'edit'])->name('event.edit');
+    Route::put('event/{id}', [EventController::class, 'update'])->name('event.update');
+    Route::delete('event/{id}', [EventController::class, 'destroy'])->name('event.destroy');
     
     // logout
     Route::post('logout', LogoutController::class)->name('logout');

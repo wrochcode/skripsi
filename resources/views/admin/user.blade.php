@@ -6,14 +6,14 @@
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item active">Member Control</li>
                 </ol>
+                @if (session()->has('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session()->get('success') }}
+                    </div>
+                @endif
                 <div class="card mb-4">
                     <div class="card-header">
                         <i class="fas fa-table me-1"></i> Tambah Member 
-                        @if (session()->has('success'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session()->get('success') }}
-                        </div>
-                    @endif
                     </div>
                     <div class="card-body">
                         <form action="{{ route('user.store') }}" style="margin-bottom: 20px" method="post">
@@ -67,7 +67,7 @@
                             <div class="row mb-3">
                                 <div class="col-md-2">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <input value="{{ old('nomeranggota') }}" name="nomeranggota" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" />
+                                        <input value="{{ $total }}" name="nomeranggota" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" readonly/>
                                         <label for="inputFirstName">Nomer Anggota</label>
                                         @error('nomeranggota')
                                         <div class="text-danger mt-0">
