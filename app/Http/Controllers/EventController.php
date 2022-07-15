@@ -9,7 +9,7 @@ class EventController extends Controller
 {
     public function index(){
         return view('admin.event', [
-        'events' => Event::all(),
+            'events' => Event::all(),
         ]);
     }
 

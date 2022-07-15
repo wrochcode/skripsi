@@ -122,6 +122,7 @@
                         <table id="datatablesSimple">
                             <thead>
                                 <tr>
+                                    <th>No</th>
                                     <th>Name</th>
                                     <th>Calorie</th>
                                     <th>Karbohidrat</th>
@@ -132,6 +133,7 @@
                             </thead>
                             <tfoot>
                                 <tr>
+                                    <th>No</th>
                                     <th>Name</th>
                                     <th>Calorie</th>
                                     <th>Karbohidrat</th>
@@ -140,9 +142,11 @@
                                     <th>Action</th>
                                 </tr>
                             </tfoot>
-                            <tbody>
+                            <tbody><?php $no=1;?>
                                 @foreach ($foods as $index => $food)
                                     <tr>
+                                        <td>{{ $no }}</td>
+                                        <?php $no++;?>
                                         <td>{{ $food->name }}</td>
                                         <td>{{ $food->calorie }}</td>
                                         <td>{{ $food->carb }}</td>

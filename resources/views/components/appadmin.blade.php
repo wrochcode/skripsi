@@ -18,21 +18,9 @@
         
     </x-navbar-admin>
     <div id="layoutSidenav">
-        @if (Auth::user()->role == 1)
-            <x-side-super-admin>
+        <x-side-super-admin>
                 
-            </x-side-super-admin>
-        @elseif (Auth::user()->role == 2)
-            <x-side-admin>
-                
-            </x-side-admin>
-        @elseif (Auth::user()->role == 3)
-            <x-side-user>
-                
-            </x-side-user>
-        @else
-            
-        @endif
+        </x-side-super-admin>
         {{ $slot }}
         
     </div>

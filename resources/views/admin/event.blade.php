@@ -22,7 +22,7 @@
                                 <div class="col-md-2">
                                     <div class="form-floating mb-3 mb-md-0">
                                         <input value="{{ old('name') }}" name="name" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
-                                        <label for="inputFirstName">Nama</label>
+                                        <label for="inputFirstName">Nama Event</label>
                                     </div>
                                     @error('name')
                                         <div class="text-danger mt-0">
