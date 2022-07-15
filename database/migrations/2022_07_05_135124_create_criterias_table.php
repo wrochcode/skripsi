@@ -16,8 +16,11 @@ return new class extends Migration
         Schema::create('criterias', function (Blueprint $table) {
             $table->id();
             $table->string('name',191);
-            $table->bigInteger('value')->nullable();
-            $table->text('keterangan')->nullable();
+            $table->double('calorie');
+            $table->double('carb');
+            $table->double('fat');
+            $table->double('protein');
+            $table->text('keterangan');
             $table->timestamps();
         });
     }

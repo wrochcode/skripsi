@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('foodusers', function (Blueprint $table) {
             $table->id();
             $table->string('name',191);
-            $table->bigInteger('calorie');
-            $table->bigInteger('carb');
-            $table->bigInteger('fat');
-            $table->bigInteger('protein');
+            $table->double('calorie');
+            $table->double('carb');
+            $table->double('fat');
+            $table->double('protein');
             $table->timestamps();
         });
     }

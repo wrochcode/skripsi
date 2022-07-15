@@ -8,80 +8,44 @@
                 </ol>
                 <div class="card mb-4">
                     <div class="card-header">
-                        <i class="fas fa-table me-1"></i> Tambah Data Makanan
-                        @if (session()->has('success'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session()->get('success') }}
-                        </div>
-                    @endif
+                        <i class="fas fa-table me-1"></i> Data Rakomendasi Menggunakan SAW
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('food.store') }}" style="margin-bottom: 20px" method="post">
-                            @csrf
+                        {{-- <form action="{{ route('food.store') }}" style="margin-bottom: 20px" method="post">
+                            @csrf --}}
                             <div class="row mb-3">
                                 <div class="col-md-2">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <input value="{{ old('name') }}" name="name" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
-                                        <label for="inputFirstName">Nama</label>
+                                        <input value="{{ $max1 }}" name="name" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
+                                        <label for="inputFirstName">Rank 1</label>
                                     </div>
-                                    @error('name')
-                                        <div class="text-danger mt-0">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <input value="{{ old('calorie') }}" name="calorie" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
-                                        <label for="inputFirstName">Kalorie</label>
+                                        <input value="{{ $max1 }}" name="name" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
+                                        <label for="inputFirstName">Rank 2</label>
                                     </div>
-                                    @error('calorie')
-                                        <div class="text-danger mt-0">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <input value="{{ old('carb') }}" name="carb" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
-                                        <label for="inputFirstName">Karbohidrat</label>
+                                        <input value="{{ $max1 }}" name="name" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
+                                        <label for="inputFirstName">Rank 3</label>
                                     </div>
-                                    @error('carb')
-                                        <div class="text-danger mt-0">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <input value="{{ old('fat') }}" name="fat" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
-                                        <label for="inputFirstName">Lemak</label>
+                                        <input value="{{ $max1 }}" name="name" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
+                                        <label for="inputFirstName">Rank 4</label>
                                     </div>
-                                    @error('fat')
-                                        <div class="text-danger mt-0">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <input value="{{ old('protein') }}" name="protein" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
-                                        <label for="inputFirstName">protein</label>
-                                    </div>
-                                    @error('protein')
-                                        <div class="text-danger mt-0">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                                
-                                <div class="col-md-1">
-                                    <div class="form-floating mb-3 mb-md-0">
-                                        <button class="btn btn-primary mt-2" type="submit">Tambah</button>
+                                        <input value="{{ $max1 }}" name="name" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
+                                        <label for="inputFirstName">Rank 5</label>
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        {{-- </form> --}}
                     </div>
                 </div>
                 <div class="card mb-4">
