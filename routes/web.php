@@ -5,6 +5,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\FoodbundlingsController;
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\FoodRecomendationController;
 use App\Http\Controllers\FoodUserController;
@@ -58,15 +59,26 @@ Route::middleware('auth')->group(function(){
     Route::get('foodrecomen/{id}/edit', [FoodRecomendationController::class, 'edit'])->name('foodrecomend.edit');
     Route::put('foodrecomen/{id}', [FoodRecomendationController::class, 'update'])->name('foodrecomend.update');
     Route::delete('foodrecomen/{id}', [FoodRecomendationController::class, 'destroy'])->name('foodrecomend.destroy');
-     
+    
     // food user
     Route::get('fooduser', [FoodUserController::class, 'index'])->name('fooduser.index');
+    Route::get('fooduserdetail', [FoodUserController::class, 'detail'])->name('fooduser.detail');
     Route::post('fooduser', [FoodUserController::class, 'store'])->name('fooduser.store');
+    Route::get('fooduser/{id}/storeuser', [FoodUserController::class, 'storeuser'])->name('fooduser.storeuser');
     Route::get('fooduser/{id}/edit', [FoodUserController::class, 'edit'])->name('fooduser.edit');
     Route::put('fooduser/{id}', [FoodUserController::class, 'update'])->name('fooduser.update');
     Route::delete('fooduser/{id}', [FoodUserController::class, 'destroy'])->name('fooduser.destroy');
     
-    // food user
+    // food menu user
+    Route::get('foodmenu', [FoodbundlingsController::class, 'index'])->name('foodmenu.index');
+    Route::get('foodmenudetail', [FoodbundlingsController::class, 'detail'])->name('foodmenu.detail');
+    Route::post('foodmenu', [FoodbundlingsController::class, 'store'])->name('foodmenu.store');
+    Route::get('foodmenu/{id}/menu', [FoodbundlingsController::class, 'menu'])->name('foodmenu.storeuser');
+    Route::get('foodmenu/{id}/edit', [FoodbundlingsController::class, 'edit'])->name('foodmenu.edit');
+    Route::put('foodmenu/{id}', [FoodbundlingsController::class, 'update'])->name('foodmenu.update');
+    Route::delete('foodmenu/{id}', [FoodbundlingsController::class, 'destroy'])->name('foodmenu.destroy');
+    
+    // event user
     Route::get('event', [EventController::class, 'index'])->name('event.index');
     Route::post('event', [EventController::class, 'store'])->name('event.store');
     Route::get('event/{id}/edit', [EventController::class, 'edit'])->name('event.edit');

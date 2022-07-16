@@ -17,8 +17,8 @@ class FoodRecomendationController extends Controller
     
     public function index()
     {
-        $useradmin = Auth::user()->name;
-        if($useradmin != 2){
+        $useradmin = Auth::user()->id;
+        if($useradmin != 1){
             return redirect('dashboard');
         }
         // Menentukan maksimal -> butuh data
@@ -33,6 +33,9 @@ class FoodRecomendationController extends Controller
         $poincriteria [3] = ', Karbohidrat: '. strval($point->carb);
         $poincriteria [4] = ', Protein: '. strval($point->protein);
         $trec = count($Foods);
+        if($trec>5){
+            $trec=5;
+        }
         // dd($trec);
 
         if(count($Foods)<1){
