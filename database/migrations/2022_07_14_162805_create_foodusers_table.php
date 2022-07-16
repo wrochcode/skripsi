@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('foodusers', function (Blueprint $table) {
             $table->id();
+            $table->string('id_user',191);
             $table->string('name',191);
             $table->double('calorie');
             $table->double('carb');

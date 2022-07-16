@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Criteria;
 use App\Models\Foodrec;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class FoodRecomendationController extends Controller
@@ -16,6 +17,10 @@ class FoodRecomendationController extends Controller
     
     public function index()
     {
+        $useradmin = Auth::user()->name;
+        if($useradmin != 2){
+            return redirect('dashboard');
+        }
         // Menentukan maksimal -> butuh data
         $Foods = Foodrec::all();
 

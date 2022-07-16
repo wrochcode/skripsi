@@ -21,7 +21,7 @@
                             <div class="row mb-3">
                                 <div class="col-md-3">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <input tabindex="0" value="{{ old('name') }}" name="name" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
+                                        <input tabindex="1" value="{{ old('name') }}" name="name" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
                                         <label for="inputFirstName">Nama</label>
                                     </div>
                                     @error('name')
@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <input tabindex="1" value="{{ old('username') }}" name="username" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
+                                        <input tabindex="2" value="{{ old('username') }}" name="username" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
                                         <label for="inputFirstName">Username</label>
                                         @error('Username')
                                             <div class="text-danger mt-0">
@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <input tabindex="2" value="{{ old('email') }}" name="email" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
+                                        <input tabindex="3" value="{{ old('email') }}" name="email" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
                                         <label for="inputFirstName">Email</label>
                                         @error('email')
                                         <div class="text-danger mt-0">
@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <input tabindex="3" value="{{ old('address') }}" name="address" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
+                                        <input tabindex="4" value="{{ old('address') }}" name="address" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
                                         <label for="inputFirstName">Alamat</label>
                                         @error('address')
                                         <div class="text-danger mt-0">
@@ -78,8 +78,11 @@
                                 {{-- </div> --}}
                                 <div class="col-md-2">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <input value="2" name="role" style="cursor: not-allowed;" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name"  disabled/>
-                                        <label for="inputFirstName">Role </label>
+                                        <select tabindex="5" class="form-control" id="cars" name="role">
+                                            <option value="2">Member</option>
+                                          </select>
+                                        {{-- <input value="2" name="role" style="cursor: not-allowed;" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name"/>
+                                        <label for="inputFirstName">Role </label> --}}
                                         @error('role')
                                         <div class="text-danger mt-0">
                                             {{ $message }}
@@ -89,7 +92,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <input tabindex="4" value="{{ old('password') }}" name="password" class="form-control" id="inputFirstName" type="password" placeholder="Enter your first name" />
+                                        <input tabindex="6" value="{{ old('password') }}" name="password" class="form-control" id="inputFirstName" type="password" placeholder="Enter your first name" />
                                         <label for="inputFirstName">Password</label>
                                         @error('password')
                                         <div class="text-danger mt-0">
@@ -136,7 +139,7 @@
                                 </tr>
                             </tfoot>
                             <tbody>
-                                <?php $number=0;
+                                <?php $number=1;
                                 for ($i=0; $i < count($users); $i++) { ?>
                                     <tr>
                                         <td><?php echo $number;$number++; ?></td>

@@ -48,9 +48,9 @@
                     </a>
                 @endif
                 <div class="sb-sidenav-menu-heading">Menu</div>
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="{{ route('fooduser.index') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                    Kalori Masuk
+                    Data Makanan
                 </a>
                 <a class="nav-link" href="tables.html">
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>

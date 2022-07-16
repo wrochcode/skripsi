@@ -21,7 +21,7 @@
                             <div class="row mb-3">
                                 <div class="col-md-3">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <input tabindex="0" value="{{ old('name') }}" name="name" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
+                                        <input tabindex="1" value="{{ old('name') }}" name="name" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
                                         <label for="inputFirstName">Nama</label>
                                     </div>
                                     @error('name')
@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <input tabindex="1" value="{{ old('username') }}" name="username" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
+                                        <input tabindex="2" value="{{ old('username') }}" name="username" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
                                         <label for="inputFirstName">Username</label>
                                         @error('Username')
                                             <div class="text-danger mt-0">
@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <input tabindex="2" value="{{ old('email') }}" name="email" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
+                                        <input tabindex="3" value="{{ old('email') }}" name="email" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
                                         <label for="inputFirstName">Email</label>
                                         @error('email')
                                         <div class="text-danger mt-0">
@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <input  tabindex="3" value="{{ old('address') }}" name="address" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
+                                        <input  tabindex="4" value="{{ old('address') }}" name="address" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
                                         <label for="inputFirstName">Alamat</label>
                                         @error('address')
                                         <div class="text-danger mt-0">
@@ -67,7 +67,7 @@
                             <div class="row mb-3">
                                 <div class="col-md-2">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <input tabindex="4" value="{{ $total }}" name="nomeranggota" style="cursor: not-allowed" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" disabled/>
+                                        <input tabindex="4" value="{{ $total }}" name="nomeranggota" style="cursor: not-allowed" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" readonly/>
                                         <label for="inputFirstName">Nomer Anggota</label>
                                         @error('nomeranggota')
                                         <div class="text-danger mt-0">
@@ -100,7 +100,7 @@
                                 </div>
                                 <div class="col-md-1">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <button class="btn btn-primary mt-2" type="submit">Tambah</button>
+                                        <button tabindex="6" class="btn btn-primary mt-2" type="submit">Tambah</button>
                                     </div>
                                 </div>
                             </div>

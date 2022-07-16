@@ -16,7 +16,7 @@ class VisitorController extends Controller
     
     public function index(){
         $useradmin = Auth::user()->name;
-        $user = value($useradmin);
+        
         // dd($user);
         return view('admin.visit', [
             'visits' => Visit::orderBy('id', 'desc')->get(),
@@ -25,6 +25,13 @@ class VisitorController extends Controller
     }
     
     public function store(Request $request){
+
+        $request->validate([
+            'day'=>['required', 'min:3', 'date'],
+            'visitor'=>['required', 'min:3', 'integer'],
+            'student'=>['required', 'min:3', 'integer'],
+        ]);
+
         $data1 = $request->visitor;
         $data2 = $request->student;
         $data = (($data1-$data2)*8000)+($request->student*5000);
