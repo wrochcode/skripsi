@@ -20,7 +20,7 @@ class MasukController extends Controller
         ]);
         
         if(Auth::attempt($attributes)){
-            return redirect('admin')->with('success', 'You are now logded in');
+            return redirect('dashboard')->with('success', 'You are now logded in');
         }
 
         throw ValidationException::withMessages([

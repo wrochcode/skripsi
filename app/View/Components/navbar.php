@@ -25,7 +25,7 @@ class navbar extends Component
     public function render()
     {
         $namecompany = DB::table('abouts')->where('name', 'namecompany')->first();
-        $address = DB::table('abouts')->where('name', 'namecompany')->first();
+        $address = DB::table('abouts')->where('name', 'address')->first();
         $navbar = [
             'Beranda' => '/',
             // 'Produk' => '/product',

@@ -19,13 +19,13 @@ class AboutAdmin extends Controller
 
     public function index()
     {
-        $userRole = Auth::user()->name;
+        $userRole = Auth::user()->role;
         if($userRole==1){
             return view('admin.about', [
                 'abouts' => About::orderby('id', 'asc')->get(),
             ]);
         }
-        return redirect('admin');
+        return redirect('dashboard');
         // dd($userId);
         
     }

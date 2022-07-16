@@ -3,6 +3,7 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use Illuminate\Support\Facades\DB;
 
 class AppAdmin extends Component
 {
@@ -24,6 +25,7 @@ class AppAdmin extends Component
      */
     public function render()
     {
-        return view('components.appadmin');
+        $namecompany = DB::table('abouts')->where('name', 'namecompany')->first();
+        return view('components.appadmin', compact('namecompany'));
     }
 }

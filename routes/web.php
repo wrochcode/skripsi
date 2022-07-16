@@ -20,21 +20,22 @@ use Illuminate\Support\Facades\Route;
 
 // user
 Route::get('/', HomeController::class);
-Route::resource('about', AboutController::class);
+Route::get('about', [AboutController::class, 'index'])->name('about.index');
 Route::resource('article', ArticleController::class);
 Route::resource('recomendation', RecomendationController::class);
 
 // login
 Route::middleware('auth')->group(function(){
     // admin
-    Route::get('admin', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('dashboard', [AdminController::class, 'index'])->name('admin.index');
     Route::get('user', [UserController::class, 'index'])->name('user.index');
     Route::post('user', [UserController::class, 'store'])->name('user.store');
     Route::get('useradmin', [UserAdminController::class, 'index'])->name('useradmin.index');
     Route::post('useradmin', [UserAdminController::class, 'store'])->name('useradmin.store');
     
     // about
-    Route::resource('aboutadmins', AboutAdmin::class);
+    // Route::resource('aboutadmins', AboutAdmin::class);
+    Route::get('aboutadmins', [AboutAdmin::class, 'index'])->name('aboutadmins.index');
 
     // food Main
     Route::get('food', [FoodController::class, 'index'])->name('food.index');

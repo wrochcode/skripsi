@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\DB;
 
 class FoodRecomendationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         // Menentukan maksimal -> butuh data

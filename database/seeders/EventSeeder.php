@@ -16,15 +16,21 @@ class EventSeeder extends Seeder
     public function run()
     {
         collect([[
+            'name' => 'Mei',
+            'value' => 'Pelajar only 5k',
+            'describe' => 'event Mei',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ],[
             'name' => 'Juni',
-            'value' => 'Pelajar discount 50%',
-            'describe' => 'event Juni',
+            'value' => 'Get member, one day free',
+            'describe' => 'Event Juni',
             'created_at' => now(),
             'updated_at' => now(),
         ],[
             'name' => 'Juli',
-            'value' => 'Get member, one day free',
-            'describe' => 'Event Juni',
+            'value' => 'Get member, one day free and Makan with member 10 juli',
+            'describe' => 'Event Juli',
             'created_at' => now(),
             'updated_at' => now(),
         ]

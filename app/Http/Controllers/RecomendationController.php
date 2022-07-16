@@ -6,9 +6,7 @@ use Illuminate\Http\Request;
 
 class RecomendationController extends Controller
 {
-    public function index(Request $request)
-    {
-        // $food = 'oi';
+    public function index(Request $request){
         return view('recomendation');
     }
 }
