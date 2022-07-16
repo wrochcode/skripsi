@@ -16,12 +16,12 @@
                         <i class="fas fa-table me-1"></i> Tambah Admin 
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('user.store') }}" style="margin-bottom: 20px" method="post">
+                        <form action="{{ route('useradmin.store') }}" style="margin-bottom: 20px" method="post">
                             @csrf
                             <div class="row mb-3">
                                 <div class="col-md-3">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <input value="{{ old('name') }}" name="name" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
+                                        <input tabindex="0" value="{{ old('name') }}" name="name" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
                                         <label for="inputFirstName">Nama</label>
                                     </div>
                                     @error('name')
@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <input value="{{ old('username') }}" name="username" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
+                                        <input tabindex="1" value="{{ old('username') }}" name="username" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
                                         <label for="inputFirstName">Username</label>
                                         @error('Username')
                                             <div class="text-danger mt-0">
@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <input value="{{ old('email') }}" name="email" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
+                                        <input tabindex="2" value="{{ old('email') }}" name="email" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
                                         <label for="inputFirstName">Email</label>
                                         @error('email')
                                         <div class="text-danger mt-0">
@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <input value="{{ old('address') }}" name="address" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
+                                        <input tabindex="3" value="{{ old('address') }}" name="address" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
                                         <label for="inputFirstName">Alamat</label>
                                         @error('address')
                                         <div class="text-danger mt-0">
@@ -65,20 +65,20 @@
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <div class="col-md-2">
-                                    <div class="form-floating mb-3 mb-md-0">
-                                        <input value="{{ $total }}" name="nomeranggota" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" readonly/>
-                                        <label for="inputFirstName">Nomer Anggota</label>
-                                        @error('nomeranggota')
+                                {{-- <div class="col-md-2">
+                                    <div class="form-floating mb-3 mb-md-0"> --}}
+                                        <input value="{{ $total }}" name="nomeranggota" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" hidden/>
+                                        {{-- <label for="inputFirstName">Nomer Anggota</label> --}}
+                                        {{-- @error('nomeranggota')
                                         <div class="text-danger mt-0">
                                             {{ $message }}
                                         </div>
                                         @enderror
-                                    </div>
-                                </div>
+                                    </div> --}}
+                                {{-- </div> --}}
                                 <div class="col-md-2">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <input value="2" name="role" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name"  readonly/>
+                                        <input value="2" name="role" style="cursor: not-allowed;" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name"  disabled/>
                                         <label for="inputFirstName">Role </label>
                                         @error('role')
                                         <div class="text-danger mt-0">
@@ -89,7 +89,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <input value="{{ old('password') }}" name="password" class="form-control" id="inputFirstName" type="password" placeholder="Enter your first name" />
+                                        <input tabindex="4" value="{{ old('password') }}" name="password" class="form-control" id="inputFirstName" type="password" placeholder="Enter your first name" />
                                         <label for="inputFirstName">Password</label>
                                         @error('password')
                                         <div class="text-danger mt-0">
@@ -115,6 +115,7 @@
                         <table id="datatablesSimple">
                             <thead>
                                 <tr>
+                                    <th>No</th>
                                     <th>No.Anggota</th>
                                     <th>Name</th>
                                     <th>Username</th>
@@ -125,6 +126,7 @@
                             </thead>
                             <tfoot>
                                 <tr>
+                                    <th>No</th>
                                     <th>No.Anggota</th>
                                     <th>Name</th>
                                     <th>Username</th>
@@ -136,15 +138,14 @@
                             <tbody>
                                 <?php $number=0;
                                 for ($i=0; $i < count($users); $i++) { ?>
-                                {{-- @foreach ($users as $index => $user) --}}
                                     <tr>
-                                        <td><?php echo $users[$number]['noanggota'];?></td>
-                                        <td><?php echo $users[$number]['name'];?></td>
-                                        <td><?php echo $users[$number]['username'];?></td>
-                                        <td><?php echo $users[$number]['email'];?></td>
-                                        <td><?php echo $users[$number]['address'];?></td>
-                                        <td><?php echo $users[$number]['created_at'];?></td>
-                                        
+                                        <td><?php echo $number;$number++; ?></td>
+                                        <td><?php echo $users[$i]['noanggota']; ?></td>
+                                        <td><?php echo $users[$i]['name']; ?></td>
+                                        <td><?php echo $users[$i]['username']; ?></td>
+                                        <td><?php echo $users[$i]['email']; ?></td>
+                                        <td><?php echo $users[$i]['address']; ?></td>
+                                        <td><?php echo $users[$i]['created_at']; ?></td>
                                     </tr>
                                 <?php }?>
                             </tbody>

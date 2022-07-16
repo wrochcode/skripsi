@@ -42,6 +42,10 @@
                             <a class="nav-link" href="{{ route('user.index') }}">Member</a>
                         </nav>
                     </div>
+                    <a class="nav-link" href="{{ route('visit.index') }}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        Pengunjung
+                    </a>
                 @endif
                 <div class="sb-sidenav-menu-heading">Menu</div>
                 <a class="nav-link" href="charts.html">

@@ -37,12 +37,14 @@ class UserAdminController extends Controller
         foreach($admins as $admin){
             // echo $admin->role.'<br>';
             if( $admin->role == 2){
+                $user[$index]['id'] = $admin->name;
                 $user[$index]['name'] = $admin->name;
                 $user[$index]['noanggota'] = $admin->nomeranggota;
                 $user[$index]['username'] = $admin->username;
                 $user[$index]['email'] = $admin->email;
                 $user[$index]['address'] = $admin->address;
                 $user[$index]['created_at'] = $admin->created_at;
+                $index++;
             }
         }
         // dd($user);
@@ -61,7 +63,7 @@ class UserAdminController extends Controller
     {
         // dd($request);
         User::create($request->all());
-        return redirect('user')->with('success', 'Data berhasil dibuat.');
+        return redirect('useradmin')->with('success', 'Data berhasil dibuat.');
     }
 
     public function show($id)

@@ -95,9 +95,13 @@
                                 {{ $criteria }}
                             @endforeach
                         </div>
+                        @if (isset($recs))
                         <div class="row mb-3">
+                                
+                            
+                              
                             <?php $number = 1; ?>
-                            @for ($i= 0 ;$i<5;$i++)
+                            @for ($i= 0 ;$i<$trec;$i++)
                                 <div class="col-md-3 mt-2">
                                     <div class="form-floating mb-3 mb-md-0">
                                         <input value="<?php echo $recs[$i]['name'];?>" name="name" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
@@ -106,12 +110,14 @@
                                     <?php $number++;?>
                                 </div>
                             @endfor
+
                             <div class="col-md-1">
                                 <div class="form-floating mb-3 ">
                                     <a class="btn btn-primary mt-2" type="submit">Lihat Semua</a>
                                 </div>
                             </div>
                         </div>
+                        @endif
                     </div>
                 </div>
                 <div class="card mb-4">
@@ -152,8 +158,8 @@
                                         <td>{{ $food->carb }}</td>
                                         <td>{{ $food->fat }}</td>
                                         <td>{{ $food->protein }}</td>
-                                        <td class="d-flex"><a class="btn btn-primary me-2"href="{{ route('food.edit',$food->id) }}">Edit</a>
-                                            <form action="{{ route('food.destroy',$food->id) }}" method="POST">
+                                        <td class="d-flex"><a class="btn btn-primary me-2"href="{{ route('foodrecomend.edit',$food->id) }}">Edit</a>
+                                            <form action="{{ route('foodrecomend.destroy',$food->id) }}" method="POST">
                                                 @csrf
                                                 @method("delete")
                                                 <button type="submit" class="btn btn-danger">Hapus</button>

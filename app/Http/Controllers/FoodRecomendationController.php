@@ -18,6 +18,28 @@ class FoodRecomendationController extends Controller
     {
         // Menentukan maksimal -> butuh data
         $Foods = Foodrec::all();
+
+        
+        // Menampilkan Kriteria
+        $point = DB::table('criterias')->where('name', 'Defisit')->first();
+        $metode = $point->name;
+        $poincriteria [1] = 'Kalori: '. strval($point->calorie);
+        $poincriteria [2] = ', Lemak: '. strval($point->fat);
+        $poincriteria [3] = ', Karbohidrat: '. strval($point->carb);
+        $poincriteria [4] = ', Protein: '. strval($point->protein);
+        $trec = count($Foods);
+        // dd($trec);
+
+        if(count($Foods)<1){
+            $normalisasi = null;
+            return view('admin.foodrecomendation', [
+                'foods' => Foodrec::all(),
+                'recs' => $normalisasi,
+                'criterias' => $poincriteria,
+                'metode' => $metode,
+                'trec' => $trec,
+            ]);
+        }
         $max1 = $Foods[0]['calorie'];
         $max2 = $Foods[0]['carb'];
         $max3 = $Foods[0]['fat'];
@@ -67,12 +89,7 @@ class FoodRecomendationController extends Controller
             $alternatif++;
         }
         $totaldata = count($Foods);
-        // dd($totaldata);
-        // dd($normalisasi);
-        // for($i= 0 ;$i<$totaldata;$i++){
-        //     echo $normalisasi[$i].'<br>';
-        // }
-        echo '<br><br><br>';
+        
         for($i= 0 ;$i<$totaldata;$i++){
             for($j=0;$j<$totaldata-$i-1;$j++){
                 if($normalisasi[$j]['nilai']<$normalisasi[$j+1]['nilai']){
@@ -102,40 +119,14 @@ class FoodRecomendationController extends Controller
                 }
             }
         }
-        // for($i= 0 ;$i<$totaldata;$i++){
-        //     echo $normalisasi[$i]['name'].' - ',$normalisasi[$i]['nilai'].'<br>';
-        // }
 
-        // dd($c1,$c2,$c3, $c4);
-        // dd($max1,$max2,$max3, $max4);
-
-        // dummy
-        // hasil rekomendasi -> butuh data
-        // $idwin[0] = $Foods[0]['id'];
-        // $idwin[1] = $Foods[1]['id'];
-        // $idwin[2] = $Foods[2]['id'];
-        // $idwin[3] = $Foods[3]['id'];
-        // $idwin[4] = $Foods[4]['id'];
-
-        // $rec[0] = DB::table('foodrecs')->where('id',  $idwin[0])->first();
-        // $rec[1] = DB::table('foodrecs')->where('id',  $idwin[1])->first();
-        // $rec[2] = DB::table('foodrecs')->where('id',  $idwin[2])->first();
-        // $rec[3] = DB::table('foodrecs')->where('id',  $idwin[3])->first();
-        // $rec[4] = DB::table('foodrecs')->where('id',  $idwin[4])->first();
-
-        // Menampilkan Kriteria
-        $point = DB::table('criterias')->where('name', 'Defisit')->first();
-        $metode = $point->name;
-        $poincriteria [1] = 'Kalori: '. strval($point->calorie);
-        $poincriteria [2] = ', Lemak: '. strval($point->fat);
-        $poincriteria [3] = ', Karbohidrat: '. strval($point->carb);
-        $poincriteria [4] = ', Protein: '. strval($point->protein);
         // dd($normalisasi);
         return view('admin.foodrecomendation', [
             'foods' => Foodrec::all(),
             'recs' => $normalisasi,
             'criterias' => $poincriteria,
             'metode' => $metode,
+            'trec' => $trec,
         ]);
         // dd($c1, $c2, $c3, $c4, $max1, $max2, $max3, $max4);
         

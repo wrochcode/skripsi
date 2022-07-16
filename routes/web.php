@@ -15,6 +15,7 @@ use App\Http\Controllers\RecomendationController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\UserAdminController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VisitorController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -43,6 +44,13 @@ Route::middleware('auth')->group(function(){
     Route::get('food/{id}/edit', [FoodController::class, 'edit'])->name('food.edit');
     Route::put('food/{id}', [FoodController::class, 'update'])->name('food.update');
     Route::delete('food/{id}', [FoodController::class, 'destroy'])->name('food.destroy');
+
+    // visit
+    Route::get('visit', [VisitorController::class, 'index'])->name('visit.index');
+    Route::post('visit', [VisitorController::class, 'store'])->name('visit.store');
+    Route::get('visit/{id}/edit', [VisitorController::class, 'edit'])->name('visit.edit');
+    Route::put('visit/{id}', [VisitorController::class, 'update'])->name('visit.update');
+    Route::delete('visit/{id}', [VisitorController::class, 'destroy'])->name('visit.destroy');
     
     // food recomen
     Route::get('foodrecomen', [FoodRecomendationController::class, 'index'])->name('foodrecomend.index');
