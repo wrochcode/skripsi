@@ -17,6 +17,7 @@ class FoodRecomendationController extends Controller
     
     public function index()
     {
+        //identifikasi user
         $useradmin = Auth::user()->id;
         if($useradmin != 1){
             return redirect('dashboard');

@@ -71,13 +71,17 @@ Route::middleware('auth')->group(function(){
     
     // food menu user
     Route::get('foodmenu', [FoodMenuController::class, 'index'])->name('foodmenu.index');
-    Route::get('foodmenucreate', [FoodMenuController::class, 'create'])->name('foodmenu.create');
-    Route::get('foodmenudetail/{id}/edit', [FoodMenuController::class, 'detail'])->name('foodmenu.detail');
+    Route::get('foodmenufull', [FoodMenuController::class, 'full'])->name('foodmenu.full');
     Route::post('foodmenu', [FoodMenuController::class, 'store'])->name('foodmenu.store');
-    Route::get('foodmenu/{id}/menu', [FoodMenuController::class, 'menu'])->name('foodmenu.storeuser');
+    Route::post('foodmenutambah', [FoodMenuController::class, 'tambah'])->name('foodmenu.tambah');
+    Route::post('foodmenuadded', [FoodMenuController::class, 'add'])->name('foodmenu.add');
+    Route::get('foodmenucreate', [FoodMenuController::class, 'create'])->name('foodmenu.create');
+    Route::get('foodmenudetail/{id}', [FoodMenuController::class, 'detail'])->name('foodmenu.detail');
+    // Route::get('foodmenu/{id}/menu', [FoodMenuController::class, 'menu'])->name('foodmenu.storeuser');
     Route::get('foodmenu/{id}/edit', [FoodMenuController::class, 'edit'])->name('foodmenu.edit');
     Route::put('foodmenu/{id}', [FoodMenuController::class, 'update'])->name('foodmenu.update');
-    Route::delete('foodmenu/{id}', [FoodMenuController::class, 'destroy'])->name('foodmenu.destroy');
+    Route::get('foodmenudelete/{id}', [FoodMenuController::class, 'destroy'])->name('foodmenu.destroy');
+    Route::delete('foodmenu/{id}', [FoodMenuController::class, 'hapus'])->name('foodmenu.hapusitem');
     
     // event user
     Route::get('event', [EventController::class, 'index'])->name('event.index');

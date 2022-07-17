@@ -16,7 +16,7 @@
                         <i class="fas fa-table me-1"></i> Tambah Data Makanan
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('fooduser.store') }}" style="margin-bottom: 20px" method="post">
+                        <form action="{{ route('foodmenu.create') }}" style="margin-bottom: 20px" method="post">
                             @csrf
                             <div class="row mb-3">
                                 <div class="col-md-2">
@@ -86,78 +86,47 @@
                 </div>
                 <div class="card mb-4">
                     <div class="card-header">
-                        <i class="fas fa-table me-1"></i> Data Rakomendasi Menggunakan SAW
+                        <i class="fas fa-table me-1"></i> Data anda
                     </div>
                     <div class="card-body">
-                        <div class="row ms-1 mb-3">
-                            {{ $metode }} Metode<br>Criteria: 
-                            @foreach ($criterias as $index =>  $criteria)
-                                {{ $criteria }}
-                            @endforeach
-                        </div>
-                        @if (isset($recs))
-                        <div class="row mb-3">
-                                
-                            
-                              
-                            <?php $number = 1; ?>
-                            @for ($i= 0 ;$i<$trec;$i++)
-                                <div class="col-md-3 mt-2">
-                                    <div class="form-floating mb-3 mb-md-0">
-                                        <input value="<?php echo $recs[$i]['name'];?>" name="name" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
-                                        <label for="inputFirstName">Rank {{ $number }}</label>
-                                    </div>
-                                    <?php $number++;?>
-                                </div>
-                            @endfor
-
-                            <div class="col-md-1">
-                                <div class="form-floating mb-3 ">
-                                    <a class="btn btn-primary mt-2" href="{{ route('fooduser.detail') }}">Lihat Semua</a>
-                                </div>
-                            </div>
-                        </div>
+                        @if ($trec != 0)
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Name</th>
+                                <th>Calorie</th>
+                                <th>Karbohidrat</th>
+                                <th>Lemak</th>
+                                <th>Protein</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <?php $no= 1 ;?>
+                                    @for ($i=0 ; $i<count($foods) ; $i++ )
+                                        <tr>
+                                        <td>{{ $no }}</td>
+                                            <?php $no++;?>
+                                            <td><?php echo $foods[$i]['name']; ?></td>
+                                            <td><?php echo $foods[$i]['calorie']; ?></td>
+                                            <td><?php echo $foods[$i]['carb']; ?></td>
+                                            <td><?php echo $foods[$i]['fat']; ?></td>
+                                            <td><?php echo $foods[$i]['protein']; ?></td>
+                                            <?php $id = $foods[$i]['id']; ?>
+                                            <td class="d-flex"><a class="btn btn-primary me-2"href="{{ route('fooduser.edit', <?php echo $foods[$i]['id']; ?>) }}">Edit</a>
+                                                <form action="{{ route('fooduser.destroy', $id) }}" method="POST">
+                                                    @csrf
+                                                    @method("delete")
+                                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                                </form></td>
+                                        </tr>
+                                    @endfor
+                            </tbody>
+                        </table>
                         @endif
                     </div>
                 </div>
-                @if ($trec != 0)
-                <table class="table table-bordered">
-                    <thead>
-                      <tr>
-                        <th>No</th>
-                        <th>Name</th>
-                        <th>Calorie</th>
-                        <th>Karbohidrat</th>
-                        <th>Lemak</th>
-                        <th>Protein</th>
-                        <th>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                        <?php $no= 1 ;?>
-                            @for ($i=0 ; $i<count($foods) ; $i++ )
-                                <tr>
-                                <td>{{ $no }}</td>
-                                    <?php $no++;?>
-                                    <td><?php echo $foods[$i]['name']; ?></td>
-                                    <td><?php echo $foods[$i]['calorie']; ?></td>
-                                    <td><?php echo $foods[$i]['carb']; ?></td>
-                                    <td><?php echo $foods[$i]['fat']; ?></td>
-                                    <td><?php echo $foods[$i]['protein']; ?></td>
-                                    <?php $id = $foods[$i]['id']; ?>
-                                    <td class="d-flex"><a class="btn btn-primary me-2"href="{{ route('fooduser.edit', <?php echo $foods[$i]['id']; ?>) }}">Edit</a>
-                                        <form action="{{ route('fooduser.destroy', $id) }}" method="POST">
-                                            @csrf
-                                            @method("delete")
-                                            <button type="submit" class="btn btn-danger">Hapus</button>
-                                        </form></td>
-                                </tr>
-                                    
-                            @endfor
-                        </tbody>
-                    </table>
-                @endif
-                    
                 <div class="card mb-4">
                     <div class="card-header">
                         <i class="fas fa-table me-1"></i> Data Makanan

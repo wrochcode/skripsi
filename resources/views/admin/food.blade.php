@@ -6,14 +6,14 @@
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item active">Food Control</li>
                 </ol>
+                @if (session()->has('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session()->get('success') }}
+                    </div>
+                @endif
                 <div class="card mb-4">
                     <div class="card-header">
                         <i class="fas fa-table me-1"></i> Tambah Data Makanan
-                        @if (session()->has('success'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session()->get('success') }}
-                        </div>
-                    @endif
                     </div>
                     <div class="card-body">
                         <form action="{{ route('food.store') }}" style="margin-bottom: 20px" method="post">
@@ -118,7 +118,7 @@
                                         <td>{{ $food->carb }}</td>
                                         <td>{{ $food->fat }}</td>
                                         <td>{{ $food->protein }}</td>
-                                        <td class="d-flex"><a class="btn btn-primary me-2"href="{{ route('food.edit',$food->id) }}">Edit</a>
+                                        <td class="d-flex"><a class="btn btn-primary me-2"href="{{ route('food.edit', $food->id) }}">Edit</a>
                                             <form action="{{ route('food.destroy',$food->id) }}" method="POST">
                                                 @csrf
                                                 @method("delete")

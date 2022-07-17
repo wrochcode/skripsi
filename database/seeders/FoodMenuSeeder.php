@@ -17,6 +17,7 @@ class FoodMenuSeeder extends Seeder
     {
         collect([[
             'id_user' => 1,
+            'name' => "menu A",
             'calorie' => 1000,
             'fat' => 150,
             'carb' => 135,
@@ -25,6 +26,7 @@ class FoodMenuSeeder extends Seeder
             'updated_at' => now(),
         ],[
             'id_user' => 1,
+            'name' => "menu B",
             'calorie' => 1200,
             'fat' => 100,
             'carb' => 80,
