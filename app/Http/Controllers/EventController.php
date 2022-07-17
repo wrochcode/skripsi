@@ -25,19 +25,17 @@ class EventController extends Controller
     }
 
     public function edit($id){
-        $food =Event::find($id);
-        return view('admin.__makananedit', [
-            'food'=>$food,
+        $data =Event::find($id);
+        return view('admin.__eventedit', [
+            'data'=>$data,
         ]);
     }
     
     public function update(Request $request, $id){
         Event::find($id)->update([
             'name'=> $request->name,
-            'calorie'=> $request->calorie,
-            'carb'=> $request->carb,
-            'fat'=> $request->fat,
-            'protein'=> $request->protein,
+            'value'=> $request->value,
+            'describe'=> $request->describe,
         ]);
         return redirect('food');
     }

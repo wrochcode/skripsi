@@ -9,7 +9,7 @@
             @endif
             <h1 class="display-5 animated fadeIn mb-4">Cari <span class="text-primary">Cara Sehat Terbaik</span> dengan gayamu sendiri</h1>
             <p class="animated fadeIn mb-4 pb-2">Temukan kebiasaan baru untuk hidup sehat, tubuh sehat aktifitas lancar.</p>
-            <a href="" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">Get Started</a>
+            <a href="https://api.whatsapp.com/send?phone=62895326920220&text=Halo,%20saya%20ingin%20member%20gym" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">Daftar GYM</a>
         </div>  
         <div class="mt-lg-5 col-md-6 animated fadeIn">
             <div class="owl-carousel header-carousel">

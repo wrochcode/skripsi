@@ -55,7 +55,7 @@
                                 
                                 <div class="col-md-1">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <button class="btn btn-primary mt-2" type="submit">Tambah</button>
+                                        <button class="btn btn-primary mt-2 text-white" type="submit">Tambah</button>
                                     </div>
                                 </div>
                             </div>
@@ -93,11 +93,11 @@
                                         <td>{{ $event->name }}</td>
                                         <td>{{ $event->value }}</td>
                                         <td>{{ $event->describe }}</td>
-                                        <td class="d-flex"><a class="btn btn-primary me-2"href="{{ route('event.edit',$event->id) }}">Edit</a>
+                                        <td class="d-flex"><a class="btn btn-primary me-2  text-white"href="{{ route('event.edit',$event->id) }}">Edit</a>
                                             <form action="{{ route('event.destroy',$event->id) }}" method="POST">
                                                 @csrf
                                                 @method("delete")
-                                                <button type="submit" class="btn btn-danger">Hapus</button>
+                                                <button type="submit" class="btn btn-danger text-white">Hapus</button>
                                             </form></td>
                                     </tr>
                                 @endforeach
