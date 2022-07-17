@@ -1,6 +1,4 @@
-<div>
-    <!-- Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less. - Marie Curie -->
-</div><!-- Header Start -->
+<!-- Header Start -->
 <div class="container-fluid header bg-white p-0">
     <div class="row mt-lg-5 g-0 align-items-center flex-column-reverse flex-md-row">
         <div class="col-md-6 p-5 mt-lg-5">

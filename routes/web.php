@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutAdmin;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CalcController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\FoodMenuController;
@@ -25,6 +26,24 @@ Route::get('/', HomeController::class);
 Route::get('about', [AboutController::class, 'index'])->name('about.index');
 Route::resource('article', ArticleController::class);
 Route::resource('recomendation', RecomendationController::class);
+
+// kalkulator
+Route::get('bmi', [CalcController::class, 'bmi'])->name('bmi.index');
+Route::post('bmi', [CalcController::class, 'bmistore'])->name('bmi.store');
+Route::get('rmr', [CalcController::class, 'rmr'])->name('rmr.index');
+Route::post('rmr', [CalcController::class, 'rmrstore'])->name('rmr.store');
+Route::get('eer', [CalcController::class, 'eer'])->name('eer.index');
+Route::post('eer', [CalcController::class, 'eerstore'])->name('eer.store');
+Route::get('tdee', [CalcController::class, 'tdee'])->name('tdee.index');
+Route::post('tdee', [CalcController::class, 'tdeestore'])->name('tdee.store');
+Route::get('serat', [CalcController::class, 'serat'])->name('serat.index');
+Route::post('serat', [CalcController::class, 'seratstore'])->name('serat.store');
+Route::get('protein', [CalcController::class, 'protein'])->name('protein.index');
+Route::post('protein', [CalcController::class, 'proteinstore'])->name('protein.store');
+Route::get('carb', [CalcController::class, 'carb'])->name('carb.index');
+Route::post('carb', [CalcController::class, 'carbstore'])->name('carb.store');
+Route::get('bmr', [CalcController::class, 'carb'])->name('bmr.index');
+Route::post('bmr', [CalcController::class, 'carbstore'])->name('bmr.store');
 
 // login
 Route::middleware('auth')->group(function(){
