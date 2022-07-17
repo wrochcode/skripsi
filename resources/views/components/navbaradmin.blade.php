@@ -1,4 +1,4 @@
-<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+<nav class="sb-topnav navbar navbar-expand navbar-dark sb-sidenav-dark">
     <!-- Navbar Brand-->
     <a class="navbar-brand ps-3" href="/">{{ $namecompany->value }}</a>
     <!-- Sidebar Toggle-->

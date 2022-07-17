@@ -78,9 +78,7 @@
                                 {{-- </div> --}}
                                 <div class="col-md-2">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <select tabindex="5" class="form-control" id="cars" name="role">
-                                            <option value="2">Member</option>
-                                          </select>
+                                        <input value="2" name="role" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" readonly/>
                                         {{-- <input value="2" name="role" style="cursor: not-allowed;" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name"/>
                                         <label for="inputFirstName">Role </label> --}}
                                         @error('role')

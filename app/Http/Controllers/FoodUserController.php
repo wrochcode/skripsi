@@ -48,7 +48,7 @@ class FoodUserController extends Controller
             return view('admin.userfoodsaw', [
                 'foods' => null,
                 'recs' => $normalisasi,
-                'fooddatabases' => $Foods,
+                'fooddatabases' => $makanan,
                 'criterias' => $poincriteria,
                 'metode' => $metode,
                 'trec' => $trec,

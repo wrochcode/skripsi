@@ -31,14 +31,6 @@ class FoodMenuSeeder extends Seeder
             'protein' => 30,
             'created_at' => now(),
             'updated_at' => now(),
-        ],[
-            'id_user' => 1,
-            'calorie' => 800,
-            'fat' => 200,
-            'carb' => 180,
-            'protein' => 60,
-            'created_at' => now(),
-            'updated_at' => now(),
         ]
         ])->each(function($data){
             DB::table('foodsmenu')->insert($data);

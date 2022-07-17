@@ -8,18 +8,17 @@
                     </ol>
                     {{-- card --}}
                     <div class="row">
-                        @if ($trec == 0)
-                            
-                        <div class="col-xl-12 col-md-6">
-                            <div class="card bg-warning text-white mb-4">
-                                <div class="card-body text-dark">Menu Kosong</div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
+                        <div class="col-xl-2 align-self-end">
+                            <div class="card bg-info text-white mb-4">
+                                <a href="{{  route('foodmenu.create') }}"><div class="card-body text-decoration-none text-white ">Tambah Menu <i class="fa fa-plus" aria-hidden="true"></i></div></a>
+                                {{-- <div class="card-footer d-flex align-items-center justify-content-between">
                                     <a class=" text-dark small text-dark stretched-link" href="#">Tambah Menu</a>
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
-                        @endif
+                    </div>
+                    <div class="row">
                         <?php $indexloop = 1 ;
                         ?>
                         @for ($i = 0 ; $i  < $trec; $i++)
@@ -44,8 +43,12 @@
                                                                 @endphp</div>
                                         <div class="card-footer d-flex align-items-center justify-content-between">
                                             {{-- <a class="small text-white stretched-link" href="/">View Details</a> --}}
-                                            <a class="small text-white stretched-link" href="{{ route('foodmenu.detail', $foods[$i]['id']) }}">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                            <a class="small text-white" href="{{ route('foodmenu.detail', $foods[$i]['id']) }}">View Details <i class="fas fa-angle-right"></i></a>
+                                            <form action="{{ route('foodmenu.destroy', $foods[$i]['id']) }}" method="POST">
+                                                @csrf
+                                                @method("delete")
+                                                <button type="submit" class="btn btn-danger">Hapus <i class="fa fa-trash" aria-hidden="true"></i></button>
+                                            </form>
                                     </div>
                                 </div>
                                 @php
@@ -53,34 +56,8 @@
                                     $indexloop++;
                                 @endphp
                             </div>
-                        @endfor
-                        {{-- <div class="col-xl-3 col-md-6">
-                            <div class="card bg-warning text-white mb-4">
-                                <div class="card-body">Warning Card</div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="#">View Details</a>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                </div>
-                            </div>
-                        </div> --}}
-                        {{-- <div class="col-xl-3 col-md-6">
-                            <div class="card bg-success text-white mb-4">
-                                <div class="card-body">Success Card</div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="#">View Details</a>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card bg-danger text-white mb-4">
-                                <div class="card-body">Danger Card</div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="#">View Details</a>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                </div>
-                            </div>
-                        </div> --}}
+                            @endfor
+                            
                     </div>
                 </div>
             </main>

@@ -18,6 +18,7 @@ class ItemFoodsMenuSeeder extends Seeder
         collect([[
             'id_user' => 1,
             'id_menu' => 1,
+            'name' => 'food1',
             'calorie' => 1000,
             'fat' => 150,
             'carb' => 135,
@@ -27,6 +28,7 @@ class ItemFoodsMenuSeeder extends Seeder
         ],[
             'id_user' => 1,
             'id_menu' => 1,
+            'name' => 'food1',
             'calorie' => 1200,
             'fat' => 100,
             'carb' => 80,
@@ -36,6 +38,7 @@ class ItemFoodsMenuSeeder extends Seeder
         ],[
             'id_user' => 1,
             'id_menu' => 2,
+            'name' => 'food2',
             'calorie' => 1800,
             'fat' => 200,
             'carb' => 180,
@@ -45,6 +48,7 @@ class ItemFoodsMenuSeeder extends Seeder
         ],[
             'id_user' => 1,
             'id_menu' => 2,
+            'name' => 'food2',
             'calorie' => 1900,
             'fat' => 100,
             'carb' => 80,
@@ -54,6 +58,7 @@ class ItemFoodsMenuSeeder extends Seeder
         ],[
             'id_user' => 1,
             'id_menu' => 2,
+            'name' => 'food2',
             'calorie' => 1800,
             'fat' => 200,
             'carb' => 180,

@@ -71,7 +71,8 @@ Route::middleware('auth')->group(function(){
     
     // food menu user
     Route::get('foodmenu', [FoodMenuController::class, 'index'])->name('foodmenu.index');
-    Route::get('foodmenudetail/{id}/detail', [FoodMenuController::class, 'detail'])->name('foodmenu.detail');
+    Route::get('foodmenucreate', [FoodMenuController::class, 'create'])->name('foodmenu.create');
+    Route::get('foodmenudetail/{id}/edit', [FoodMenuController::class, 'detail'])->name('foodmenu.detail');
     Route::post('foodmenu', [FoodMenuController::class, 'store'])->name('foodmenu.store');
     Route::get('foodmenu/{id}/menu', [FoodMenuController::class, 'menu'])->name('foodmenu.storeuser');
     Route::get('foodmenu/{id}/edit', [FoodMenuController::class, 'edit'])->name('foodmenu.edit');

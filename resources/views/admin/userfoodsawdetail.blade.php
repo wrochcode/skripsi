@@ -41,37 +41,46 @@
                         @endif
                     </div>
                 </div>
-                <table class="table table-bordered">
-                    <thead>
-                      <tr>
-                        <th>No</th>
-                        <th>Name</th>
-                        <th>Calorie</th>
-                        <th>Karbohidrat</th>
-                        <th>Lemak</th>
-                        <th>Protein</th>
-                        <th>Nilai Hasil SAW</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                        <?php $no= 1 ;?>
-                        @if ($trec != 0)
-                            @for ($i=0 ; $i<count($recs) ; $i++ )
-                                <tr>
-                                <td>{{ $no }}</td>
-                                    <?php $no++;?>
-                                    <td><?php echo $recs[$i]['name']; ?></td>
-                                    <td><?php echo $recs[$i]['calorie']; ?></td>
-                                    <td><?php echo $recs[$i]['carb']; ?></td>
-                                    <td><?php echo $recs[$i]['fat']; ?></td>
-                                    <td><?php echo $recs[$i]['protein']; ?></td>
-                                    <td><?php echo $recs[$i]['nilai']; ?></td>
-                                </tr>
-                                    
-                            @endfor
-                        @endif
-                    </tbody>
-                </table>
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table me-1"></i> Detail Menu User
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <thead>
+                              <tr>
+                                <th>No</th>
+                                <th>Name</th>
+                                <th>Calorie</th>
+                                <th>Karbohidrat</th>
+                                <th>Lemak</th>
+                                <th>Protein</th>
+                                <th>Nilai Hasil SAW</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <?php $no= 1 ;?>
+                                @if ($trec != 0)
+                                    @for ($i=0 ; $i<count($recs) ; $i++ )
+                                        <tr>
+                                        <td>{{ $no }}</td>
+                                            <?php $no++;?>
+                                            <td><?php echo $recs[$i]['name']; ?></td>
+                                            <td><?php echo $recs[$i]['calorie']; ?></td>
+                                            <td><?php echo $recs[$i]['carb']; ?></td>
+                                            <td><?php echo $recs[$i]['fat']; ?></td>
+                                            <td><?php echo $recs[$i]['protein']; ?></td>
+                                            <td><?php echo $recs[$i]['nilai']; ?></td>
+                                        </tr>
+                                            
+                                    @endfor
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                
             </div>
         </main>
         <footer class="py-4 bg-light mt-auto">
