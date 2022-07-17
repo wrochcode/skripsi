@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             FoodSeeder::class,
             FoodrecSeeder::class,
+            ItemFoodsMenuSeeder::class,
+            FoodMenuSeeder::class,
             EventSeeder::class,
             VisitorSeeder::class,
         ]);

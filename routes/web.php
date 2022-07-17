@@ -5,8 +5,8 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\EventController;
-use App\Http\Controllers\FoodbundlingsController;
 use App\Http\Controllers\FoodController;
+use App\Http\Controllers\FoodMenuController;
 use App\Http\Controllers\FoodRecomendationController;
 use App\Http\Controllers\FoodUserController;
 use App\Http\Controllers\HomeController;
@@ -70,13 +70,13 @@ Route::middleware('auth')->group(function(){
     Route::delete('fooduser/{id}', [FoodUserController::class, 'destroy'])->name('fooduser.destroy');
     
     // food menu user
-    Route::get('foodmenu', [FoodbundlingsController::class, 'index'])->name('foodmenu.index');
-    Route::get('foodmenudetail', [FoodbundlingsController::class, 'detail'])->name('foodmenu.detail');
-    Route::post('foodmenu', [FoodbundlingsController::class, 'store'])->name('foodmenu.store');
-    Route::get('foodmenu/{id}/menu', [FoodbundlingsController::class, 'menu'])->name('foodmenu.storeuser');
-    Route::get('foodmenu/{id}/edit', [FoodbundlingsController::class, 'edit'])->name('foodmenu.edit');
-    Route::put('foodmenu/{id}', [FoodbundlingsController::class, 'update'])->name('foodmenu.update');
-    Route::delete('foodmenu/{id}', [FoodbundlingsController::class, 'destroy'])->name('foodmenu.destroy');
+    Route::get('foodmenu', [FoodMenuController::class, 'index'])->name('foodmenu.index');
+    Route::get('foodmenudetail/{id}/detail', [FoodMenuController::class, 'detail'])->name('foodmenu.detail');
+    Route::post('foodmenu', [FoodMenuController::class, 'store'])->name('foodmenu.store');
+    Route::get('foodmenu/{id}/menu', [FoodMenuController::class, 'menu'])->name('foodmenu.storeuser');
+    Route::get('foodmenu/{id}/edit', [FoodMenuController::class, 'edit'])->name('foodmenu.edit');
+    Route::put('foodmenu/{id}', [FoodMenuController::class, 'update'])->name('foodmenu.update');
+    Route::delete('foodmenu/{id}', [FoodMenuController::class, 'destroy'])->name('foodmenu.destroy');
     
     // event user
     Route::get('event', [EventController::class, 'index'])->name('event.index');

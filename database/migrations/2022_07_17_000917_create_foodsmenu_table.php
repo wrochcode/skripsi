@@ -13,8 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('foodbundlings', function (Blueprint $table) {
+        Schema::create('foodsmenu', function (Blueprint $table) {
             $table->id();
+            $table->string('id_user',191);
+            $table->double('calorie');
+            $table->double('carb');
+            $table->double('fat');
+            $table->double('protein');
             $table->timestamps();
         });
     }
@@ -26,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('foodbundlings');
+        Schema::dropIfExists('foodsmenu');
     }
 };

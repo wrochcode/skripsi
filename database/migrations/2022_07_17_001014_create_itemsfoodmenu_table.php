@@ -13,8 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sawadmins', function (Blueprint $table) {
+        Schema::create('itemsfoodmenu', function (Blueprint $table) {
             $table->id();
+            $table->string('id_user',191);
+            $table->string('id_menu',191);
+            $table->double('calorie');
+            $table->double('carb');
+            $table->double('fat');
+            $table->double('protein');
             $table->timestamps();
         });
     }
@@ -26,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sawadmins');
+        Schema::dropIfExists('itemsfoodmenu');
     }
 };
