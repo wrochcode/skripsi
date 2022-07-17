@@ -23,4 +23,27 @@ class EventController extends Controller
 
         return redirect('event')->with('success', 'Event has success added.');
     }
+
+    public function edit($id){
+        $food =Event::find($id);
+        return view('admin.__makananedit', [
+            'food'=>$food,
+        ]);
+    }
+    
+    public function update(Request $request, $id){
+        Event::find($id)->update([
+            'name'=> $request->name,
+            'calorie'=> $request->calorie,
+            'carb'=> $request->carb,
+            'fat'=> $request->fat,
+            'protein'=> $request->protein,
+        ]);
+        return redirect('food');
+    }
+
+    public function destroy($id){
+        Event::find($id)->delete();
+        return back();
+    }
 }
