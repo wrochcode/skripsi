@@ -17,10 +17,10 @@ class CriteriaSeeder extends Seeder
     {
         collect([[
             'name' => 'Defisit',
-            'calorie' => 0.36,
+            'calorie' => 0.35,
             'fat' => 0.2,
             'carb' => 0.18,
-            'protein' => 0.34,
+            'protein' => 0.3,
             'keterangan' => 'Criteria untuk mengurangi berat badan',
             'created_at' => now(),
             'updated_at' => now(),
