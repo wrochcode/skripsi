@@ -8,7 +8,7 @@
         </div>
         <div class="row">
             <div class="text-center col-lg-12 mt-2 name">
-                SehatYokk - login
+                Rainbow Gym- login
             </div>
         </div>
         <form class="p-3 mt-2" method="POST" action="{{ route('masuk') }}">

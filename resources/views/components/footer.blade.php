@@ -20,7 +20,7 @@
                     <a class="btn btn-link text-white-50" href="{{ $url }}">{{ $item }}</a>
                 @endforeach
             </div>
-            <div class="col-lg-3 col-md-6">
+            {{-- <div class="col-lg-3 col-md-6">
                 <h5 class="text-white mb-4">Photo Gallery</h5>
                 <div class="row g-2 pt-2">
                     <div class="col-4">
@@ -42,7 +42,7 @@
                         <img class="img-fluid rounded bg-light p-1" src="img/property-6.jpg" alt="">
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
     <div class="container">
