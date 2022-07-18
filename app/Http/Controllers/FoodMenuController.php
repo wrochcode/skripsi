@@ -89,7 +89,7 @@ class FoodMenuController extends Controller
                 $max2=$temp;
             }
             $temp=$makananuser[$i]['fat'];
-            if($temp<$max3){
+            if($temp>$max3){
                 $max3=$temp;
             }
             $temp=$makananuser[$i]['protein'];
@@ -251,7 +251,7 @@ class FoodMenuController extends Controller
                 $max2=$temp;
             }
             $temp=$makananuser[$i]['fat'];
-            if($temp<$max3){
+            if($temp>$max3){
                 $max3=$temp;
             }
             $temp=$makananuser[$i]['protein'];

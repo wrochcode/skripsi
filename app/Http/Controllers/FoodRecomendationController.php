@@ -63,7 +63,7 @@ class FoodRecomendationController extends Controller
                 $max2=$temp;
             }
             $temp=$Food->fat;
-            if($temp<$max3){
+            if($temp>$max3){
                 $max3=$temp;
             }
             $temp=$Food->protein;
