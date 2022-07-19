@@ -102,6 +102,9 @@
                                 <div class="card bg-warning text-white mb-4">
                                 @elseif ($indexloop == 4)    
                                 <div class="card bg-danger text-white mb-4">
+                                @php
+                                    $index == -1;
+                                @endphp
                                 @endif
                                         <div class="card-header">Menu @php echo $foods[$i]['name'] @endphp</div>
                                         <div class="card-body">@php echo 

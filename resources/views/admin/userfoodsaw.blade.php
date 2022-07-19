@@ -16,7 +16,7 @@
                         <i class="fas fa-table me-1"></i> Tambah Data Makanan
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('foodmenu.create') }}" style="margin-bottom: 20px" method="post">
+                        <form action="{{ route('fooduser.store') }}" style="margin-bottom: 20px" method="post">
                             @csrf
                             <div class="row mb-3">
                                 <div class="col-md-2">
