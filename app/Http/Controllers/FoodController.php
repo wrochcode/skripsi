@@ -25,8 +25,7 @@ class FoodController extends Controller
         //
     }
     
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         Food::create([
                 'name'=> $request->name,
                 'calorie'=> $request->calorie,
@@ -38,16 +37,14 @@ class FoodController extends Controller
         return redirect('food')->with('success', 'Data berhasil dibuat.');
     }
 
-    public function edit($id)
-    {
+    public function edit($id){
         $food =Food::find($id);
         return view('admin.__makananedit', [
             'food'=>$food,
         ]);
     }
     
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id){
         Food::find($id)->update([
             'name'=> $request->name,
             'calorie'=> $request->calorie,
@@ -58,8 +55,7 @@ class FoodController extends Controller
         return redirect('food');
     }
 
-    public function destroy($id)
-    {
+    public function destroy($id){
         Food::find($id)->delete();
         return back();
     }

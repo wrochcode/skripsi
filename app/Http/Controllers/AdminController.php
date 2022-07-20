@@ -8,12 +8,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
-class AdminController extends Controller
-{
-    public function __construct()
-    {
+class AdminController extends Controller{
+    public function __construct(){
         $this->middleware('auth');
     }
+
     public function index(){
         $useradmin = Auth::user()->role;
         $event = DB::table('events')->latest('id')->first();
@@ -27,7 +26,8 @@ class AdminController extends Controller
             ]);
         }
         
-        $iduser = Auth::user()->id;
+        $iduser = Auth::user()->nomeranggota;
+        // $iduser = Auth::user()->id;
         $user = DB::table('user_profil')->where('id_user', $iduser)->first();
         
         
@@ -73,14 +73,69 @@ class AdminController extends Controller
             $kalkulator['rmr'] = 0;
         }
 
+        //eer
+        // normalisasi activitie
+        if($user->activity == 1){
+            $temp = 1;
+        }elseif($user->activity == 2 && $user->gender ==1){
+            $temp = 1.11;
+        }elseif($user->activity == 2 && $user->gender ==2){
+            $temp = 1.12;
+        }elseif($user->activity == 3 && $user->gender ==1){
+            $temp = 1.25;
+        }elseif($user->activity == 3 && $user->gender ==2){
+            $temp = 1.27;
+        }elseif($user->activity == 4 && $user->gender ==1){
+            $temp = 1.48;
+        }elseif($user->activity == 4 && $user->gender ==2){
+            $temp = 1.45;
+        }
+        
+        if($user->age != 0 && $user->height != 0 && $user->weight != 0){
+            if($user->gender == 1){
+                $temp = (662-(9.53 * $user->age) + ($temp *((15.91*$user->weight)+(539.6*($user->height/100))) ));
+            }else{
+                $temp = (354-(6.91 * $user->age) + ($temp *((9.36*$user->weight)+(726*($user->height/100))) ));
+            }
+            $kalkulator['eer'] = round( $temp,2);
+        }else{
+            $kalkulator['eer'] = 0;
+        }
+        
+        // tdee
+        // normalisasi activitie
+        if($user->exercise_activity == 1){
+            $temp = 1.2;
+        }elseif($user->exercise_activity == 2){
+            $temp = 1.375;
+        }elseif($user->exercise_activity == 3){
+            $temp = 1.55;
+        }elseif($user->exercise_activity == 4){
+            $temp = 1.725;
+        }elseif($user->exercise_activity == 5){
+            $temp = 1.9;
+        }else{
+            $temp = null;
+        }
+        // dd($temp);
+        if($user->age != 0 && $user->height != 0 && $user->weight != 0 && $user->exercise_activity != 0){
+            if($user->gender == 1){
+                $temp *= (66.5+(13.7 * $user->weight) + ((5*$user->height)-($user->age*6.8)));
+            }else{
+                $temp *= (655+(9.6 * $user->weight) + ((1.8*$user->height)-($user->age*4.7)));
+            }
+            $kalkulator['tdee'] = round( $temp,1);
+        }else{
+            $kalkulator['tdee'] = 0;
+        }
+        
+        // dd($kalkulator);
         // normalisasi user
         if($user->gender == 1){
             $user->gender = 'Laki - Laki';
         }else{
             $user->gender = 'Perempuan';
         }
-        
-        // dd($kalkulator);
         return view('admin.userdashboard',[
             'event' => $event->name,
             'value' => $event->value,

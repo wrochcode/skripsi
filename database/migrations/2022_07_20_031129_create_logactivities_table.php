@@ -13,16 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_profil', function (Blueprint $table) {
+        Schema::create('logactivities', function (Blueprint $table) {
             $table->id();
-            $table->string('id_user',191);
-            $table->string('planing',191);
-            $table->string('gender');
-            $table->integer('age');
-            $table->double('height');
-            $table->double('weight');
-            $table->integer('activity');
-            $table->integer('exercise_activity');
+            $table->string('id_user');
             $table->timestamps();
         });
     }
@@ -34,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_profil');
+        Schema::dropIfExists('logactivities');
     }
 };

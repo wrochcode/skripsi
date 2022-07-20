@@ -19,7 +19,7 @@
                     </ol>
                     <div class="row">
                         <div class="col-xl-3 col-md-6">
-                            <div class="card bg-info justify-content-md-center text-white mb-4">
+                            <div class="card bg-info justify-content-md-center text-dark mb-4">
                                 <div class="card-header text-center">Kalkulator BMI</div>
                                 <div class="card-body text-center">Tubuh Anda tergolong : {{ $kalkulator['descbmi'] }}</div>
                                 <div class="card-body text-center">BMI : {{ $kalkulator['bmi'] }}Kg/m<sup>2<sup></div>
@@ -32,17 +32,15 @@
                             </div>
                         </div>
                         <div class="col-xl-3 col-md-6">
-                            <div class="card bg-info justify-content-md-center text-white mb-4">
+                            <div class="card bg-warning justify-content-md-center text-dark mb-4">
                                 <div class="card-header text-center">Kalkulator EER</div>
-                                <div class="card-body text-center">Kebutuhan kalori saat<br> maintenance :</div>
-                                <div class="card-body text-center">{{ $value }}</div>
+                                <div class="card-body text-center">Kebutuhan kalori saat<br> maintenance : <br>{{ $kalkulator['eer'] }}Kcal </div>
                             </div>
                         </div>
                         <div class="col-xl-3 col-md-6">
-                            <div class="card bg-info justify-content-md-center text-white mb-4">
+                            <div class="card bg-primary justify-content-md-center text-white mb-4">
                                 <div class="card-header text-center">TDEE</div>
-                                <div class="card-body text-center">Jumlah kalori yang anda bakar setiap harinya :</div>
-                                <div class="card-body text-center">{{ $value }}</div>
+                                <div class="card-body text-center">Jumlah kalori yang anda bakar setiap harinya : <br>{{ $kalkulator['eer'] }}Kcal </div>
                             </div>
                         </div>
                     </div>
