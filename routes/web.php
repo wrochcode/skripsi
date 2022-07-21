@@ -25,7 +25,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', HomeController::class);
 Route::get('about', [AboutController::class, 'index'])->name('about.index');
 Route::resource('article', ArticleController::class);
-Route::resource('recomendation', RecomendationController::class);
+// Route::resource('recomendation', RecomendationController::class);
+Route::get('calchealth', [CalcController::class, 'index'])->name('calchealth');
 
 // kalkulator
 Route::get('bmi', [CalcController::class, 'bmi'])->name('bmi.index');

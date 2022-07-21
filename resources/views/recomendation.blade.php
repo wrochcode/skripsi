@@ -7,9 +7,9 @@
                 <h1 class="mb-3">Kalkulator Sehat</h1>
                 <p>Hitung segala kebutuhan asupan tubuh dengan kalkulasi yang tepat agar sesuai dengan target aktivitas serta kebutuhan asupan tubuh anda.</p>
             </div>
-            <div class="row g-4">
+            <div class="row">
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <a class="cat-item d-block bg-light text-center rounded p-3" href="">
+                    <a class="cat-item d-block bg-light text-center rounded p-3" href="{{ route('bmi.index') }}">
                         <div class="rounded p-4">
                             <div class="icon mb-3">
                                 <img class="img-fluid" src="img/icon-apartment.png" alt="Icon">

@@ -110,7 +110,7 @@
                                         <div class="card-body">@php echo 
                                                                 "Kalori: ".$foods[$i]['calorie']."&nbsp"."&nbsp"."&nbsp"."&nbsp".
                                                                 "Karbohidrat: ".$foods[$i]['carb']."&nbsp"."&nbsp"."&nbsp"."&nbsp".
-                                                                "Lemat: ".$foods[$i]['fat']."&nbsp"."&nbsp"."&nbsp"."&nbsp".
+                                                                "Lemak: ".$foods[$i]['fat']."&nbsp"."&nbsp"."&nbsp"."&nbsp".
                                                                 "Protein: ".$foods[$i]['protein']
                                                                 ; 
                                                                 @endphp</div>

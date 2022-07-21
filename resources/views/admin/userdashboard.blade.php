@@ -40,7 +40,7 @@
                         <div class="col-xl-3 col-md-6">
                             <div class="card bg-primary justify-content-md-center text-white mb-4">
                                 <div class="card-header text-center">TDEE</div>
-                                <div class="card-body text-center">Jumlah kalori yang anda bakar setiap harinya : <br>{{ $kalkulator['eer'] }}Kcal </div>
+                                <div class="card-body text-center">Jumlah kalori yang anda bakar setiap harinya : <br>{{ $kalkulator['tdee'] }}Kcal </div>
                             </div>
                         </div>
                     </div>
@@ -48,29 +48,25 @@
                         <div class="col-xl-3 col-md-6">
                             <div class="card bg-info justify-content-md-center text-white mb-4">
                                 <div class="card-header text-center">Kalkulator Serat</div>
-                                <div class="card-body text-center">Estimasi berapa gram serat yang perlu anda konsumsi :</div>
-                                <div class="card-body text-center">{{ $value }}</div>
+                                <div class="card-body text-center">Estimasi berapa gram serat yang perlu anda konsumsi : <br>{{ $kalkulator['serat'] }} gram</div>
                             </div>
                         </div>
                         <div class="col-xl-3 col-md-6">
                             <div class="card bg-info justify-content-md-center text-white mb-4">
                                 <div class="card-header text-center">Kalkulator Protein</div>
-                                <div class="card-body text-center">Estimasi berapa gram protein yang perlu anda konsumsi :</div>
-                                <div class="card-body text-center">{{ $value }}</div>
+                                <div class="card-body text-center">Estimasi berapa gram protein yang perlu anda konsumsi : <br>{{ $kalkulator['proteingram'] }} <br> {{ $kalkulator['protein'] }}</div>
                             </div>
                         </div>
                         <div class="col-xl-3 col-md-6">
                             <div class="card bg-info justify-content-md-center text-white mb-4">
                                 <div class="card-header text-center">Kalkulator Karbohidrat</div>
-                                <div class="card-body text-center">Estimasi berapa gram karbohidrat yang perlu anda konsumsi :</div>
-                                <div class="card-body text-center">{{ $value }}</div>
+                                <div class="card-body text-center">Estimasi berapa gram karbohidrat yang perlu anda konsumsi : <br>{{ $kalkulator['carbgram'] }} <br> {{ $kalkulator['carb'] }}</div>
                             </div>
                         </div>
                         <div class="col-xl-3 col-md-6">
                             <div class="card bg-info justify-content-md-center text-white mb-4">
                                 <div class="card-header text-center">Kalkulator lemak</div>
-                                <div class="card-body text-center">Estimasi berapa gram lemak yang perlu anda konsumsi :</div>
-                                <div class="card-body text-center">{{ $value }}</div>
+                                <div class="card-body text-center">Estimasi berapa gram lemak yang perlu anda konsumsi : <br>{{ $kalkulator['fatgram'] }} <br> {{ $kalkulator['fat'] }}</div>
                             </div>
                         </div>
                     </div>

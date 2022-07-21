@@ -129,6 +129,34 @@ class AdminController extends Controller{
             $kalkulator['tdee'] = 0;
         }
         
+        // Serat
+        $kalkulator['serat'] = ($kalkulator['tdee']/1000) * 14;
+        
+        // Protein
+        $temp1 = round(($kalkulator['tdee']*0.1),0);
+        $temp2 = round(($kalkulator['tdee']*0.15),0);
+        $kalkulator['protein'] = "(".$temp1." - ". $temp2." kcal)";
+        $temp3 = round((($kalkulator['tdee']*0.1)/4),0);
+        $temp4 = round((($kalkulator['tdee']*0.15)/4),0);
+        $kalkulator['proteingram'] = $temp3." - ". $temp4." gram";
+        
+        // karbohidrat
+        $temp1 = round($kalkulator['tdee']*0.6,0);
+        $temp2 = round($kalkulator['tdee']*0.75,0);
+        $kalkulator['carb'] = "(".$temp1." - ". $temp2." kcal)";
+        $temp3 = round((($kalkulator['tdee']*0.6)/4),0);
+        $temp4 = round((($kalkulator['tdee']*0.75)/4),0);
+        $kalkulator['carbgram'] = $temp3." - ". $temp4." gram";
+
+        // dd($kalkulator['tdee']);
+        // Protein
+        $temp1 = round(($kalkulator['tdee']*0.1),2);
+        $temp2 = round(($kalkulator['tdee']*0.25),2);
+        $kalkulator['fat'] = "(".$temp1." - ". $temp2." kcal)";
+        $temp3 = round(($kalkulator['tdee']*0.1)/9,2);
+        $temp4 = round(($kalkulator['tdee']*0.25)/9,2);
+        $kalkulator['fatgram'] = $temp3." - ". $temp4." gram";
+
         // dd($kalkulator);
         // normalisasi user
         if($user->gender == 1){

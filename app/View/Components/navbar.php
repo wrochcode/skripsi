@@ -31,7 +31,7 @@ class navbar extends Component
             // 'Produk' => '/product',
             'Profil' => '/about',
             'Artikel' => '/article',
-            'Kalkulator Sehat' => '/recomendation',
+            'Kalkulator Sehat' => '/calchealth',
         ];
         return view('components.navbar', compact('navbar', 'namecompany', 'address'));
     }
