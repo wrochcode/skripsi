@@ -52,6 +52,8 @@
                         </div>
                     </a>
                 </div>
+            </div>
+            <div class="row mt-4">
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
                     <a class="cat-item d-block bg-light text-center rounded p-3" href="{{ route('serat.index') }}">
                         <div class="rounded p-4">
