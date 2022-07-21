@@ -20,7 +20,7 @@
                     </a>
                 </div>
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <a class="cat-item d-block bg-light text-center rounded p-3" href="">
+                    <a class="cat-item d-block bg-light text-center rounded p-3" href="{{ route('rmr.index') }}">
                         <div class="rounded p-4">
                             <div class="icon mb-3">
                                 <img class="img-fluid" src="img/icon-villa.png" alt="Icon">
@@ -31,7 +31,7 @@
                     </a>
                 </div>
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <a class="cat-item d-block bg-light text-center rounded p-3" href="">
+                    <a class="cat-item d-block bg-light text-center rounded p-3" href="{{ route('eer.index') }}">
                         <div class="rounded p-4">
                             <div class="icon mb-3">
                                 <img class="img-fluid" src="img/icon-house.png" alt="Icon">
@@ -42,7 +42,7 @@
                     </a>
                 </div>
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                    <a class="cat-item d-block bg-light text-center rounded p-3" href="">
+                    <a class="cat-item d-block bg-light text-center rounded p-3" href="{{ route('tdee.index') }}">
                         <div class="rounded p-4">
                             <div class="icon mb-3">
                                 <img class="img-fluid" src="img/icon-housing.png" alt="Icon">

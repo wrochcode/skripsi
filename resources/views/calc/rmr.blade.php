@@ -15,9 +15,9 @@
                             <div class="icon mb-3">
                                 <img class="img-fluid" src="img/icon-apartment.png" alt="Icon">
                             </div>
-                            <h4>Kalkulator BMI</h4>
-                            <span>Mengetahui kurus, normal dan gemuk berdasarkan tinggi dan berat badannya.</span>
-                            <form class="grid text-center mt-5" style="--bs-rows: 3; --bs-columns: 3;" action="{{ route('bmi.store') }}" method="post">
+                            <h4>Kalkulator RMR</h4>
+                            <span>Memberitahu Anda jumlah kalori yang Anda butuhkan saat Anda beristirahat.</span>
+                            <form class="grid text-center mt-5" style="--bs-rows: 3; --bs-columns: 3;" action="{{ route('rmr.store') }}" method="post">
                                 @csrf
                                 Masukkan Umur Anda <br>
                                 <input value='@php if (isset($age)) { echo $age;} @endphp' name="age" class="g-start-2 mt-2 mb-4" style="grid-row: 1" id="inputFirstName" type="number" placeholder="Masukkan umur anda" autocomplete="off" /><br>
@@ -34,14 +34,12 @@
                                     value="1">Male
                                 <br>
                                 <button type="submit" class="btn btn-success mt-3">Hitung</button>
+                            </form>
                             <h6>Hasil</h6>
                             <h6>
                                 @php
                                 if (isset($success)) {
-                                    echo "<h6>".$success."</h6>";
-                                }
-                                if (isset($success2)) {
-                                    echo "<h6>Tubuh anda termasuk: ".$success2."</h6>";
+                                    echo $success;
                                 }
                                 @endphp
                             </h6>

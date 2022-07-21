@@ -15,9 +15,9 @@
                             <div class="icon mb-3">
                                 <img class="img-fluid" src="img/icon-apartment.png" alt="Icon">
                             </div>
-                            <h4>Kalkulator BMI</h4>
-                            <span>Mengetahui kurus, normal dan gemuk berdasarkan tinggi dan berat badannya.</span>
-                            <form class="grid text-center mt-5" style="--bs-rows: 3; --bs-columns: 3;" action="{{ route('bmi.store') }}" method="post">
+                            <h4>Kalkulator EER</h4>
+                            <span>Menghitung berapa jumlah kalori yang perlu Anda konsumsi.</span>
+                            <form class="grid text-center mt-5" style="--bs-rows: 3; --bs-columns: 3;" action="{{ route('eer.store') }}" method="post">
                                 @csrf
                                 Masukkan Umur Anda <br>
                                 <input value='@php if (isset($age)) { echo $age;} @endphp' name="age" class="g-start-2 mt-2 mb-4" style="grid-row: 1" id="inputFirstName" type="number" placeholder="Masukkan umur anda" autocomplete="off" /><br>
@@ -28,20 +28,25 @@
                                 Gender Anda <br>
                                 <input type="radio" name="gender"
                                     <?php if (isset($gender) && $gender== 2) echo "checked";?>
-                                    value="2">Female
+                                    value="2" class="mb-3">Female
                                     <input type="radio" name="gender"
                                     <?php if (isset($gender) && $gender== 1) echo "checked";?>
-                                    value="1">Male
-                                <br>
+                                    value="1" class="mb-3">Male
+                                    <br class="mb-5"> 
+                                    Tingkat Aktivitas Anda <br>
+                                <select value='@php if (isset($activy)) { echo $activity;} @endphp'  name="activity" class="g-start-2 mt-2 mb-4 custom-select" style="grid-row: 3; width:150px;" type="text" placeholder="Masukkan berat anda" autocomplete="off">
+                                    <option value="1">Menetap</option>
+                                    <option value="2">Kurang Aktif</option>
+                                    <option value="3">Aktif</option>
+                                    <option value="4">Sangat Aktif</option>
+                                </select><br>
                                 <button type="submit" class="btn btn-success mt-3">Hitung</button>
+                            </form>
                             <h6>Hasil</h6>
                             <h6>
                                 @php
                                 if (isset($success)) {
-                                    echo "<h6>".$success."</h6>";
-                                }
-                                if (isset($success2)) {
-                                    echo "<h6>Tubuh anda termasuk: ".$success2."</h6>";
+                                    echo $success;
                                 }
                                 @endphp
                             </h6>
