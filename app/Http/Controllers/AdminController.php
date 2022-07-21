@@ -149,7 +149,7 @@ class AdminController extends Controller{
         $kalkulator['carbgram'] = $temp3." - ". $temp4." gram";
 
         // dd($kalkulator['tdee']);
-        // Protein
+        // Lemak
         $temp1 = round(($kalkulator['tdee']*0.1),2);
         $temp2 = round(($kalkulator['tdee']*0.25),2);
         $kalkulator['fat'] = "(".$temp1." - ". $temp2." kcal)";

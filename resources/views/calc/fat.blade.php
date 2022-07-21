@@ -15,24 +15,22 @@
                             <div class="icon mb-3">
                                 <img class="img-fluid" src="img/icon-apartment.png" alt="Icon">
                             </div>
-                            <h4><a href="{{ route('calchealth') }}">Kalkulator</a> TDEE</h4>
-                            <span>Mengestimasi jumlah kalori yang anda bakar setiap harinya.</span>
-                            <form class="grid text-center mt-5" style="--bs-rows: 3; --bs-columns: 3;" action="{{ route('tdee.store') }}" method="post">
+                            <h4><a href="{{ route('calchealth') }}">Kalkulator</a> Fat</h4>
+                            <span>Mengestimasi berapa gram lemak yang perlu anda konsumsi untuk menjaga pola makan sehat.</span>
+                            <form class="grid text-center mt-5" style="--bs-rows: 3; --bs-columns: 3;" action="{{ route('fat.store') }}" method="post">
                                 @csrf
-                                Gender Anda <br>
-                                <input type="radio" name="gender"
-                                    <?php if (isset($gender) && $gender== 2) echo "checked";?>
-                                    value="2" class="mb-3">Female
-                                    <input type="radio" name="gender"
-                                    <?php if (isset($gender) && $gender== 1) echo "checked";?>
-                                    value="1" class="mb-3">Male
-                                    <br class="mb-5"> Masukkan Umur Anda <br>
+                                <br>Tingkat Aktivitas Anda <br>
+                                <select value='@php if (isset($gender)) { echo $gender;} @endphp'  name="gender" class="g-start-2 mt-2 mb-4 custom-select" style="grid-row: 3; width:150px;" type="text" placeholder="Masukkan berat anda" autocomplete="off">
+                                    <option value="1">Laki laki</option>
+                                    <option value="2">Perempuan</option>
+                                </select><br>
+                                Masukkan Umur Anda <br>
                                 <input value='@php if (isset($age)) { echo $age;} @endphp' name="age" class="g-start-2 mt-2 mb-4" style="grid-row: 1" id="inputFirstName" type="number" placeholder="Masukkan umur anda" autocomplete="off" /><br>
                                 Masukkan Tinggi Anda <br>
-                                <input value='@php if (isset($height)) { echo $height;} @endphp' name="height" class="g-start-2 mt-2 mb-2" style="grid-row: 2" type="text" placeholder="Masukkan tinggi anda" autocomplete="off" /><br>
+                                <input value='@php if (isset($height)) { echo $height;} @endphp' name="height" class="g-start-2 mt-2 mb-4" style="grid-row: 2" type="text" placeholder="Masukkan tinggi anda" autocomplete="off" /><br>
                                 Masukkan Berat Anda <br>
-                                <input value='@php if (isset($weight)) { echo $weight;} @endphp' name="weight" class="g-start-2 mt-2 mb-2" style="grid-row: 3" type="text" placeholder="Masukkan berat anda" autocomplete="off" /><br>
-                                    <br> Jumlah olahraga dalam seminggu <br>
+                                <input value='@php if (isset($weight)) { echo $weight;} @endphp' name="weight" class="g-start-2 mt-2 mb-4" style="grid-row: 3" type="text" placeholder="Masukkan berat anda" autocomplete="off" /><br> 
+                                <br> Jumlah olahraga dalam seminggu <br>
                                 <select value='@php if (isset($exercise_activity)) { echo $exercise_activity;} @endphp'  name="exercise_activity" class="g-start-2 mt-2 mb-4 custom-select" style="grid-row: 3; width:150px;" type="text" placeholder="Masukkan berat anda" autocomplete="off">
                                     <option value="1">Sangat Jarang</option>
                                     <option value="2">Jarang(1-2 kali perminggu)</option>

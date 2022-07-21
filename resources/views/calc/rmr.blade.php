@@ -15,7 +15,7 @@
                             <div class="icon mb-3">
                                 <img class="img-fluid" src="img/icon-apartment.png" alt="Icon">
                             </div>
-                            <h4>Kalkulator RMR</h4>
+                            <h4><a href="{{ route('calchealth') }}">Kalkulator</a> RMR</h4>
                             <span>Memberitahu Anda jumlah kalori yang Anda butuhkan saat Anda beristirahat.</span>
                             <form class="grid text-center mt-5" style="--bs-rows: 3; --bs-columns: 3;" action="{{ route('rmr.store') }}" method="post">
                                 @csrf

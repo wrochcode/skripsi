@@ -53,18 +53,18 @@
                     </a>
                 </div>
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <a class="cat-item d-block bg-light text-center rounded p-3" href="">
+                    <a class="cat-item d-block bg-light text-center rounded p-3" href="{{ route('serat.index') }}">
                         <div class="rounded p-4">
                             <div class="icon mb-3">
                                 <img class="img-fluid" src="img/icon-building.png" alt="Icon">
                             </div>
                             <h6>Kalkulator Serat</h6>
-                            <span>Mengestimasi berapa gram serat yang perlu anda konsumsi untuk menjaga pola makan sehat</span>
+                            <span>Mengestimasi berapa gram serat yang perlu anda konsumsi untuk menjaga pola makan sehat.</span>
                         </div>
                     </a>
                 </div>
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <a class="cat-item d-block bg-light text-center rounded p-3" href="">
+                    <a class="cat-item d-block bg-light text-center rounded p-3" href="{{ route('protein.index') }}">
                         <div class="rounded p-4">
                             <div class="icon mb-3">
                                 <img class="img-fluid" src="img/icon-neighborhood.png" alt="Icon">
@@ -75,7 +75,7 @@
                     </a>
                 </div>
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <a class="cat-item d-block bg-light text-center rounded p-3" href="">
+                    <a class="cat-item d-block bg-light text-center rounded p-3" href="{{ route('carb.index') }}">
                         <div class="rounded p-4">
                             <div class="icon mb-3">
                                 <img class="img-fluid" src="img/icon-condominium.png" alt="Icon">
@@ -86,13 +86,13 @@
                     </a>
                 </div>
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                    <a class="cat-item d-block bg-light text-center rounded p-3" href="">
+                    <a class="cat-item d-block bg-light text-center rounded p-3" href="{{ route('fat.index') }}">
                         <div class="rounded p-4">
                             <div class="icon mb-3">
                                 <img class="img-fluid" src="img/icon-luxury.png" alt="Icon">
                             </div>
-                            <h6>Kalkulator BMR</h6>
-                            <span>Mengestimasi jumlah kalori yang dibutuhkan oleh tubuh anda jika anda hanya beristirahat.</span>
+                            <h6>Kalkulator Lemak</h6>
+                            <span>Mengestimasi berapa gram lemak yang perlu anda konsumsi untuk menjaga pola makan sehat.</span>
                         </div>
                     </a>
                 </div>

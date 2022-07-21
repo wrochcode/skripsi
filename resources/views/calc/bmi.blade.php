@@ -15,7 +15,7 @@
                             <div class="icon mb-3">
                                 <img class="img-fluid" src="img/icon-apartment.png" alt="Icon">
                             </div>
-                            <h4>Kalkulator BMI</h4>
+                            <h4><a href="{{ route('calchealth') }}">Kalkulator</a> BMI</h4>
                             <span>Mengetahui kurus, normal dan gemuk berdasarkan tinggi dan berat badannya.</span>
                             <form class="grid text-center mt-5" style="--bs-rows: 3; --bs-columns: 3;" action="{{ route('bmi.store') }}" method="post">
                                 @csrf

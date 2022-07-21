@@ -43,6 +43,8 @@ Route::get('protein', [CalcController::class, 'protein'])->name('protein.index')
 Route::post('protein', [CalcController::class, 'proteinstore'])->name('protein.store');
 Route::get('carb', [CalcController::class, 'carb'])->name('carb.index');
 Route::post('carb', [CalcController::class, 'carbstore'])->name('carb.store');
+Route::get('fat', [CalcController::class, 'fat'])->name('fat.index');
+Route::post('fat', [CalcController::class, 'fatstore'])->name('fat.store');
 Route::get('bmr', [CalcController::class, 'carb'])->name('bmr.index');
 Route::post('bmr', [CalcController::class, 'carbstore'])->name('bmr.store');
 
