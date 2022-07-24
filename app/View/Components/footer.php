@@ -32,6 +32,7 @@ class footer extends Component
             'Beranda' => '/',
             'Tentang' => '/about',
             'Artikel' => '/article',
+            // 'Akun Saya' => '/myaccount',
             'Kalkulator Sehat' => '/recomendation',
         ];
         return view('components.footer', compact('navbar', 'namecompany', 'address', 'telp'));

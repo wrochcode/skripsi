@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Auth;
 
 class LogoutController extends Controller
 {
-    public function __invoke(Request $request)
+    public function index()
     {
         Auth::logout();
-        return redirect(RouteServiceProvider::HOME);
+        return redirect('/');
     }
 }

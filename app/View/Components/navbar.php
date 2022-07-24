@@ -29,9 +29,10 @@ class navbar extends Component
         $navbar = [
             'Beranda' => '/',
             // 'Produk' => '/product',
-            'Profil' => '/about',
+            // 'Profil' => '/about',
             'Artikel' => '/article',
             'Kalkulator Sehat' => '/calchealth',
+            'Akun Saya' => '/myaccount',
         ];
         return view('components.navbar', compact('navbar', 'namecompany', 'address'));
     }

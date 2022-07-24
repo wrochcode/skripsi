@@ -12,7 +12,10 @@ use Illuminate\Validation\ValidationException;
 class MasukController extends Controller
 {
     public function create(){
-        return view('auth.login');
+        $namecompany = DB::table('abouts')->where('name', 'namecompany')->first();
+        return view('auth.masuk',[
+            'namecompany' => $namecompany,
+        ]);
     }
 
     public function store(Request $request){

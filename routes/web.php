@@ -13,6 +13,7 @@ use App\Http\Controllers\FoodUserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\MasukController;
+use App\Http\Controllers\MyAccountController;
 use App\Http\Controllers\RecomendationController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\UserAdminController;
@@ -50,9 +51,13 @@ Route::post('bmr', [CalcController::class, 'carbstore'])->name('bmr.store');
 
 // login
 Route::middleware('auth')->group(function(){
+    // My Account
+    Route::get('myaccount', [MyAccountController::class, 'index'])->name('user.index');
+    // Route::get('user', [UserController::class, 'index'])->name('user.index');
+
     // admin
     Route::get('dashboard', [AdminController::class, 'index'])->name('admin.index');
-    Route::get('user', [UserController::class, 'index'])->name('user.index');
+    // Route::get('user', [UserController::class, 'index'])->name('user.index');
     Route::post('user', [UserController::class, 'store'])->name('user.store');
     Route::get('useradmin', [UserAdminController::class, 'index'])->name('useradmin.index');
     Route::post('useradmin', [UserAdminController::class, 'store'])->name('useradmin.store');
@@ -113,7 +118,7 @@ Route::middleware('auth')->group(function(){
     Route::delete('event/{id}', [EventController::class, 'destroy'])->name('event.destroy');
     
     // logout
-    Route::post('logout', LogoutController::class)->name('logout');
+    Route::get('logout', [LogoutController::class, 'index'])->name('logout');
 });
 
 Route::middleware('guest')->group(function(){
