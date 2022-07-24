@@ -24,6 +24,7 @@ class AdminController extends Controller{
                 'event' => $event->name,
                 'value' => $event->value,
             ]);
+        }
         
         // $iduser = Auth::user();
         $iduser = Auth::user()->id;
@@ -164,9 +165,12 @@ class AdminController extends Controller{
         }else{
             $user->gender = 'Perempuan';
         }
-
-        }
-        return redirect('myaccount');    
+        return view('admin.userdashboard',[
+            'event' => $event->name,
+            'value' => $event->value,
+            'kalkulator' => $kalkulator,
+            'profiluser' => $user,
+            ]);    
     }
 
     public function create(){
