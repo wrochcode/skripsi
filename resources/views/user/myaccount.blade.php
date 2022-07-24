@@ -4,29 +4,28 @@
         <div class="container">
             <div class="row g-4">
                 <div class="text-start ms-5 mx-auto mb-5 fadeInUp" data-wow-delay="0.1s">
-                    <h1 class="mb-3">Akun ku</h1>
+                    <h1 class="mb-1">Akun ku</h1>
+                    <p>{{ Auth::user()->username }}, Umur: {{ $profiluser->age }} tahun, Berat saya :{{ $profiluser->weight }} Kg <br>
+                    @php
+                        if($profiluser->weight == 0 || $profiluser->height == 0 ||$profiluser->age == 0){
+                            echo '<small class="text-danger">*ubah profil anda pada menu pengaturan</small>';
+                        }
+                    @endphp</p>
                 </div>
                 <div class="row g-0 gx-5 align-items-end">
-                    {{-- <div class="col-lg-6">
-                        <div class="text-start mx-auto mb-5 wow slideInLeft" data-wow-delay="0.1s">
-                            <h1 class="mb-3">Property Listing</h1>
-                            <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit eirmod sit diam justo sed rebum.</p>
-                        </div>
-                    </div> --}}
-                    {{-- <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s"> --}}
                     <div class="col-lg-8 text-start ms-4 slideInRight" data-wow-delay="0.1s">
                         <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
                             <li class="nav-item me-2">
-                                <a class="btn btn-outline-primary active" data-bs-toggle="pill" href="#tab-1">Kebutuhan Anda</a>
+                                <a class="btn btn-outline-primary active" href="{{ route('user.index') }}">Kebutuhan Anda</a>
                             </li>
                             <li class="nav-item me-2">
-                                <a class="btn btn-outline-primary" data-bs-toggle="pill" href="#tab-2">Menu Rekomendasi</a>
+                                <a class="btn btn-outline-primary" href="{{ route('user.menu') }}">Menu Rekomendasi</a>
                             </li>
                             <li class="nav-item me-2">
-                                <a class="btn btn-outline-primary" data-bs-toggle="pill" href="#tab-3">Record Berat Badan</a>
+                                <a class="btn btn-outline-primary" href="{{ route('user.weight') }}">Record Berat Badan</a>
                             </li>
                             <li class="nav-item me-0">
-                                <a class="btn btn-outline-primary" data-bs-toggle="pill" href="#tab-3">Pengaturan</a>
+                                <a class="btn btn-outline-primary" href="{{ route('user.profile') }}">Pengaturan</a>
                             </li>
                         </ul>
                     </div>
@@ -99,9 +98,6 @@
                         </table>
                     </div>
                 </div>
-            </div>
-            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <p>Belum punya akun? <a href="/masuk">Daftar disini</a></p>
             </div>
         </div>
     </div>

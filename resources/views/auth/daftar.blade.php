@@ -21,6 +21,9 @@
                                             <input type="text" class="form-control" name="name" value="{{ old('name') }}" id="name" placeholder="Masukkan nama lengkap anda" autocomplete="off">
                                             <label for="email">Nama Lengkap</label>
                                         </div>
+                                        @error('name')
+                                            <div class="span invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 
@@ -30,6 +33,9 @@
                                             <input type="text" class="form-control" name="username" value="{{ old('username') }}" id="username" placeholder="Masukkan username anda" autocomplete="off">
                                             <label for="username">Username</label>
                                         </div>
+                                        @error('username')
+                                            <div class="span invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 
@@ -39,6 +45,9 @@
                                             <input type="text" class="form-control" name="email" value="{{ old('email') }}" id="email" placeholder="Your Name" autocomplete="off">
                                             <label for="email">Email</label>
                                         </div>
+                                        @error('email')
+                                            <div class="span invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 
@@ -48,6 +57,9 @@
                                             <input type="text" class="form-control" name="address" value="{{ old('address') }}" id="address" placeholder="Masukkan alamat anda" autocomplete="off">
                                             <label for="address">Alamat</label>
                                         </div>
+                                        @error('address')
+                                            <div class="span invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 
@@ -71,7 +83,7 @@
                 </div>
             </div>
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <p>Belum punya akun? <a href="/masuk">Daftar disini</a></p>
+                <p>Sudah punya akun? <a href="/masuk">Masuk disini</a></p>
             </div>
         </div>
     </div>

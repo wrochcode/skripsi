@@ -53,8 +53,10 @@ Route::post('bmr', [CalcController::class, 'carbstore'])->name('bmr.store');
 Route::middleware('auth')->group(function(){
     // My Account
     Route::get('myaccount', [MyAccountController::class, 'index'])->name('user.index');
-    // Route::get('user', [UserController::class, 'index'])->name('user.index');
-
+    Route::get('mymenurecommended', [MyAccountController::class, 'menu'])->name('user.menu');
+    Route::get('myprofile', [MyAccountController::class, 'profile'])->name('user.profile');
+    Route::get('myweight', [MyAccountController::class, 'weight'])->name('user.weight');
+    
     // admin
     Route::get('dashboard', [AdminController::class, 'index'])->name('admin.index');
     // Route::get('user', [UserController::class, 'index'])->name('user.index');

@@ -32,7 +32,7 @@ class navbar extends Component
             // 'Profil' => '/about',
             'Artikel' => '/article',
             'Kalkulator Sehat' => '/calchealth',
-            'Akun Saya' => '/myaccount',
+            // 'Akun Saya' => '/myaccount',
         ];
         return view('components.navbar', compact('navbar', 'namecompany', 'address'));
     }

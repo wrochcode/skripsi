@@ -16,10 +16,9 @@ class MyAccountController extends Controller
             return redirect('dashboard');
         }
         
+        //inisialisasi
         $iduser = Auth::user()->id;
         $namecompany = DB::table('abouts')->where('name', 'namecompany')->first();
-        // dd($useradmin);
-        // $iduser = Auth::user()->id;
         $user = DB::table('user_profil')->where('id_user', $iduser)->first();
         
         
@@ -160,6 +159,42 @@ class MyAccountController extends Controller
             'kalkulator' => $kalkulator,
             'namecompany' => $namecompany,
             'profiluser' => $user,
-            ]);    
+            ]);
+    }
+    
+    public function menu(){
+
+        //inisialisasi
+        $iduser = Auth::user()->id;
+        $namecompany = DB::table('abouts')->where('name', 'namecompany')->first();
+        $mainuser = DB::table('users')->where('id', $iduser)->first();
+        $user = DB::table('user_profil')->where('id_user', $iduser)->first();
+        return view('user.mymenu',[
+            'namecompany' => $namecompany,
+            'mainuser' => $mainuser,
+            'profiluser' => $user,
+            ]);
+    }
+
+    public function profile(){
+        $iduser = Auth::user()->id;
+        $namecompany = DB::table('abouts')->where('name', 'namecompany')->first();
+        $mainuser = DB::table('users')->where('id', $iduser)->first();
+        $user = DB::table('user_profil')->where('id_user', $iduser)->first();
+        return view('user.myprofile',[
+            'namecompany' => $namecompany,
+            'mainuser' => $mainuser,
+            'profiluser' => $user,
+            ]);
+    }
+
+    public function weight(){
+        $iduser = Auth::user()->id;
+        $namecompany = DB::table('abouts')->where('name', 'namecompany')->first();
+        $user = DB::table('user_profil')->where('id_user', $iduser)->first();
+        return view('user.myweight',[
+            'namecompany' => $namecompany,
+            'profiluser' => $user,
+            ]);
     }
 }

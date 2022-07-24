@@ -17,20 +17,19 @@ class RegistrationController extends Controller
         ]);
     }
 
-    public function store(RegistrationRequest $request)
-    {
+    public function store(RegistrationRequest $request){
         // dd($request);
         User::create($request->all());
         $sumuser= count(User::all());
         ProfilUserModel::create([
             'id_user'=> $sumuser,
-            'planing' => 1,
-            'gender' => 1,
-            'age' => 1,
-            'height' => 170,
-            'weight' => 70,
-            'activity' => 1,
-            'exercise_activity' => 1,
+            'planing' => 0,
+            'gender' => 0,
+            'age' => 0,
+            'height' => 0,
+            'weight' => 0,
+            'activity' => 0,
+            'exercise_activity' => 0,
         ]);
 
         return redirect('masuk')->with('success', 'Thank you, you are now registered.');

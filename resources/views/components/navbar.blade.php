@@ -28,10 +28,16 @@
                 @endforeach
             @guest
                 <li>
+                    <a href="{{ route('user.index') }}" class="nav-item nav-link">Akun saya</a>
+                </li>
+                <li>
                     <a href="{{ route('masuk') }}" class="nav-item nav-link">Masuk</a>
                 </li>
             </div>
             @else
+                <li>
+                    <a href="{{ route('user.index') }}" class="nav-item nav-link">Akun saya (<small>{{ Auth::user()->username }}</small>)</a>
+                </li>
                 <li>
                     <a href="{{ route('logout') }}" class="nav-item nav-link">keluar</a>
                 </li>
