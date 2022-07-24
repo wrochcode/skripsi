@@ -33,6 +33,6 @@ class RegistrationController extends Controller
             'exercise_activity' => 1,
         ]);
 
-        return redirect('myaccount')->with('success', 'Thank you, you are now registered.');
+        return redirect('masuk')->with('success', 'Thank you, you are now registered.');
     }
 }

@@ -30,7 +30,11 @@ class MasukController extends Controller
             LogActivities::create([
                 'id_user'=> $user->id,
             ]);
-            return redirect('dashboard')->with('success', 'You are now logded in');
+            if(Auth::user()->role == 3){
+                return redirect('myaccount')->with('success', 'You are now logded in');
+            }else{
+                return redirect('dashboard');
+            }
         }
 
         throw ValidationException::withMessages([

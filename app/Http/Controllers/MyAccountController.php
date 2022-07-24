@@ -11,14 +11,14 @@ class MyAccountController extends Controller
     public function index(){
         
         $useradmin = Auth::user()->role;
-        dd($useradmin);
-        $event = DB::table('events')->latest('id')->first();
+        // $event = DB::table('events')->latest('id')->first();
         if($useradmin != 3){
-            $namecompany = DB::table('abouts')->where('name', 'namecompany')->first();
-            return view('admin.admin');
+            return redirect('dashboard');
         }
         
-        $iduser = Auth::user()->nomeranggota;
+        $iduser = Auth::user()->id;
+        $namecompany = DB::table('abouts')->where('name', 'namecompany')->first();
+        // dd($useradmin);
         // $iduser = Auth::user()->id;
         $user = DB::table('user_profil')->where('id_user', $iduser)->first();
         
@@ -158,6 +158,7 @@ class MyAccountController extends Controller
         }
         return view('user.myaccount',[
             'kalkulator' => $kalkulator,
+            'namecompany' => $namecompany,
             'profiluser' => $user,
             ]);    
     }

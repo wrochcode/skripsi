@@ -17,7 +17,12 @@
                             <div class="row g-3">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div class="form-floating">
+                                        @if (session()->has('success'))
+                                            <div class="alert alert-success" role="alert">
+                                                {{ session()->get('success') }}
+                                            </div>
+                                        @endif
+                                        <div class="form-floating mt-3">
                                             <input type="text" class="form-control" name="email" value="{{ old('email') }}" id="email" placeholder="Your Name" autocomplete="off">
                                             <label for="email">Email</label>
                                         </div>
