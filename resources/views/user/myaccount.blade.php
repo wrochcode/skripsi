@@ -14,7 +14,7 @@
                         </div>
                     </div> --}}
                     {{-- <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s"> --}}
-                    <div class="col-lg-6 text-start ms-4 slideInRight" data-wow-delay="0.1s">
+                    <div class="col-lg-8 text-start ms-4 slideInRight" data-wow-delay="0.1s">
                         <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
                             <li class="nav-item me-2">
                                 <a class="btn btn-outline-primary active" data-bs-toggle="pill" href="#tab-1">Kebutuhan Anda</a>
@@ -22,8 +22,11 @@
                             <li class="nav-item me-2">
                                 <a class="btn btn-outline-primary" data-bs-toggle="pill" href="#tab-2">Menu Rekomendasi</a>
                             </li>
-                            <li class="nav-item me-0">
+                            <li class="nav-item me-2">
                                 <a class="btn btn-outline-primary" data-bs-toggle="pill" href="#tab-3">Record Berat Badan</a>
+                            </li>
+                            <li class="nav-item me-0">
+                                <a class="btn btn-outline-primary" data-bs-toggle="pill" href="#tab-3">Pengaturan</a>
                             </li>
                         </ul>
                     </div>
