@@ -30,7 +30,7 @@ class navbar extends Component
             'Beranda' => '/',
             // 'Produk' => '/product',
             // 'Profil' => '/about',
-            'Artikel' => '/article',
+            // 'Artikel' => '/article',
             'Kalkulator Sehat' => '/calchealth',
             // 'Akun Saya' => '/myaccount',
         ];

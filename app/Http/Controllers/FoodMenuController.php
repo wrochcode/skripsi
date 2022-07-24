@@ -18,8 +18,7 @@ class FoodMenuController extends Controller
         $this->middleware('auth');
     }
     
-    public function index()
-    {
+    public function index(){
         // identifikasi user
         $alternatif = 0;
         $currentuser = User::find(Auth::user()->id); //get id user
@@ -180,6 +179,7 @@ class FoodMenuController extends Controller
         // dd($c1, $c2, $c3, $c4, $max1, $max2, $max3, $max4);
         
     }
+
     public function full()
     {
         // identifikasi user
@@ -340,8 +340,7 @@ class FoodMenuController extends Controller
         
     }
     
-    public function create(Request $request)
-    {
+    public function create(Request $request){
         
         $currentuser = User::find(Auth::user()->id); //get id user
         Foodsmenu::create([
@@ -355,8 +354,7 @@ class FoodMenuController extends Controller
         return  redirect('foodmenu')->with('success', 'Data berhasil dibuat.');
     }
 
-    public function detail($id)
-    {
+    public function detail($id){
         // mencari data
         // dd($id);
         $useradmin = Auth::user()->id;
@@ -407,8 +405,7 @@ class FoodMenuController extends Controller
         ]);
     }
     
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         $request->validate([
             'name'=>['required', 'min:3', 'string'],
         ]);
@@ -425,8 +422,7 @@ class FoodMenuController extends Controller
         return redirect('foodmenu')->with('success', 'Data berhasil dibuat.');
     }
 
-    public function tambah(Request $request)
-    {
+    public function tambah(Request $request){
         $request->validate([
             'name'=>['required', 'min:3', 'string'],
             'calorie'=>['required', 'min:3', 'numeric'],
@@ -448,8 +444,7 @@ class FoodMenuController extends Controller
         // Food::create($request->all());
         return redirect()->route('foodmenu.detail', ['id' => $request->idmenu])->with('success', 'Data berhasil ditambahkan.');
     }
-    public function add(Request $request)
-    {
+    public function add(Request $request){
         // dd($request->iditem);
         $id = $request->iditem;
         $currentuser = User::find(Auth::user()->id);
@@ -467,16 +462,14 @@ class FoodMenuController extends Controller
         return redirect()->route('foodmenu.detail', ['id' => $request->idmenu])->with('success', 'Data berhasil ditambahkan.');
     }
 
-    public function edit($id)
-    {
+    public function edit($id){
         $food =Fooduser::find($id);
         return view('admin.__makananedit', [
             'food'=>$food,
         ]);
     }
 
-    public function destroy($id)
-    {
+    public function destroy($id){
         // dd($id);
         Foodsmenu::find($id)->delete();
         // $food = DB::table('foodsmenu')->where('id', $id)->first();
@@ -484,8 +477,7 @@ class FoodMenuController extends Controller
         return  redirect('foodmenu');
     }
 
-    public function hapus($id)
-    {
+    public function hapus($id){
         $menu = Itemsfoodmenu::find($id);
         // dd($menu->name);
         Itemsfoodmenu::find($id)->delete();

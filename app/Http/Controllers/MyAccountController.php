@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ProfilUserModel;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class MyAccountController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(){
         
         $useradmin = Auth::user()->role;
@@ -181,11 +188,117 @@ class MyAccountController extends Controller
         $namecompany = DB::table('abouts')->where('name', 'namecompany')->first();
         $mainuser = DB::table('users')->where('id', $iduser)->first();
         $user = DB::table('user_profil')->where('id_user', $iduser)->first();
+        if($user->exercise_activity == 1){
+            $exercise_activity = "Sangat Jarang";
+        }elseif($user->exercise_activity == 2){
+            $exercise_activity = "Jarang(1-2 kali seminggu)";
+        }elseif($user->exercise_activity == 3){
+            $exercise_activity = "Normal(2-3 kali seminggu)";
+        }elseif($user->exercise_activity == 4){
+            $exercise_activity = "Sering(4-5 kali seminggu)";
+        }elseif($user->exercise_activity == 5){
+            $exercise_activity = "Sangat Sering(2 kali sehari)";
+        }else{
+            $exercise_activity = "null";
+        }
+        
+        if($user->activity == 1){
+            $activity = "Menetap";
+        }elseif($user->activity == 2){
+            $activity = "Kurang Aktif";
+        }elseif($user->activity == 3){
+            $activity = "Aktif";
+        }elseif($user->activity == 4){
+            $activity = "Sangat Aktif";
+        }else{
+            $activity = "null";
+        }
+
+        
+        if($user->gender == 1){
+            $gender = "Laki-laki";
+        }elseif($user->gender == 2){
+            $gender = "Perempuan";
+        }else{
+            $gender = "null";
+        }
+
         return view('user.myprofile',[
             'namecompany' => $namecompany,
             'mainuser' => $mainuser,
             'profiluser' => $user,
+            'exercise_activity' => $exercise_activity,
+            'activity' => $activity,
+            'gender' => $gender,
             ]);
+    }
+
+    public function profilestore(Request $request){
+        // dd($request);
+        $iduser = Auth::user()->id;
+        $namecompany = DB::table('abouts')->where('name', 'namecompany')->first();
+        $mainuser = DB::table('users')->where('id', $iduser)->first();
+        $user = DB::table('user_profil')->where('id_user', $iduser)->first();
+
+        // dd($user);
+        //edit
+        User::find($iduser)->update([
+            'name'=> $request->name,
+            'username'=> $request->username,
+            'email'=> $request->email,
+            'address'=> $request->address,
+        ]);
+        ProfilUserModel::find($user->id)->update([
+            'id_user'=> $user->id,
+            'planing'=> 1,
+            'gender'=> $request->gender,
+            'weight'=> $request->weight,
+            'height'=> $request->height,
+            'activity'=> $request->activity,
+            'exercise_activity'=> $request->exercise_activity,
+        ]);
+
+        $iduser = Auth::user()->id;
+        $namecompany = DB::table('abouts')->where('name', 'namecompany')->first();
+        $mainuser = DB::table('users')->where('id', $iduser)->first();
+        $user = DB::table('user_profil')->where('id_user', $iduser)->first();
+
+        if($user->exercise_activity == 1){
+            $exercise_activity = "Jarang";
+        }elseif($user->exercise_activity == 2){
+            $exercise_activity = "Jarang(1-2 kali seminggu)";
+        }elseif($user->exercise_activity == 3){
+            $exercise_activity = "Normal(2-3 kali seminggu)";
+        }elseif($user->exercise_activity == 4){
+            $exercise_activity = "Sering(4-5 kali seminggu)";
+        }elseif($user->exercise_activity == 5){
+            $exercise_activity = "Sangat Sering(2 kali sehari)";
+        }else{
+            $activity = "null";
+        }
+        
+        if($user->activity == 1){
+            $activity = "Menetap";
+        }elseif($user->activity == 2){
+            $activity = "Kurang Aktif";
+        }elseif($user->activity == 3){
+            $activity = "Aktif";
+        }elseif($user->activity == 4){
+            $activity = "Sangat Aktif";
+        }else{
+            $activity = "null";
+        }
+
+        if($user->gender == 1){
+            $gender = "Laki-laki";
+        }elseif($user->gender == 2){
+            $gender = "Perempuan";
+        }else{
+            $gender = "null";
+        }
+        // dd($gender);
+
+        return back()->with('success', 'Data was updated.');
     }
 
     public function weight(){
