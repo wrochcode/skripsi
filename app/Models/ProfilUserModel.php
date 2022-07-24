@@ -12,6 +12,7 @@ class ProfilUserModel extends Model
     protected $fillable = [
         'id_user', 
         'planing', 
+        'gender', 
         'age', 
         'height', 
         'weight', 

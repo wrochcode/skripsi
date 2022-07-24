@@ -17,7 +17,7 @@ class ProfilUserSeeder extends Seeder
     {
         collect([[
             // 'id_user' => 1,
-            'id_user' => '00001',
+            'id_user' => 1,
             'planing' => 1,
             'gender' => 1,
             'age' => 34,
@@ -28,7 +28,7 @@ class ProfilUserSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ],[
-            'id_user' => '00002',
+            'id_user' => 2,
             // 'id_user' => 2,
             'planing' => 1,
             'gender' => 1,
@@ -41,7 +41,7 @@ class ProfilUserSeeder extends Seeder
             'updated_at' => now(),
         ],[
             // 'id_user' => 3,
-            'id_user' => '00003',
+            'id_user' => 3,
             'planing' => 1,
             'gender' => 1,
             'age' => 22,

@@ -29,10 +29,12 @@
                     <hr class="dropdown-divider" />
                 </li>
                 <li>
-                    <form action="{{ route('logout') }}" method="post">
+                    {{-- <a href="{{ route('logout') }}" class="nav-item nav-link">keluar</a> --}}
+                    <a href="{{ route('logout') }}" type="submit" class="dropdown-item">Keluar</a>
+                    {{-- <form action="{{ route('logout') }}" method="post">
                         @csrf
                         <button type="submit" class="dropdown-item">Logout</button>
-                    </form>
+                    </form> --}}
                 </li>
             </ul>
         </li>

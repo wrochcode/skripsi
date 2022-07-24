@@ -26,9 +26,9 @@ class RegistrationRequest extends FormRequest
         return [
             'name'=> ['required', 'min:3', 'string'],
             'username'=> ['required'],
-            'email'=> ['required'],
+            'email'=> ['required','unique:users', 'email'],
             'address'=> ['required', 'string'],
-            'nomeranggota'=> ['required', 'numeric'],
+            // 'nomeranggota'=> ['required', 'numeric'],
             'role'=> ['required', 'numeric'],
             'password'=> ['required'],
         ];

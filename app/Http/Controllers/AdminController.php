@@ -26,8 +26,9 @@ class AdminController extends Controller{
             ]);
         }
         
-        $iduser = Auth::user()->nomeranggota;
-        // $iduser = Auth::user()->id;
+        // $iduser = Auth::user();
+        $iduser = Auth::user()->id;
+        // dd($iduser);
         $user = DB::table('user_profil')->where('id_user', $iduser)->first();
         
         

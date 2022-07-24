@@ -1,4 +1,4 @@
-<x-app-layout title="login">
+<x-app-layout title="Masuk">
     <!-- Contact Start -->
     <div class="container-xxl py-5">
         <div class="container">
@@ -7,18 +7,19 @@
                 <p>Login di <a href="/">{{ $namecompany->value }}</a> Sekarang</p>
             </div>
             <div class="row g-4">
-                <div class="col-md-2">
+                <div class="col-md-4">
 
                 </div>
-                <div class="col-md-8 ms-5 start-50">
+                <div class="col-md-8 ">
                     <div class="wow fadeInUp" data-wow-delay="0.5s">
-                        <form>
+                        <form method="POST" action="{{ route('masuk') }}">
+                            @csrf
                             <div class="row g-3">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="name" placeholder="Your Name">
-                                            <label for="name">Your Name</label>
+                                            <input type="text" class="form-control" name="email" value="{{ old('email') }}" id="email" placeholder="Your Name" autocomplete="off">
+                                            <label for="email">Email</label>
                                         </div>
                                     </div>
                                 </div>
@@ -26,25 +27,21 @@
                                 <div class="row mt-3">
                                     <div class="col-6">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="subject" placeholder="Subject">
-                                            <label for="subject">Subject</label>
+                                            <input type="password" class="form-control" name="password" id="password" placeholder="Subject">
+                                            <label for="password">Password</label>
                                         </div>
                                     </div>
                                 </div>
-                                    
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 150px"></textarea>
-                                        <label for="message">Message</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
+                                <div class="col-5 ms-4">
+                                    <button class="btn btn-primary w-100 py-3" type="submit">Masuk</button>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
+            </div>
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <p>Belum punya akun? <a href="/daftar">Daftar disini</a></p>
             </div>
         </div>
     </div>

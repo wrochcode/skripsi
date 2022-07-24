@@ -122,8 +122,8 @@ Route::middleware('auth')->group(function(){
 });
 
 Route::middleware('guest')->group(function(){
-    Route::get('register', [RegistrationController::class, 'create'])->name('register');
-    Route::post('register', [RegistrationController::class, 'store']);
+    Route::get('daftar', [RegistrationController::class, 'create'])->name('daftar');
+    Route::post('daftar', [RegistrationController::class, 'store']);
 
     Route::get('masuk', [MasukController::class, 'create'])->name('masuk');
     Route::post('masuk', [MasukController::class, 'store']);
