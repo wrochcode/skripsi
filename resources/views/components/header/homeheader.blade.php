@@ -8,7 +8,7 @@
                 </div>
             @endif
             <h1 class="display-5 animated fadeIn mb-4">Cari <span class="text-primary">Cara Sehat Terbaik</span> dengan gayamu sendiri</h1>
-            <p class="animated fadeIn mb-4 pe-2">Temukan kebiasaan baru untuk hidup sehat, mulai dari asupan makananmu.</p>
+            <p class="animated fadeIn mb-4 pe-2">Temukan kebiasaan baru untuk hidup sehat, mulai dari asupan makanan.</p>
             <a href="{{ route('masuk') }}" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">Login</a>
         </div>  
         <div class="mt-lg-5 col-md-6 animated fadeIn">

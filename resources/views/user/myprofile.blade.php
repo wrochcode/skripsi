@@ -119,6 +119,21 @@
 
                                 <div class="row mt-3">
                                     <div class="col-md-3">
+                                        <label class="mt-3" for="age">Umur</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" name="age" value="{{ old('age', $profiluser->age) }}" id="age" placeholder="Masukkan nama lengkap anda" autocomplete="off">
+                                            <label for="age">Umur</label>
+                                        </div>
+                                        @error('age')
+                                        <div class="span invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="row mt-3">
+                                    <div class="col-md-3">
                                         <label class="mt-3" for="weight">Berat badan (kg)</label>
                                     </div>
                                     <div class="col-md-6">
