@@ -53,7 +53,7 @@ Route::post('bmr', [CalcController::class, 'carbstore'])->name('bmr.store');
 Route::middleware('auth')->group(function(){
     // My Account
     Route::get('myaccount', [MyAccountController::class, 'index'])->name('user.index');
-    Route::get('mymenurecommended', [MyAccountController::class, 'menu'])->name('user.menu');
+    Route::get('mymenu', [MyAccountController::class, 'menu'])->name('user.menu');
     Route::get('myprofile', [MyAccountController::class, 'profile'])->name('user.profile');
     Route::put('myprofile', [MyAccountController::class, 'profilestore'])->name('myprofile.update');
     Route::get('myweight', [MyAccountController::class, 'weight'])->name('user.weight');

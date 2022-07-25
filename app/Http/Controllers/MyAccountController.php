@@ -203,12 +203,13 @@ class MyAccountController extends Controller
             $trec=5;
         }
 
-        // dd($alternatif);
+        dd($alternatif);
         if($alternatif<1){
             $normalisasi = null;
-            return view('admin.mainmenu', [
+            return view('user.mymenu', [
                 'foods' => null,
                 'recs' => null,
+                'profiluser' => $user,
                 'fooddatabases' => $Foods,
                 'criterias' => $poincriteria,
                 'metode' => $metode,
@@ -328,9 +329,13 @@ class MyAccountController extends Controller
 
 
         return view('user.mymenu',[
-            'namecompany' => $namecompany,
-            'mainuser' => $mainuser,
+            'foods' => null,
+            'recs' => null,
             'profiluser' => $user,
+            'fooddatabases' => $Foods,
+            'criterias' => $poincriteria,
+            'metode' => $metode,
+            'trec' => $trec,
             ]);
     }
 

@@ -90,9 +90,8 @@
                     @endif
                     <div class="row">
                         <?php $indexloop = 1 ;
-                        ?>
-                        @for ($i = 0 ; $i  < $trec; $i++)
-                            
+                        ?>        
+                        @for ($i = 0 ; $i  < $trec; $i++)    
                             <div class="col-xl-12 col-md-6">
                                 @if ($indexloop == 1)
                                 <div class="card bg-primary text-white mb-4">
@@ -124,8 +123,7 @@
                                     $indexloop++;
                                 @endphp
                             </div>
-                            @endfor
-                            
+                        @endfor
                     </div>
                 </div>
             </main>
