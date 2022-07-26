@@ -29,7 +29,7 @@
                             </li> --}}
                         </ul>
                     </div>
-                    <div class="row col-lg-8  ms-4 slideInRight">
+                    <div class="row col-lg-6  ms-4 slideInRight">
                         <?php $indexloop = 1 ;
                         ?>        
                         @for ($i = 0 ; $i  < $trec; $i++)    

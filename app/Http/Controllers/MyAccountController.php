@@ -130,6 +130,7 @@ class MyAccountController extends Controller
         
         // Serat
         $kalkulator['serat'] = ($kalkulator['tdee']/1000) * 14;
+        $kalkulator['serat'] = round( $kalkulator['serat'],2);
         
         // Protein
         $temp1 = round(($kalkulator['tdee']*0.1),0);
