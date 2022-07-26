@@ -179,7 +179,8 @@ class MyAccountController extends Controller
 
         //menu
         $alternatif = 0;
-        $currentuser = User::find(Auth::user()->id); //get id user
+        $currentuser = $iduser; //get id user
+        // $currentuser = User::find(Auth::user()->id); //get id user
 
         // Menentukan maksimal -> butuh data
         $Foods = Foodsmenu::all();
@@ -194,7 +195,7 @@ class MyAccountController extends Controller
         
         // dd($currentuser->id);
         foreach($Foods as $Food){
-            if($Food->id_user == $currentuser->id){
+            if($Food->id_user == $currentuser){
                 $alternatif++;
             }
         }
@@ -203,7 +204,7 @@ class MyAccountController extends Controller
             $trec=5;
         }
 
-        dd($alternatif);
+        // dd($alternatif);
         if($alternatif<1){
             $normalisasi = null;
             return view('user.mymenu', [
@@ -220,7 +221,7 @@ class MyAccountController extends Controller
         $alternatif = 0;
         // dd($Foods);
         foreach($Foods as $Food){
-            if($Food->id_user == $currentuser->id){
+            if($Food->id_user == $currentuser){
                 $makananuser[$alternatif]['id'] = $Food->id;
                 $makananuser[$alternatif]['id_user'] = $Food->id_user;
                 $makananuser[$alternatif]['name'] = $Food->name;
@@ -327,9 +328,9 @@ class MyAccountController extends Controller
             $trec = 5;
         }
 
-
+        // dd($makananuser);
         return view('user.mymenu',[
-            'foods' => null,
+            'foods' => $makananuser,
             'recs' => null,
             'profiluser' => $user,
             'fooddatabases' => $Foods,

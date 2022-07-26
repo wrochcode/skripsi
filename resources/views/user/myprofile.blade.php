@@ -24,9 +24,9 @@
                             <li class="nav-item me-2">
                                 <a class="btn btn-outline-primary" href="{{ route('user.weight') }}">Record Berat Badan</a>
                             </li>
-                            <li class="nav-item me-0">
+                            {{-- <li class="nav-item me-0">
                                 <a class="btn btn-outline-primary active" href="{{ route('user.profile') }}">Pengaturan</a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                     <div class="col-lg-8 text-start ms-4 slideInRight" data-wow-delay="0.1s">

@@ -35,7 +35,7 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Penanggung Jawab</th>
+                                        <th>Jumlah Login</th>
                                         <th>Hari</th>
                                         <th>Total Pengunjung</th>
                                         <th>Jml Pelajar</th>

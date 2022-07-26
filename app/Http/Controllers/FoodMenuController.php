@@ -425,10 +425,10 @@ class FoodMenuController extends Controller
     public function tambah(Request $request){
         $request->validate([
             'name'=>['required', 'min:3', 'string'],
-            'calorie'=>['required', 'min:3', 'numeric'],
-            'carb'=>['required', 'min:3', 'numeric'],
-            'fat'=>['required', 'min:3', 'numeric'],
-            'protein'=>['required', 'min:3', 'numeric'],
+            'calorie'=>['required', 'numeric'],
+            'carb'=>['required', 'numeric'],
+            'fat'=>['required', 'numeric'],
+            'protein'=>['required','numeric'],
         ]);
         // dd($request->idmenu);
         $currentuser = User::find(Auth::user()->id);

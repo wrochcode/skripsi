@@ -22,26 +22,36 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto">
                 @foreach ($navbar as $item => $url)
-                    <li>
-                        <a class="nav-item nav-link" href="{{ $url }}">{{ $item }}</a>
-                    </li>
-                @endforeach
-            @guest
                 <li>
-                    <a href="{{ route('user.index') }}" class="nav-item nav-link">Akun saya</a>
+                    <a class="nav-item nav-link" href="{{ $url }}">{{ $item }}</a>
+                </li>
+                @endforeach
+            {{-- </div> --}}
+            @guest
+            {{-- <div class="navbar-nav ms-auto"> --}}
+                <li>
+                    <a href="{{ route('daftar') }}" class="nav-item nav-link">Daftar</a>
                 </li>
                 <li>
                     <a href="{{ route('masuk') }}" class="nav-item nav-link">Masuk</a>
                 </li>
             </div>
             @else
-                <li>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{ Auth::user()->username }}</a>
+                <div class="dropdown-menu rounded-0 m-0">
+                    <a href="{{ route('user.profile') }}" class="dropdown-item">Pengaturan Akun</a>
+                    <a href="{{ route('logout') }}" class="dropdown-item">keluar</a>
+                </div>
+            </div>
+                {{-- <li>
                     <a href="{{ route('user.index') }}" class="nav-item nav-link">Akun saya (<small>{{ Auth::user()->username }}</small>)</a>
                 </li>
                 <li>
+                    <a class="btn btn-outline-primary" href="{{ route('user.profile') }}">Pengaturan Akun</a>
                     <a href="{{ route('logout') }}" class="nav-item nav-link">keluar</a>
                 </li>
-            </div>
+            </div> --}}
                 {{-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-menu-end dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         {{ Auth::user()->name }} </a>
