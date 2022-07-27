@@ -50,7 +50,7 @@
                                                                     ; 
                                                                     @endphp</div>
                                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                                <a class="small text-white" href="{{ route('foodmenu.detail', $foods[$i]['id']) }}">View Details <i class="fas fa-angle-right"></i></a>
+                                                <a class="small text-white" href="{{ route('foodmenurec.detail', $foods[$i]['id']) }}">View Details <i class="fas fa-angle-right"></i></a>
                                         </div>
                                     </div>
                                     @php

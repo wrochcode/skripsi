@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FoodMenuRecModel;
 use App\Models\Foodsmenu;
 use App\Models\ProfilUserModel;
 use App\Models\User;
@@ -184,7 +185,7 @@ class MyAccountController extends Controller
         // $currentuser = User::find(Auth::user()->id); //get id user
 
         // Menentukan maksimal -> butuh data
-        $Foods = Foodsmenu::all();
+        $Foods = FoodMenuRecModel::all();
 
         $point = DB::table('criterias')->where('name', 'Defisit')->first();
         $metode = $point->name;
@@ -196,9 +197,7 @@ class MyAccountController extends Controller
         
         // dd($currentuser->id);
         foreach($Foods as $Food){
-            if($Food->id_user == $currentuser){
                 $alternatif++;
-            }
         }
         $trec = $alternatif;
         if($trec>5){
@@ -222,16 +221,13 @@ class MyAccountController extends Controller
         $alternatif = 0;
         // dd($Foods);
         foreach($Foods as $Food){
-            if($Food->id_user == $currentuser){
-                $makananuser[$alternatif]['id'] = $Food->id;
-                $makananuser[$alternatif]['id_user'] = $Food->id_user;
-                $makananuser[$alternatif]['name'] = $Food->name;
-                $makananuser[$alternatif]['calorie'] = $Food->calorie;
-                $makananuser[$alternatif]['carb'] = $Food->carb;
-                $makananuser[$alternatif]['fat'] = $Food->fat;
-                $makananuser[$alternatif]['protein'] = $Food->protein;
-                $alternatif++;
-            }
+            $makananuser[$alternatif]['id'] = $Food->id;
+            $makananuser[$alternatif]['name'] = $Food->name;
+            $makananuser[$alternatif]['calorie'] = $Food->calorie;
+            $makananuser[$alternatif]['carb'] = $Food->carb;
+            $makananuser[$alternatif]['fat'] = $Food->fat;
+            $makananuser[$alternatif]['protein'] = $Food->protein;
+            $alternatif++;
         }
         
         // ALgorithma start cari max
@@ -283,7 +279,6 @@ class MyAccountController extends Controller
             }
             
             $normalisasi[$alternatif]['nilai'] = round($temp,4);
-            $normalisasi[$alternatif]['id_user'] = $makananuser[$i]['id_user'];
             $normalisasi[$alternatif]['name'] = $makananuser[$i]['name'];
             $normalisasi[$alternatif]['calorie'] = $makananuser[$i]['calorie'];
             $normalisasi[$alternatif]['carb'] = $makananuser[$i]['carb'];
@@ -298,10 +293,6 @@ class MyAccountController extends Controller
                     $temp = $normalisasi[$j]['nilai'];
                     $normalisasi[$j]['nilai'] = $normalisasi[$j+1]['nilai'];
                     $normalisasi[$j+1]['nilai'] = $temp;
-
-                    $temp = $normalisasi[$j]['id_user'];
-                    $normalisasi[$j]['id_user'] = $normalisasi[$j+1]['id_user'];
-                    $normalisasi[$j+1]['id_user'] = $temp;
 
                     $temp = $normalisasi[$j]['name'];
                     $normalisasi[$j]['name'] = $normalisasi[$j+1]['name'];

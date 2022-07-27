@@ -23,6 +23,7 @@
                         <nav class="sb-sidenav-menu-nested nav">
                             <a class="nav-link" href="{{ route('food.index') }}">Food</a>
                             <a class="nav-link" href="{{ route('foodrecomend.index') }}">Food Recomend</a>
+                            <a class="nav-link" href="{{ route('foodmenurec.index') }}">Menu Makanan Rekomendasi</a>
                             <a class="nav-link" href="{{ route('event.index') }}">Event</a>
                             {{-- <a class="nav-link" href="{{ route('log.index') }}">Log login</a> --}}
                         </nav>

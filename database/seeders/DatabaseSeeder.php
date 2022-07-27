@@ -18,13 +18,15 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AboutSeeder::class,
             CriteriaSeeder::class,
-            UserSeeder::class,
-            FoodSeeder::class,
-            FoodrecSeeder::class,
-            ItemFoodsMenuSeeder::class,
-            ProfilUserSeeder::class,
-            FoodMenuSeeder::class,
             EventSeeder::class,
+            FoodMenuRecsSeeder::class,
+            FoodMenuSeeder::class,
+            FoodrecSeeder::class,
+            FoodSeeder::class,
+            ItemFoodsMenuSeeder::class,
+            Itemsfoodmenurecseeder::class,
+            ProfilUserSeeder::class,
+            UserSeeder::class,
             VisitorSeeder::class,
         ]);
     }

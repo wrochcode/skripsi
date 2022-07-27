@@ -3,15 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Food;
-use App\Models\Foodsmenu;
+use App\Models\FoodMenuRecModel;
 use App\Models\Fooduser;
-use App\Models\Itemsfoodmenu;
-use App\Models\User;
+use App\Models\Itemsfoodmenurec;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class FoodMenuController extends Controller
+class FoodMenuRecController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
@@ -20,10 +18,10 @@ class FoodMenuController extends Controller
     public function index(){
         // identifikasi user
         $alternatif = 0;
-        $currentuser = User::find(Auth::user()->id); //get id user
+        // $currentuser = User::find(Auth::user()->id); //get id user
 
         // Menentukan maksimal -> butuh data
-        $Foods = Foodsmenu::all();
+        $Foods = FoodMenuRecModel::all();
 
         $point = DB::table('criterias')->where('name', 'Defisit')->first();
         $metode = $point->name;
@@ -35,9 +33,7 @@ class FoodMenuController extends Controller
         
         // dd($currentuser->id);
         foreach($Foods as $Food){
-            if($Food->id_user == $currentuser->id){
-                $alternatif++;
-            }
+            $alternatif++;
         }
         $trec = $alternatif;
         if($trec>5){
@@ -47,7 +43,7 @@ class FoodMenuController extends Controller
         // dd($alternatif);
         if($alternatif<1){
             $normalisasi = null;
-            return view('admin.mainmenu', [
+            return view('admin.mainmenurec', [
                 'foods' => null,
                 'recs' => null,
                 'fooddatabases' => $Foods,
@@ -60,16 +56,13 @@ class FoodMenuController extends Controller
         $alternatif = 0;
         // dd($Foods);
         foreach($Foods as $Food){
-            if($Food->id_user == $currentuser->id){
-                $makananuser[$alternatif]['id'] = $Food->id;
-                $makananuser[$alternatif]['id_user'] = $Food->id_user;
-                $makananuser[$alternatif]['name'] = $Food->name;
-                $makananuser[$alternatif]['calorie'] = $Food->calorie;
-                $makananuser[$alternatif]['carb'] = $Food->carb;
-                $makananuser[$alternatif]['fat'] = $Food->fat;
-                $makananuser[$alternatif]['protein'] = $Food->protein;
-                $alternatif++;
-            }
+            $makananuser[$alternatif]['id'] = $Food->id;
+            $makananuser[$alternatif]['name'] = $Food->name;
+            $makananuser[$alternatif]['calorie'] = $Food->calorie;
+            $makananuser[$alternatif]['carb'] = $Food->carb;
+            $makananuser[$alternatif]['fat'] = $Food->fat;
+            $makananuser[$alternatif]['protein'] = $Food->protein;
+            $alternatif++;
         }
         
         // ALgorithma start cari max
@@ -121,7 +114,6 @@ class FoodMenuController extends Controller
             }
             
             $normalisasi[$alternatif]['nilai'] = round($temp,4);
-            $normalisasi[$alternatif]['id_user'] = $makananuser[$i]['id_user'];
             $normalisasi[$alternatif]['name'] = $makananuser[$i]['name'];
             $normalisasi[$alternatif]['calorie'] = $makananuser[$i]['calorie'];
             $normalisasi[$alternatif]['carb'] = $makananuser[$i]['carb'];
@@ -136,10 +128,6 @@ class FoodMenuController extends Controller
                     $temp = $normalisasi[$j]['nilai'];
                     $normalisasi[$j]['nilai'] = $normalisasi[$j+1]['nilai'];
                     $normalisasi[$j+1]['nilai'] = $temp;
-
-                    $temp = $normalisasi[$j]['id_user'];
-                    $normalisasi[$j]['id_user'] = $normalisasi[$j+1]['id_user'];
-                    $normalisasi[$j+1]['id_user'] = $temp;
 
                     $temp = $normalisasi[$j]['name'];
                     $normalisasi[$j]['name'] = $normalisasi[$j+1]['name'];
@@ -168,7 +156,7 @@ class FoodMenuController extends Controller
         }
         
         // dd($makananuser);
-        return view('admin.mainmenu', [
+        return view('admin.mainmenurec', [
             'foods' => $makananuser,
             'recs' => $normalisasi,
             'criterias' => $poincriteria,
@@ -182,10 +170,9 @@ class FoodMenuController extends Controller
     public function full(){
         // identifikasi user
         $alternatif = 0;
-        $currentuser = User::find(Auth::user()->id); //get id user
 
         // Menentukan maksimal -> butuh data
-        $Foods = Foodsmenu::all();
+        $Foods = FoodMenuRecModel::all();
 
         $point = DB::table('criterias')->where('name', 'Defisit')->first();
         $metode = $point->name;
@@ -197,9 +184,7 @@ class FoodMenuController extends Controller
         
         // dd($currentuser->id);
         foreach($Foods as $Food){
-            if($Food->id_user == $currentuser->id){
-                $alternatif++;
-            }
+            $alternatif++;
         }
         $trec = $alternatif;
         if($trec>5){
@@ -209,7 +194,7 @@ class FoodMenuController extends Controller
         // dd($alternatif);
         if($alternatif<1){
             $normalisasi = null;
-            return view('admin.mainmenufull', [
+            return view('admin.mainmenufullrec', [
                 'foods' => null,
                 'recs' => null,
                 'fooddatabases' => $Foods,
@@ -222,16 +207,13 @@ class FoodMenuController extends Controller
         $alternatif = 0;
         // dd($Foods);
         foreach($Foods as $Food){
-            if($Food->id_user == $currentuser->id){
-                $makananuser[$alternatif]['id'] = $Food->id;
-                $makananuser[$alternatif]['id_user'] = $Food->id_user;
-                $makananuser[$alternatif]['name'] = $Food->name;
-                $makananuser[$alternatif]['calorie'] = $Food->calorie;
-                $makananuser[$alternatif]['carb'] = $Food->carb;
-                $makananuser[$alternatif]['fat'] = $Food->fat;
-                $makananuser[$alternatif]['protein'] = $Food->protein;
-                $alternatif++;
-            }
+            $makananuser[$alternatif]['id'] = $Food->id;
+            $makananuser[$alternatif]['name'] = $Food->name;
+            $makananuser[$alternatif]['calorie'] = $Food->calorie;
+            $makananuser[$alternatif]['carb'] = $Food->carb;
+            $makananuser[$alternatif]['fat'] = $Food->fat;
+            $makananuser[$alternatif]['protein'] = $Food->protein;
+            $alternatif++;
         }
         
         // ALgorithma start cari max
@@ -283,7 +265,6 @@ class FoodMenuController extends Controller
             }
             
             $normalisasi[$alternatif]['nilai'] = round($temp,4);
-            $normalisasi[$alternatif]['id_user'] = $makananuser[$i]['id_user'];
             $normalisasi[$alternatif]['name'] = $makananuser[$i]['name'];
             $normalisasi[$alternatif]['calorie'] = $makananuser[$i]['calorie'];
             $normalisasi[$alternatif]['carb'] = $makananuser[$i]['carb'];
@@ -298,10 +279,6 @@ class FoodMenuController extends Controller
                     $temp = $normalisasi[$j]['nilai'];
                     $normalisasi[$j]['nilai'] = $normalisasi[$j+1]['nilai'];
                     $normalisasi[$j+1]['nilai'] = $temp;
-
-                    $temp = $normalisasi[$j]['id_user'];
-                    $normalisasi[$j]['id_user'] = $normalisasi[$j+1]['id_user'];
-                    $normalisasi[$j+1]['id_user'] = $temp;
 
                     $temp = $normalisasi[$j]['name'];
                     $normalisasi[$j]['name'] = $normalisasi[$j+1]['name'];
@@ -327,7 +304,7 @@ class FoodMenuController extends Controller
         }
         
         // dd($makananuser);
-        return view('admin.mainmenufull', [
+        return view('admin.mainmenufullrec', [
             'foods' => $makananuser,
             'recs' => $normalisasi,
             'criterias' => $poincriteria,
@@ -339,27 +316,21 @@ class FoodMenuController extends Controller
     }
     
     public function create(Request $request){
-        
-        $currentuser = User::find(Auth::user()->id); //get id user
-        Foodsmenu::create([
-            'id_user'=> $currentuser->id,
+        FoodMenuRecModel::create([
             'name'=> $request->name,
             'calorie'=> $request->calorie,
             'carb'=> $request->carb,
             'fat'=> $request->fat,
             'protein'=> $request->protein,
         ]);
-        return  redirect('foodmenu')->with('success', 'Data berhasil dibuat.');
+        return  redirect('foodmenurec')->with('success', 'Data berhasil dibuat.');
     }
 
     public function detail($id){
-        // mencari data
-        // dd($id);
-        $useradmin = Auth::user()->id;
         $idmenu = $id;
         // dd($idmenu);
         // Menentukan maksimal -> butuh data
-        $Foods = Itemsfoodmenu::all();
+        $Foods = Itemsfoodmenurec::all();
         $calorie = 0 ;
         $carb = 0 ;
         $fat = 0 ;
@@ -367,7 +338,7 @@ class FoodMenuController extends Controller
 
         $index = 0 ;
         foreach($Foods as $food){
-            if($food->id_user == $useradmin && $food->id_menu == $id){
+            if($food->id_menu == $id){
                 $fooduser[$index]['name'] = $food->name;
                 $fooduser[$index]['id'] = $food->id;
                 $fooduser[$index]['calorie'] = $food->calorie;
@@ -386,16 +357,16 @@ class FoodMenuController extends Controller
             $fooduser = null;
         }
 
-        $database = DB::table('foodsmenu')->where('id', $idmenu)->first();
+        $database = DB::table('foodmenurecs')->where('id', $idmenu)->first();
 
-        Foodsmenu::find($idmenu)->update([
+        FoodMenuRecModel::find($idmenu)->update([
             'name'=> $database->name,
             'calorie'=> $calorie,
             'carb'=> $carb,
             'fat'=> $fat,
             'protein'=> $protein,
         ]);
-        return view('admin.menudetailitems', [
+        return view('admin.menudetailitemsrec', [
             'foods' => $fooduser,
             'idmenu' => $idmenu,
             'trec' => $index,
@@ -407,9 +378,7 @@ class FoodMenuController extends Controller
         $request->validate([
             'name'=>['required', 'min:3', 'string'],
         ]);
-        $currentuser = User::find(Auth::user()->id);
-        Foodsmenu::create([
-                'id_user'=> $currentuser->id,
+        FoodMenuRecModel::create([
                 'name'=> $request->name,
                 'calorie'=> $request->calorie,
                 'carb'=> $request->carb,
@@ -417,7 +386,7 @@ class FoodMenuController extends Controller
                 'protein'=> $request->protein,
             ]);
         // Food::create($request->all());
-        return redirect('foodmenu')->with('success', 'Data berhasil dibuat.');
+        return redirect('foodmenurec')->with('success', 'Data berhasil dibuat.');
     }
 
     public function tambah(Request $request){
@@ -429,9 +398,7 @@ class FoodMenuController extends Controller
             'protein'=>['required','numeric'],
         ]);
         // dd($request->idmenu);
-        $currentuser = User::find(Auth::user()->id);
-        Itemsfoodmenu::create([
-                'id_user'=> $currentuser->id,
+        Itemsfoodmenurec::create([
                 'id_menu'=> $request->idmenu,
                 'name'=> $request->name,
                 'calorie'=> $request->calorie,
@@ -440,16 +407,14 @@ class FoodMenuController extends Controller
                 'protein'=> $request->protein,
             ]);
         // Food::create($request->all());
-        return redirect()->route('foodmenu.detail', ['id' => $request->idmenu])->with('success', 'Data berhasil ditambahkan.');
+        return redirect()->route('foodmenurec.detail', ['id' => $request->idmenu])->with('success', 'Data berhasil ditambahkan.');
     }
     public function add(Request $request){
         // dd($request->iditem);
         $id = $request->iditem;
-        $currentuser = User::find(Auth::user()->id);
         $food =Food::find($id);
         // dd($food);
-        Itemsfoodmenu::create([
-                'id_user'=> $currentuser->id,
+        Itemsfoodmenurec::create([
                 'id_menu'=> $request->idmenu,
                 'name'=> $food->name,
                 'calorie'=> $food->calorie,
@@ -457,7 +422,7 @@ class FoodMenuController extends Controller
                 'fat'=> $food->fat,
                 'protein'=> $food->protein,
             ]);
-        return redirect()->route('foodmenu.detail', ['id' => $request->idmenu])->with('success', 'Data berhasil ditambahkan.');
+        return redirect()->route('foodmenurec.detail', ['id' => $request->idmenu])->with('success', 'Data berhasil ditambahkan.');
     }
 
     public function edit($id){
@@ -469,16 +434,16 @@ class FoodMenuController extends Controller
 
     public function destroy($id){
         // dd($id);
-        Foodsmenu::find($id)->delete();
+        FoodMenuRecModel::find($id)->delete();
         // $food = DB::table('foodsmenu')->where('id', $id)->first();
 
         return  redirect('foodmenu');
     }
 
     public function hapus($id){
-        $menu = Itemsfoodmenu::find($id);
+        $menu = Itemsfoodmenurec::find($id);
         // dd($menu->name);
-        Itemsfoodmenu::find($id)->delete();
+        Itemsfoodmenurec::find($id)->delete();
         return back()->with('danger', $menu->name." berhasil dihapus");
     }
 }

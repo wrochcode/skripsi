@@ -8,6 +8,7 @@ use App\Http\Controllers\CalcController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\FoodMenuController;
+use App\Http\Controllers\FoodMenuRecController;
 use App\Http\Controllers\FoodRecomendationController;
 use App\Http\Controllers\FoodUserController;
 use App\Http\Controllers\HomeController;
@@ -109,11 +110,23 @@ Route::middleware('auth')->group(function(){
     Route::post('foodmenuadded', [FoodMenuController::class, 'add'])->name('foodmenu.add');
     Route::get('foodmenucreate', [FoodMenuController::class, 'create'])->name('foodmenu.create');
     Route::get('foodmenudetail/{id}', [FoodMenuController::class, 'detail'])->name('foodmenu.detail');
-    // Route::get('foodmenu/{id}/menu', [FoodMenuController::class, 'menu'])->name('foodmenu.storeuser');
     Route::get('foodmenu/{id}/edit', [FoodMenuController::class, 'edit'])->name('foodmenu.edit');
     Route::put('foodmenu/{id}', [FoodMenuController::class, 'update'])->name('foodmenu.update');
     Route::get('foodmenudelete/{id}', [FoodMenuController::class, 'destroy'])->name('foodmenu.destroy');
     Route::delete('foodmenu/{id}', [FoodMenuController::class, 'hapus'])->name('foodmenu.hapusitem');
+    
+    // food menu rec user
+    Route::get('foodmenurec', [FoodMenuRecController::class, 'index'])->name('foodmenurec.index');
+    Route::get('foodmenurecfull', [FoodMenuRecController::class, 'full'])->name('foodmenurec.full');
+    Route::post('foodmenurec', [FoodMenuRecController::class, 'store'])->name('foodmenurec.store');
+    Route::post('foodmenurectambah', [FoodMenuRecController::class, 'tambah'])->name('foodmenurec.tambah');
+    Route::post('foodmenurecadded', [FoodMenuRecController::class, 'add'])->name('foodmenurec.add');
+    Route::get('foodmenureccreate', [FoodMenuRecController::class, 'create'])->name('foodmenurec.create');
+    Route::get('foodmenurecdetail/{id}', [FoodMenuRecController::class, 'detail'])->name('foodmenurec.detail');
+    Route::get('foodmenurec/{id}/edit', [FoodMenuRecController::class, 'edit'])->name('foodmenurec.edit');
+    Route::put('foodmenurec/{id}', [FoodMenuRecController::class, 'update'])->name('foodmenurec.update');
+    Route::get('foodmenudeleterec/{id}', [FoodMenuRecController::class, 'destroy'])->name('foodmenurec.destroy');
+    Route::delete('foodmenurec/{id}', [FoodMenuRecController::class, 'hapus'])->name('foodmenurec.hapusitem');
     
     // event user
     Route::get('event', [EventController::class, 'index'])->name('event.index');
