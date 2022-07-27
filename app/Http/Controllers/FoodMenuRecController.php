@@ -409,6 +409,7 @@ class FoodMenuRecController extends Controller
         // Food::create($request->all());
         return redirect()->route('foodmenurec.detail', ['id' => $request->idmenu])->with('success', 'Data berhasil ditambahkan.');
     }
+    
     public function add(Request $request){
         // dd($request->iditem);
         $id = $request->iditem;

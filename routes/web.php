@@ -55,6 +55,9 @@ Route::middleware('auth')->group(function(){
     // My Account
     Route::get('myaccount', [MyAccountController::class, 'index'])->name('user.index');
     Route::get('mymenu', [MyAccountController::class, 'menu'])->name('user.menu');
+    Route::post('mymenustore', [MyAccountController::class, 'store'])->name('user.menustore');
+    Route::get('mymenudetail/{id}', [MyAccountController::class, 'detail'])->name('user.menudetail');
+    Route::get('mymenudelete/{id}', [MyAccountController::class, 'delete'])->name('user.menudelete');
     Route::get('mymenurec', [MyAccountController::class, 'menurec'])->name('user.menurec');
     Route::get('mymenudetail', [MyAccountController::class, 'menu'])->name('user.menudetail');
     Route::get('myprofile', [MyAccountController::class, 'profile'])->name('user.profile');

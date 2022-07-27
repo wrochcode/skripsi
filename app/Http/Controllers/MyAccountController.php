@@ -158,7 +158,7 @@ class MyAccountController extends Controller
         $temp4 = round(($kalkulator['tdee']*0.25)/9,2);
         $kalkulator['fatgram'] = $temp3." - ". $temp4." gram";
 
-        // dd($kalkulator);
+        // dd($user->gender);
         // normalisasi user
         if($user->gender == 2){
             $user->gender = 'Perempuan';
@@ -174,7 +174,8 @@ class MyAccountController extends Controller
     
     public function menurec(){
         //inisialisasi
-        $iduser = 1;
+        // $iduser = 1;
+        $iduser = Auth::user()->id;
         $namecompany = DB::table('abouts')->where('name', 'namecompany')->first();
         $mainuser = DB::table('users')->where('id', $iduser)->first();
         $user = DB::table('user_profil')->where('id_user', $iduser)->first();
@@ -320,6 +321,7 @@ class MyAccountController extends Controller
             $trec = 5;
         }
 
+        // dd($user->gender);
         if($user->gender == 2){
             $user->gender = 'Perempuan';
         }else{
@@ -339,7 +341,7 @@ class MyAccountController extends Controller
     
     public function menu(){
         //inisialisasi
-        $iduser = 1;
+        $iduser = Auth::user()->id;
         $namecompany = DB::table('abouts')->where('name', 'namecompany')->first();
         $mainuser = DB::table('users')->where('id', $iduser)->first();
         $user = DB::table('user_profil')->where('id_user', $iduser)->first();
@@ -372,6 +374,11 @@ class MyAccountController extends Controller
         }
 
         // dd($alternatif);
+        if($user->gender == 2){
+            $user->gender = 'Perempuan';
+        }else{
+            $user->gender = 'Laki - Laki';
+        }
         if($alternatif<1){
             $normalisasi = null;
             return view('user.mymenu', [
@@ -495,6 +502,7 @@ class MyAccountController extends Controller
             $trec = 5;
         }
 
+        // dd($user->gender);
         if($user->gender == 2){
             $user->gender = 'Perempuan';
         }else{
@@ -510,6 +518,31 @@ class MyAccountController extends Controller
             'metode' => $metode,
             'trec' => $trec,
             ]);
+    }
+
+    public function store(Request $request){
+        $request->validate([
+            'name'=>['required', 'min:3', 'string'],
+        ]);
+        $currentuser = User::find(Auth::user()->id);
+        Foodsmenu::create([
+                'id_user'=> $currentuser->id,
+                'name'=> $request->name,
+                'calorie'=> $request->calorie,
+                'carb'=> $request->carb,
+                'fat'=> $request->fat,
+                'protein'=> $request->protein,
+            ]);
+        // Food::create($request->all());
+        return redirect('mymenu')->with('success', 'Data berhasil dibuat.');
+    }
+
+    public function delete($id){
+        // dd($id);
+        Foodsmenu::find($id)->delete();
+        // $food = DB::table('foodsmenu')->where('id', $id)->first();
+
+        return  redirect('mymenu');
     }
 
     public function profile(){

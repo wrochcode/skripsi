@@ -25,6 +25,48 @@
                                     </li> --}}
                                 </ul>
                             </div>
+                            <div class="col-lg-9 ms-4 slideInRight">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-table"></i> Tambah Menu
+                                    </div>
+                                    <div class="card-body">
+                                        <form action="{{ route('user.menustore') }}" style="margin-bottom: 20px" method="post">
+                                            @csrf
+                                            <div class="row mb-3">
+                                                <div class="col-md-9">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input value="{{ old('name') }}" name="name" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" autocomplete="off" />
+                                                        <label for="inputFirstName">Nama menu</label>
+                                                    </div>
+                                                    @error('name')
+                                                        <div class="text-danger mt-2">
+                                                            {{ $message }}
+                                                        </div>
+                                                    @enderror
+                                                </div>
+                                                <input value="0" name="calorie" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" hidden/>
+                                                <input value="0" name="carb" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" hidden/>
+                                                <input value="0" name="fat" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" hidden/>
+                                                <input value="0" name="protein" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" hidden/>
+                                                <div class="col-md-1">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <button class="btn btn-primary mt-2" type="submit">Tambah</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            @if ($trec == 0)
+                                <div class="col-xl-8 ms-4 col-md-6">
+                                    <div class="card bg-danger text-white mb-4">
+                                        <div class="card-header">Menu kosong</div>
+                                        <div class="card-body">Silahkan tambah menu kak </div>
+                                    </div>
+                                </div>
+                            @endif
                             <?php $indexloop = 1 ;
                             ?>        
                             @for ($i = 0 ; $i  < $trec; $i++)    
@@ -38,7 +80,7 @@
                                     @elseif ($indexloop == 4)    
                                     <div class="card bg-danger text-white mb-4">
                                     @php
-                                        $index == -1;
+                                        $indexloop = 0;
                                     @endphp
                                     @endif
                                             <div class="card-header">Menu @php echo $foods[$i]['name'] @endphp</div>
@@ -50,7 +92,8 @@
                                                                     ; 
                                                                     @endphp</div>
                                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                                <a class="small text-white" href="{{ route('foodmenu.detail', $foods[$i]['id']) }}">View Details <i class="fas fa-angle-right"></i></a>
+                                                <a class="small text-white" href="{{ route('user.menudetail', $foods[$i]['id']) }}">View Details <i class="fas fa-angle-right"></i></a>
+                                                <a class="btn btn-danger" href="{{ route('user.menudelete', $foods[$i]['id']) }}">Hapus <i class="fa fa-trash" aria-hidden="true"></i></button></a>
                                         </div>
                                     </div>
                                     @php

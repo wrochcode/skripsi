@@ -38,7 +38,7 @@
                                     @elseif ($indexloop == 4)    
                                     <div class="card bg-danger text-white mb-4">
                                     @php
-                                        $indexloop == 1;
+                                        $indexloop = 0;
                                     @endphp
                                     @endif
                                             <div class="card-header">Menu @php echo $foods[$i]['name'] @endphp</div>
