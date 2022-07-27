@@ -54,6 +54,7 @@ Route::middleware('auth')->group(function(){
     // My Account
     Route::get('myaccount', [MyAccountController::class, 'index'])->name('user.index');
     Route::get('mymenu', [MyAccountController::class, 'menu'])->name('user.menu');
+    Route::get('mymenurec', [MyAccountController::class, 'menurec'])->name('user.menurec');
     Route::get('mymenudetail', [MyAccountController::class, 'menu'])->name('user.menudetail');
     Route::get('myprofile', [MyAccountController::class, 'profile'])->name('user.profile');
     Route::put('myprofile', [MyAccountController::class, 'profilestore'])->name('myprofile.update');

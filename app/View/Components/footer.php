@@ -30,10 +30,8 @@ class footer extends Component
         $telp = DB::table('abouts')->where('name', 'telp')->first();
         $navbar = [
             'Beranda' => '/',
-            'Tentang' => '/about',
-            'Artikel' => '/article',
-            // 'Akun Saya' => '/myaccount',
-            'Kalkulator Sehat' => '/recomendation',
+            'Kalkulator Sehat' => '/calchealth',
+            'Profilku' => '/myaccount',
         ];
         return view('components.footer', compact('navbar', 'namecompany', 'address', 'telp'));
     }

@@ -24,7 +24,7 @@ class RegistrationController extends Controller
         ProfilUserModel::create([
             'id_user'=> $sumuser,
             'planing' => 0,
-            'gender' => 0,
+            'gender' => 1,
             'age' => 0,
             'height' => 0,
             'weight' => 0,

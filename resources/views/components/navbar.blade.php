@@ -28,7 +28,6 @@
                 @endforeach
             {{-- </div> --}}
             @guest
-            {{-- <div class="navbar-nav ms-auto"> --}}
                 <li>
                     <a href="{{ route('daftar') }}" class="nav-item nav-link">Daftar</a>
                 </li>
@@ -37,38 +36,17 @@
                 </li>
             </div>
             @else
-            <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{ Auth::user()->username }}</a>
-                <div class="dropdown-menu rounded-0 m-0">
-                    <a href="{{ route('user.profile') }}" class="dropdown-item">Pengaturan Akun</a>
-                    <a href="{{ route('logout') }}" class="dropdown-item">keluar</a>
+                <li>
+                    <a href="{{ route('user.index') }}" class="nav-item nav-link">Profilku</a>
+                </li>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{ Auth::user()->username }}</a>
+                    <div class="dropdown-menu dropdown-menu-end rounded-0 m-0">
+                        <a href="{{ route('user.profile') }}" class="dropdown-item">Pengaturan Akun</a>
+                        <a href="{{ route('logout') }}" class="dropdown-item">keluar</a>
+                    </div>
                 </div>
             </div>
-                {{-- <li>
-                    <a href="{{ route('user.index') }}" class="nav-item nav-link">Akun saya (<small>{{ Auth::user()->username }}</small>)</a>
-                </li>
-                <li>
-                    <a class="btn btn-outline-primary" href="{{ route('user.profile') }}">Pengaturan Akun</a>
-                    <a href="{{ route('logout') }}" class="nav-item nav-link">keluar</a>
-                </li>
-            </div> --}}
-                {{-- <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-menu-end dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{ Auth::user()->name }} </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li>
-                                <form action="" method="post">
-                                    @csrf
-                                    <button type="submit" class="dropdown-item">Logout</button>
-                                </form>
-                            </li>
-                    </ul>
-                </li> --}}
-            {{-- </div> --}}
-            {{-- <a href="{{ route('admin.index') }}" class="btn btn-primary px-3 d-none d-lg-flex">{{ Auth::user()->name }} </a></a> --}}
             @endguest
         </div>
     </nav>
