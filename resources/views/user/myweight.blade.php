@@ -26,6 +26,7 @@
                                 </ul>
                             </div>
                         </div>
+                        fitur dalam pengembangan
                     </div>
                     <div class="col-2">
                         <div class="text-start mt-5 mb-5 fadeInUp" data-wow-delay="0.1s">

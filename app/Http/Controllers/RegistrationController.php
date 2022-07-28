@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegistrationRequest;
+use App\Models\Profilneed;
 use App\Models\ProfilUserModel;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -30,6 +31,10 @@ class RegistrationController extends Controller
             'weight' => 0,
             'activity' => 0,
             'exercise_activity' => 0,
+        ]);
+        Profilneed::create([
+            'id_user'=> $sumuser,
+            'calorie'=> 0,
         ]);
 
         return redirect('masuk')->with('success', 'Thank you, you are now registered.');

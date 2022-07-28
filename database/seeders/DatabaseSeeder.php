@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Profilneed;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
@@ -25,6 +26,7 @@ class DatabaseSeeder extends Seeder
             FoodSeeder::class,
             ItemFoodsMenuSeeder::class,
             Itemsfoodmenurecseeder::class,
+            Profilneedseeder::class,
             ProfilUserSeeder::class,
             UserSeeder::class,
             VisitorSeeder::class,

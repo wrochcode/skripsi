@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Food;
 use App\Models\FoodMenuRecModel;
 use App\Models\Foodsmenu;
+use App\Models\Itemsfoodmenu;
+use App\Models\Itemsfoodmenurec;
+use App\Models\Profilneed;
 use App\Models\ProfilUserModel;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -128,7 +132,17 @@ class MyAccountController extends Controller
         }else{
             $kalkulator['tdee'] = 0;
         }
-        
+
+        $idprofilneed = DB::table('profilneeds')->where('id_user', $iduser)->first();
+        // dd($kalkulator['tdee']);
+        $needs = Profilneed::find($idprofilneed->id)->update([
+            'id_user'=> $idprofilneed->id_user,
+            'calorie'=> $kalkulator['tdee'],
+        ]);
+
+        $needtotal = $needs - $kalkulator['tdee'];
+        // dd($needtotal);
+
         // Serat
         $kalkulator['serat'] = ($kalkulator['tdee']/1000) * 14;
         $kalkulator['serat'] = round( $kalkulator['serat'],2);
@@ -167,6 +181,7 @@ class MyAccountController extends Controller
         }
         return view('user.myaccount',[
             'kalkulator' => $kalkulator,
+            // 'kebutuhan' => $needs,
             'namecompany' => $namecompany,
             'profiluser' => $user,
             ]);
@@ -338,6 +353,67 @@ class MyAccountController extends Controller
             'trec' => $trec,
             ]);
     }
+
+    public function detailrec($id){
+        $idmenu = $id;
+        $iduser = Auth::user()->id;
+        $namecompany = DB::table('abouts')->where('name', 'namecompany')->first();
+        $mainuser = DB::table('users')->where('id', $iduser)->first();
+        $user = DB::table('user_profil')->where('id_user', $iduser)->first();
+
+        // dd($idmenu);
+        // Menentukan maksimal -> butuh data
+        $Foods = Itemsfoodmenurec::all();
+        $calorie = 0 ;
+        $carb = 0 ;
+        $fat = 0 ;
+        $protein = 0 ;
+
+        $index = 0 ;
+        foreach($Foods as $food){
+            if($food->id_menu == $id){
+                $fooduser[$index]['name'] = $food->name;
+                $fooduser[$index]['id'] = $food->id;
+                $fooduser[$index]['calorie'] = $food->calorie;
+                $calorie += $food->calorie;
+                $fooduser[$index]['carb'] = $food->carb;
+                $carb += $food->carb;
+                $fooduser[$index]['fat'] = $food->fat;
+                $fat += $food->fat;
+                $fooduser[$index]['protein'] = $food->protein;
+                $protein += $food->protein;
+                $index++;
+            }
+        }
+
+        if($index == 0){
+            $fooduser = null;
+        }
+
+        $database = DB::table('foodmenurecs')->where('id', $idmenu)->first();
+
+        FoodMenuRecModel::find($idmenu)->update([
+            'name'=> $database->name,
+            'calorie'=> $calorie,
+            'carb'=> $carb,
+            'fat'=> $fat,
+            'protein'=> $protein,
+        ]);
+        //normalisasi gender
+        if($user->gender == 2){
+            $user->gender = 'Perempuan';
+        }else{
+            $user->gender = 'Laki - Laki';
+        }
+        
+        return view('user.myrecmenudetail', [
+            'foods' => $fooduser,
+            'idmenu' => $idmenu,
+            'profiluser' => $user,
+            'trec' => $index,
+            'fooddatabases' => Food::all(),
+        ]);
+    }
     
     public function menu(){
         //inisialisasi
@@ -374,6 +450,7 @@ class MyAccountController extends Controller
         }
 
         // dd($alternatif);
+        //normalisasi gender
         if($user->gender == 2){
             $user->gender = 'Perempuan';
         }else{
@@ -508,10 +585,50 @@ class MyAccountController extends Controller
         }else{
             $user->gender = 'Laki - Laki';
         }
-        // dd($makananuser);
+
+        //tdee
+        // tdee
+        // normalisasi activitie
+        if($user->exercise_activity == 1){
+            $temp = 1.2;
+        }elseif($user->exercise_activity == 2){
+            $temp = 1.375;
+        }elseif($user->exercise_activity == 3){
+            $temp = 1.55;
+        }elseif($user->exercise_activity == 4){
+            $temp = 1.725;
+        }elseif($user->exercise_activity == 5){
+            $temp = 1.9;
+        }else{
+            $temp = null;
+        }
+        // dd($temp);
+        if($user->age != 0 && $user->height != 0 && $user->weight != 0 && $user->exercise_activity != 0){
+            if($user->gender == 1){
+                $temp *= (66.5+(13.7 * $user->weight) + ((5*$user->height)-($user->age*6.8)));
+            }else{
+                $temp *= (655+(9.6 * $user->weight) + ((1.8*$user->height)-($user->age*4.7)));
+            }
+            $kalkulator['tdee'] = round( $temp,1);
+        }else{
+            $kalkulator['tdee'] = 0;
+        }
+
+        $idprofilneed = DB::table('profilneeds')->where('id_user', $iduser)->first();
+        // dd($kalkulator['tdee']);
+        $needs = Profilneed::find($idprofilneed->id)->update([
+            'id_user'=> $idprofilneed->id_user,
+            'calorie'=> $kalkulator['tdee'],
+        ]);
+        $needtotal = round( $kalkulator['tdee'],0);
+        
+        // dd($needtotal);
+
+        // dd($needtotal);
         return view('user.mymenu',[
             'foods' => $makananuser,
             'recs' => null,
+            'kebutuhan' => $needtotal,
             'profiluser' => $user,
             'fooddatabases' => $Foods,
             'criterias' => $poincriteria,
@@ -535,6 +652,112 @@ class MyAccountController extends Controller
             ]);
         // Food::create($request->all());
         return redirect('mymenu')->with('success', 'Data berhasil dibuat.');
+    }
+
+    public function detail($id){
+        // mencari data
+        // dd($id);
+        $useradmin = Auth::user()->id;
+        $idmenu = $id;
+        $iduser = Auth::user()->id;
+        $namecompany = DB::table('abouts')->where('name', 'namecompany')->first();
+        $mainuser = DB::table('users')->where('id', $iduser)->first();
+        $user = DB::table('user_profil')->where('id_user', $iduser)->first();
+        // dd($idmenu);
+        // Menentukan maksimal -> butuh data
+        $Foods = Itemsfoodmenu::all();
+        $calorie = 0 ;
+        $carb = 0 ;
+        $fat = 0 ;
+        $protein = 0 ;
+
+        $index = 0 ;
+        foreach($Foods as $food){
+            if($food->id_user == $useradmin && $food->id_menu == $id){
+                $fooduser[$index]['name'] = $food->name;
+                $fooduser[$index]['id'] = $food->id;
+                $fooduser[$index]['calorie'] = $food->calorie;
+                $calorie += $food->calorie;
+                $fooduser[$index]['carb'] = $food->carb;
+                $carb += $food->carb;
+                $fooduser[$index]['fat'] = $food->fat;
+                $fat += $food->fat;
+                $fooduser[$index]['protein'] = $food->protein;
+                $protein += $food->protein;
+                $index++;
+            }
+        }
+
+        if($index == 0){
+            $fooduser = null;
+        }
+
+        $database = DB::table('foodsmenu')->where('id', $idmenu)->first();
+
+        
+        
+        if($user->gender == 2){
+            $user->gender = "Perempuan";
+        }else{
+            $user->gender = "Laki laki";
+        }
+
+        Foodsmenu::find($idmenu)->update([
+            'name'=> $database->name,
+            'calorie'=> $calorie,
+            'carb'=> $carb,
+            'fat'=> $fat,
+            'protein'=> $protein,
+        ]);
+        return view('user.mymenudetail', [
+            'foods' => $fooduser,
+            'idmenu' => $idmenu,
+            'profiluser' => $user,
+            'trec' => $index,
+            'fooddatabases' => Food::all(),
+        ]);
+    }
+
+    public function tambah(Request $request){
+        $request->validate([
+            'name'=>['required', 'min:3', 'string'],
+            'calorie'=>['required', 'numeric'],
+            'carb'=>['required', 'numeric'],
+            'fat'=>['required', 'numeric'],
+            'protein'=>['required','numeric'],
+        ]);
+        // dd($request->idmenu);
+        $currentuser = User::find(Auth::user()->id);
+        Itemsfoodmenu::create([
+                'id_user'=> $currentuser->id,
+                'id_menu'=> $request->idmenu,
+                'name'=> $request->name,
+                'calorie'=> $request->calorie,
+                'carb'=> $request->carb,
+                'fat'=> $request->fat,
+                'protein'=> $request->protein,
+            ]);
+        // Food::create($request->all());
+        // return redirect()->route('foodmenu.detail', ['id' => $request->idmenu])->with('success', 'Data berhasil ditambahkan.');
+        return redirect()->route('user.menudetail', ['id' => $request->idmenu])->with('success', 'Data berhasil ditambahkan.');
+    }
+
+    public function add(Request $request){
+        // dd($request->iditem);
+        $id = $request->iditem;
+        $currentuser = User::find(Auth::user()->id);
+        $food =Food::find($id);
+        // dd($food);
+        Itemsfoodmenu::create([
+                'id_user'=> $currentuser->id,
+                'id_menu'=> $request->idmenu,
+                'name'=> $food->name,
+                'calorie'=> $food->calorie,
+                'carb'=> $food->carb,
+                'fat'=> $food->fat,
+                'protein'=> $food->protein,
+            ]);
+        return redirect()->route('user.menudetail', ['id' => $request->idmenu])->with('success', 'Data berhasil ditambahkan.');
     }
 
     public function delete($id){

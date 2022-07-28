@@ -99,10 +99,10 @@
                         <div class="text-start mt-5 mb-5 fadeInUp" data-wow-delay="0.1s">
                             <h3 class="mb-1">Biodataku</h3>
                             @if ($profiluser->gender == "Perempuan")
-                                <img class="img-thumbnail mt-3" src="img/woman.png" alt="">
+                                <img class="img-thumbnail mt-3" src="{{URL::asset('img/woman.png')}}" alt="">
                                 
                             @else
-                                <img class="img-thumbnail mt-3" src="img/men.png" alt="">
+                                <img class="img-thumbnail mt-3" src="{{URL::asset('img/men.png')}}" alt="">
 
                             @endif
                             <p class="lh-2 mt-3">{{ Auth::user()->name }} ({{ Auth::user()->username }}) <br><hr>

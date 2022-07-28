@@ -25,40 +25,46 @@
                                     </li> --}}
                                 </ul>
                             </div>
-                            <?php $indexloop = 1 ;
-                            ?>        
-                            @for ($i = 0 ; $i  < $trec; $i++)    
-                                <div class="col-xl-8 ms-4 col-md-6">
-                                    @if ($indexloop == 1)
-                                    <div class="card bg-primary text-white mb-4">
-                                    @elseif ($indexloop == 2)    
-                                    <div class="card bg-success text-white mb-4">
-                                    @elseif ($indexloop == 3)    
-                                    <div class="card bg-warning text-white mb-4">
-                                    @elseif ($indexloop == 4)    
-                                    <div class="card bg-danger text-white mb-4">
-                                    @php
-                                        $indexloop = 0;
-                                    @endphp
-                                    @endif
-                                            <div class="card-header">Menu @php echo $foods[$i]['name'] @endphp</div>
-                                            <div class="card-body">@php echo 
-                                                                    "Kalori: ".$foods[$i]['calorie']."&nbsp"."&nbsp"."&nbsp"."&nbsp".
-                                                                    "Karbohidrat: ".$foods[$i]['carb']."&nbsp"."&nbsp"."&nbsp"."&nbsp".
-                                                                    "Lemak: ".$foods[$i]['fat']."&nbsp"."&nbsp"."&nbsp"."&nbsp".
-                                                                    "Protein: ".$foods[$i]['protein']
-                                                                    ; 
-                                                                    @endphp</div>
-                                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                                <a class="small text-white" href="{{ route('usermenurec.detail', $foods[$i]['id']) }}">View Details <i class="fas fa-angle-right"></i></a>
-                                        </div>
+                            <div class="ms-4 mb-4 col-lg-11">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <i class="fas fa-table me-1"></i> Data anda
                                     </div>
-                                    @php
-                                        // echo $indexloop;
-                                        $indexloop++;
-                                    @endphp
+                                    <div class="card-body">
+                                        @if ($trec != 0)
+                                        <table class="table table-bordered">
+                                            <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Name</th>
+                                                <th>Calorie</th>
+                                                <th>Karbohidrat</th>
+                                                <th>Lemak</th>
+                                                <th>Protein</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php $no= 1 ; $tkalori = 0;?>
+                                                    @for ($i=0 ; $i<count($foods) ; $i++ )
+                                                        <tr>
+                                                        <td>{{ $no }}</td>
+                                                            <?php $no++;?>
+                                                            <td><?php echo $foods[$i]['name']; ?></td>
+                                                            <td><?php echo $foods[$i]['calorie']; $tkalori +=$foods[$i]['calorie']; ?></td>
+                                                            <td><?php echo $foods[$i]['carb']; ?></td>
+                                                            <td><?php echo $foods[$i]['fat']; ?></td>
+                                                            <td><?php echo $foods[$i]['protein']; ?></td>
+                                                        </tr>
+                                                    @endfor
+                                                    <p>Total Kalori @php
+                                                        echo $tkalori;
+                                                    @endphp Kcal</p>
+                                            </tbody>
+                                        </table>
+                                        @endif
+                                    </div>
                                 </div>
-                            @endfor
+                            </div>
                         </div>
                     </div>
                     <div class="col-2">
@@ -68,7 +74,7 @@
                                 <img class="img-thumbnail mt-3" src="{{URL::asset('img/woman.png')}}" alt="">
                                 
                             @else
-                                <img class="img-thumbnail mt-3" src="{{URL::asset('img/men.png')}}" alt="">
+                            <img class="img-thumbnail mt-3" src="{{URL::asset('img/men.png')}}" alt="">
 
                             @endif
                             <p class="lh-2 mt-3">{{ Auth::user()->name }} ({{ Auth::user()->username }}) <br><hr>

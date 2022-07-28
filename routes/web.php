@@ -57,9 +57,11 @@ Route::middleware('auth')->group(function(){
     Route::get('mymenu', [MyAccountController::class, 'menu'])->name('user.menu');
     Route::post('mymenustore', [MyAccountController::class, 'store'])->name('user.menustore');
     Route::get('mymenudetail/{id}', [MyAccountController::class, 'detail'])->name('user.menudetail');
+    Route::post('mymenutambah', [MyAccountController::class, 'tambah'])->name('user.menutambah');
+    Route::post('usermenuadded', [MyAccountController::class, 'add'])->name('usermenu.add');
     Route::get('mymenudelete/{id}', [MyAccountController::class, 'delete'])->name('user.menudelete');
     Route::get('mymenurec', [MyAccountController::class, 'menurec'])->name('user.menurec');
-    Route::get('mymenudetail', [MyAccountController::class, 'menu'])->name('user.menudetail');
+    Route::get('mymenurecdetail/{id}', [MyAccountController::class, 'detailrec'])->name('usermenurec.detail');
     Route::get('myprofile', [MyAccountController::class, 'profile'])->name('user.profile');
     Route::put('myprofile', [MyAccountController::class, 'profilestore'])->name('myprofile.update');
     Route::get('myweight', [MyAccountController::class, 'weight'])->name('user.weight');

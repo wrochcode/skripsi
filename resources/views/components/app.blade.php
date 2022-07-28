@@ -31,14 +31,19 @@
 
     <!-- Libraries Stylesheet -->
     <link href="/lib/animate/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('lib/animate/animate.min.css') }}">
     <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="{{ asset('lib/owlcarousel/assets/owl.carousel.min.css') }}">
+    
     <!-- Customized Bootstrap Stylesheet -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+    
     <!-- Template Stylesheet -->
     <link href="/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
 <body>
@@ -50,16 +55,37 @@
     <x-footer></x-footer>
 
     <!-- JavaScript Libraries -->
+    <script>
+        window.addEventListener('DOMContentLoaded', event => {
+            // Simple-DataTables
+            // https://github.com/fiduswriter/Simple-DataTables/wiki
+
+            const datatablesSimple = document.getElementById('datatablesSimple');
+            if (datatablesSimple) {
+                new simpleDatatables.DataTable(datatablesSimple);
+            }
+        });
+    </script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/lib/wow/wow.min.js"></script>
+    <script src="{{ asset('lib/wow/wow.min.js') }}"></script>
     <script src="/lib/easing/easing.min.js"></script>
+    <script src="{{ asset('lib/easing/easing.min.js') }}"></script>
     <script src="/lib/waypoints/waypoints.min.js"></script>
+    <script src="{{ asset('lib/waypoints/waypoints.min.js') }}"></script>
     <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
-
+    <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
+    
     <!-- Template Javascript -->
     <script src="/js/main.js"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="/js/scripts2.js"></script>
+    <script src="{{ asset('js/scripts2.js') }}"></script>
+    <script src="js/datatables-simple-demo2.js"></script>
+    <script src="{{ asset('js/datatables-simple-demo2.js') }}"></script>
 </body>
 
 </html>

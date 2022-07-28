@@ -13,8 +13,7 @@ class ProfilUserSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
+    public function run(){
         collect([[
             // 'id_user' => 1,
             'id_user' => 1,

@@ -83,14 +83,26 @@
                                         $indexloop = 0;
                                     @endphp
                                     @endif
-                                            <div class="card-header">Menu @php echo $foods[$i]['name'] @endphp</div>
+                                            <div class="card-header">Menu @php echo $foods[$i]['name'] @endphp | dari kebutuhan anda, anda @php
+                                                $needtotal = $foods[$i]['calorie'] - $kebutuhan;
+                                                if($needtotal>0){
+                                                    $needtotal = 'lebih '.$needtotal;
+                                                }
+                                                if($needtotal==0){
+                                                    $needtotal = 'tepat '.$needtotal;
+                                                }
+                                                if($needtotal<0){
+                                                    $needtotal = 'kurang '.$needtotal;
+                                                }
+                                                echo $needtotal.' kcal <br>(Kebutuhan '.$kebutuhan.' kcal)';
+                                            @endphp</div>
                                             <div class="card-body">@php echo 
                                                                     "Kalori: ".$foods[$i]['calorie']."&nbsp"."&nbsp"."&nbsp"."&nbsp".
                                                                     "Karbohidrat: ".$foods[$i]['carb']."&nbsp"."&nbsp"."&nbsp"."&nbsp".
                                                                     "Lemak: ".$foods[$i]['fat']."&nbsp"."&nbsp"."&nbsp"."&nbsp".
                                                                     "Protein: ".$foods[$i]['protein']
                                                                     ; 
-                                                                    @endphp</div>
+                                                                    @endphp </div>
                                             <div class="card-footer d-flex align-items-center justify-content-between">
                                                 <a class="small text-white" href="{{ route('user.menudetail', $foods[$i]['id']) }}">View Details <i class="fas fa-angle-right"></i></a>
                                                 <a class="btn btn-danger" href="{{ route('user.menudelete', $foods[$i]['id']) }}">Hapus <i class="fa fa-trash" aria-hidden="true"></i></button></a>
@@ -108,10 +120,10 @@
                         <div class="text-start mt-5 mb-5 fadeInUp" data-wow-delay="0.1s">
                             <h3 class="mb-1">Biodataku</h3>
                             @if ($profiluser->gender == "Perempuan")
-                                <img class="img-thumbnail mt-3" src="img/woman.png" alt="">
+                                <img class="img-thumbnail mt-3" src="{{URL::asset('img/woman.png')}}" alt="">
                                 
                             @else
-                                <img class="img-thumbnail mt-3" src="img/men.png" alt="">
+                                <img class="img-thumbnail mt-3" src="{{URL::asset('img/men.png')}}" alt="">
 
                             @endif
                             <p class="lh-2 mt-3">{{ Auth::user()->name }} ({{ Auth::user()->username }}) <br><hr>
