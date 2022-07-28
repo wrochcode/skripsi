@@ -1,4 +1,4 @@
-<x-app-layout title="recomen menu">
+<x-app-layout title="Menu Detail">
     <!-- Contact Start -->
     <div class="container-xxl py-5">
         <div class="container">

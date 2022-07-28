@@ -1,4 +1,4 @@
-<x-app-layout title="daftar">
+<x-app-layout title="My Profie">
     <!-- Contact Start -->
     <div class="container-xxl py-5">
         <div class="container">

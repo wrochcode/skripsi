@@ -334,8 +334,6 @@ class FoodMenuController extends Controller
             'metode' => $metode,
             'trec' => $trec,
         ]);
-        // dd($c1, $c2, $c3, $c4, $max1, $max2, $max3, $max4);
-        
     }
     
     public function create(Request $request){

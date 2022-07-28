@@ -1,4 +1,4 @@
-<x-app-layout title="myaccount">
+<x-app-layout title="My Account">
     <!-- Contact Start -->
     <div class="container-xxl py-5">
         <div class="container">

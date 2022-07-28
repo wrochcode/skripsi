@@ -59,6 +59,10 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="ms-4">
+                                <a href="{{ route('user.sawmetode') }}" class="btn btn-warning  mb-4">Urutkan dengan algoritma SAW </a>
+                                {{-- <a href="{{ route('user.sawmetode') }}">Urutkan dengan algoritma SAW</a> --}}
+                            </div>
                             @if ($trec == 0)
                                 <div class="col-xl-8 ms-4 col-md-6">
                                     <div class="card bg-danger text-white mb-4">
@@ -83,7 +87,7 @@
                                         $indexloop = 0;
                                     @endphp
                                     @endif
-                                            <div class="card-header">Menu @php echo $foods[$i]['name'] @endphp | dari kebutuhan anda, anda @php
+                                            <div class="card-header">Menu @php echo $foods[$i]['name'] @endphp &nbsp &nbsp- &nbsp &nbspdari kebutuhan anda, anda @php
                                                 $needtotal = $foods[$i]['calorie'] - $kebutuhan;
                                                 if($needtotal>0){
                                                     $needtotal = 'lebih '.$needtotal;

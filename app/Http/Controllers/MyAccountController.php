@@ -614,6 +614,8 @@ class MyAccountController extends Controller
             $kalkulator['tdee'] = 0;
         }
 
+        $needtotal = round( $kalkulator['tdee'],0);
+
         $idprofilneed = DB::table('profilneeds')->where('id_user', $iduser)->first();
         // dd($kalkulator['tdee']);
         $needs = Profilneed::find($idprofilneed->id)->update([
@@ -903,5 +905,203 @@ class MyAccountController extends Controller
             'namecompany' => $namecompany,
             'profiluser' => $user,
             ]);
+    }
+
+    public function saw(){
+        // identifikasi user
+        $alternatif = 0;
+        $currentuser = User::find(Auth::user()->id); //get id user
+        $iduser = Auth::user()->id;
+        $namecompany = DB::table('abouts')->where('name', 'namecompany')->first();
+        $user = DB::table('user_profil')->where('id_user', $iduser)->first();
+        
+        if($user->gender == 2){
+            $user->gender = 'Perempuan';
+        }else{
+            $user->gender = 'Laki - Laki';
+        }
+
+        // Menentukan maksimal -> butuh data
+        $Foods = Foodsmenu::all();
+
+        $point = DB::table('criterias')->where('name', 'Defisit')->first();
+        $metode = $point->name;
+        $poincriteria [1] = 'Kalori: '. strval($point->calorie);
+        $poincriteria [2] = ', Lemak: '. strval($point->fat);
+        $poincriteria [3] = ', Karbohidrat: '. strval($point->carb);
+        $poincriteria [4] = ', Protein: '. strval($point->protein);
+        
+        
+        // dd($currentuser->id);
+        foreach($Foods as $Food){
+            if($Food->id_user == $currentuser->id){
+                $alternatif++;
+            }
+        }
+        $trec = $alternatif;
+        if($trec>5){
+            $trec=5;
+        }
+
+        // dd($alternatif);
+        if($alternatif<1){
+            $normalisasi = null;
+            return view('user.mysaw', [
+                'foods' => null,
+                'recs' => null,
+                'fooddatabases' => $Foods,
+                'criterias' => $poincriteria,
+                'metode' => $metode,
+                'trec' => $trec,
+            ]);
+        }
+
+        $alternatif = 0;
+        // dd($Foods);
+        foreach($Foods as $Food){
+            if($Food->id_user == $currentuser->id){
+                $makananuser[$alternatif]['id'] = $Food->id;
+                $makananuser[$alternatif]['id_user'] = $Food->id_user;
+                $makananuser[$alternatif]['name'] = $Food->name;
+                $makananuser[$alternatif]['calorie'] = $Food->calorie;
+                $makananuser[$alternatif]['carb'] = $Food->carb;
+                $makananuser[$alternatif]['fat'] = $Food->fat;
+                $makananuser[$alternatif]['protein'] = $Food->protein;
+                $alternatif++;
+            }
+        }
+        
+        // ALgorithma start cari max
+        $max1 = $makananuser[0]['calorie'];
+        $max2 = $makananuser[0]['carb'];
+        $max3 = $makananuser[0]['fat'];
+        $max4 = $makananuser[0]['protein'];
+        for($i=0 ; $i< $trec ; $i++){
+            $temp=$makananuser[$i]['calorie'];
+            if($temp>$max1){
+                $max1=$temp;
+            }
+            $temp=$makananuser[$i]['carb'];
+            if($temp>$max2){
+                $max2=$temp;
+            }
+            $temp=$makananuser[$i]['fat'];
+            if($temp>$max3){
+                $max3=$temp;
+            }
+            $temp=$makananuser[$i]['protein'];
+            if($temp>$max4){
+                $max4=$temp;
+            }
+        }
+
+        //Normalisasi
+        $alternatif = 0;
+        $criteria = DB::table('criterias')->where('name', 'Defisit')->first();
+        $c1 = $criteria->calorie;
+        $c2 = $criteria->carb;
+        $c3 = $criteria->fat;
+        $c4 = $criteria->protein;
+
+        // dd($makananuser);
+        for($i=0 ; $i< $trec ; $i++){
+            // dd(1/4);
+            if($max1!=0){
+                $temp = ($makananuser[$i]['calorie']/$max1)*$c1;
+            }
+            if($max2!=0){
+                $temp = $temp + (($makananuser[$i]['carb']/$max2)*$c2);
+            }
+            if($max3!=0){
+                $temp += (($makananuser[$i]['fat']/$max3)*$c3);
+            }
+            if($max4!=0){
+                $temp += (($makananuser[$i]['protein']/$max4)*$c4);
+            }
+            
+            $normalisasi[$alternatif]['nilai'] = round($temp,4);
+            $normalisasi[$alternatif]['id_user'] = $makananuser[$i]['id_user'];
+            $normalisasi[$alternatif]['name'] = $makananuser[$i]['name'];
+            $normalisasi[$alternatif]['calorie'] = $makananuser[$i]['calorie'];
+            $normalisasi[$alternatif]['carb'] = $makananuser[$i]['carb'];
+            $normalisasi[$alternatif]['fat'] = $makananuser[$i]['fat'];
+            $normalisasi[$alternatif]['protein'] = $makananuser[$i]['protein'];
+            $alternatif++;
+        }
+        
+        for($i= 0 ;$i<$trec;$i++){
+            for($j=0;$j<$trec-$i-1;$j++){
+                if($normalisasi[$j]['nilai']<$normalisasi[$j+1]['nilai']){
+                    $temp = $normalisasi[$j]['nilai'];
+                    $normalisasi[$j]['nilai'] = $normalisasi[$j+1]['nilai'];
+                    $normalisasi[$j+1]['nilai'] = $temp;
+
+                    $temp = $normalisasi[$j]['id_user'];
+                    $normalisasi[$j]['id_user'] = $normalisasi[$j+1]['id_user'];
+                    $normalisasi[$j+1]['id_user'] = $temp;
+
+                    $temp = $normalisasi[$j]['name'];
+                    $normalisasi[$j]['name'] = $normalisasi[$j+1]['name'];
+                    $normalisasi[$j+1]['name'] = $temp;
+
+                    $temp = $normalisasi[$j]['calorie'];
+                    $normalisasi[$j]['calorie'] = $normalisasi[$j+1]['calorie'];
+                    $normalisasi[$j+1]['calorie'] = $temp;
+
+                    $temp = $normalisasi[$j]['carb'];
+                    $normalisasi[$j]['carb'] = $normalisasi[$j+1]['carb'];
+                    $normalisasi[$j+1]['carb'] = $temp;
+
+                    $temp = $normalisasi[$j]['fat'];
+                    $normalisasi[$j]['fat'] = $normalisasi[$j+1]['fat'];
+                    $normalisasi[$j+1]['fat'] = $temp;
+
+                    $temp = $normalisasi[$j]['protein'];
+                    $normalisasi[$j]['protein'] = $normalisasi[$j+1]['protein'];
+                    $normalisasi[$j+1]['protein'] = $temp;
+                }
+            }
+        }
+
+        // tdee
+        // normalisasi activitie
+        if($user->exercise_activity == 1){
+            $temp = 1.2;
+        }elseif($user->exercise_activity == 2){
+            $temp = 1.375;
+        }elseif($user->exercise_activity == 3){
+            $temp = 1.55;
+        }elseif($user->exercise_activity == 4){
+            $temp = 1.725;
+        }elseif($user->exercise_activity == 5){
+            $temp = 1.9;
+        }else{
+            $temp = null;
+        }
+        // dd($temp);
+        if($user->age != 0 && $user->height != 0 && $user->weight != 0 && $user->exercise_activity != 0){
+            if($user->gender == 1){
+                $temp *= (66.5+(13.7 * $user->weight) + ((5*$user->height)-($user->age*6.8)));
+            }else{
+                $temp *= (655+(9.6 * $user->weight) + ((1.8*$user->height)-($user->age*4.7)));
+            }
+            $kalkulator['tdee'] = round( $temp,1);
+        }else{
+            $kalkulator['tdee'] = 0;
+        }
+
+        $needtotal = round( $kalkulator['tdee'],0);
+        
+        // dd($makananuser);
+        return view('user.mysaw', [
+            'foods' => $makananuser,
+            'recs' => $normalisasi,
+            'needs' => $needtotal,
+            'namecompany' => $namecompany,
+            'profiluser' => $user,
+            'criterias' => $poincriteria,
+            'metode' => $metode,
+            'trec' => $trec,
+        ]);
     }
 }

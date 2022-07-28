@@ -14,7 +14,13 @@
     <link href="css/styles2.css" rel="stylesheet" />
     {{-- <link href="/css/bootstrap.min.css" rel="stylesheet"> --}}
     <link rel="stylesheet" href="{{ asset('css/styles2.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/all.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link href="{{ asset('fontawesome/css/all.css') }}" rel="stylesheet">
+    <link href="{{ asset('fontawesome/css/fontawesome.css') }}" rel="stylesheet">
+    <link href="{{ asset('fontawesome/css/brands.css') }}" rel="stylesheet">
+    <link href="{{ asset('fontawesome/css/solid.css') }}" rel="stylesheet">
+    <link href="{{ asset('fontawesome/css/all.css') }}" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 </head>
 

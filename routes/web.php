@@ -54,6 +54,7 @@ Route::post('bmr', [CalcController::class, 'carbstore'])->name('bmr.store');
 Route::middleware('auth')->group(function(){
     // My Account
     Route::get('myaccount', [MyAccountController::class, 'index'])->name('user.index');
+    Route::get('myrecomendedmenusaw', [MyAccountController::class, 'saw'])->name('user.sawmetode');
     Route::get('mymenu', [MyAccountController::class, 'menu'])->name('user.menu');
     Route::post('mymenustore', [MyAccountController::class, 'store'])->name('user.menustore');
     Route::get('mymenudetail/{id}', [MyAccountController::class, 'detail'])->name('user.menudetail');

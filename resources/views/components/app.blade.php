@@ -40,6 +40,8 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+
+    
     
     <!-- Template Stylesheet -->
     <link href="/css/style.css" rel="stylesheet">
