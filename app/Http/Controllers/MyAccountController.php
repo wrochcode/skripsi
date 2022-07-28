@@ -1019,7 +1019,7 @@ class MyAccountController extends Controller
                 $temp += (($makananuser[$i]['protein']/$max4)*$c4);
             }
             
-            $normalisasi[$alternatif]['nilai'] = round($temp,4);
+            $normalisasi[$alternatif]['nilai'] = round($temp,3);
             $normalisasi[$alternatif]['id_user'] = $makananuser[$i]['id_user'];
             $normalisasi[$alternatif]['name'] = $makananuser[$i]['name'];
             $normalisasi[$alternatif]['calorie'] = $makananuser[$i]['calorie'];
