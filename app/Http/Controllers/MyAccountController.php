@@ -470,6 +470,7 @@ class MyAccountController extends Controller
         }
 
         $alternatif = 0;
+        
         // dd($Foods);
         foreach($Foods as $Food){
             if($Food->id_user == $currentuser){
@@ -674,12 +675,14 @@ class MyAccountController extends Controller
         $protein = 0 ;
 
         $index = 0 ;
+        $sumcalorie = 0;
         foreach($Foods as $food){
             if($food->id_user == $useradmin && $food->id_menu == $id){
                 $fooduser[$index]['name'] = $food->name;
                 $fooduser[$index]['id'] = $food->id;
                 $fooduser[$index]['calorie'] = $food->calorie;
                 $calorie += $food->calorie;
+                $sumcalorie += $food->calorie;
                 $fooduser[$index]['carb'] = $food->carb;
                 $carb += $food->carb;
                 $fooduser[$index]['fat'] = $food->fat;
@@ -713,6 +716,7 @@ class MyAccountController extends Controller
         ]);
         return view('user.mymenudetail', [
             'foods' => $fooduser,
+            'totalcalorie' => $sumcalorie,
             'idmenu' => $idmenu,
             'profiluser' => $user,
             'trec' => $index,

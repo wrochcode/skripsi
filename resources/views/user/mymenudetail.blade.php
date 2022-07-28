@@ -151,6 +151,7 @@
                             @endif
                             <?php $indexloop = 1 ;
                             ?>        
+                            <p class="ms-4">Total Kalori pada Menu ini: {{ $totalcalorie }} Kcal</p>
                             @for ($i = 0 ; $i  < $trec; $i++)    
                                 <div class="col-xl-8 ms-4 col-md-6">
                                     @if ($indexloop == 1)
@@ -165,7 +166,7 @@
                                         $indexloop = 0;
                                     @endphp
                                     @endif
-                                            <div class="card-header">Menu @php echo $foods[$i]['name'] @endphp</div>
+                                            <div class="card-header">@php echo $foods[$i]['name'] @endphp</div>
                                             <div class="card-body">@php echo 
                                                                     "Kalori: ".$foods[$i]['calorie']."&nbsp"."&nbsp"."&nbsp"."&nbsp".
                                                                     "Karbohidrat: ".$foods[$i]['carb']."&nbsp"."&nbsp"."&nbsp"."&nbsp".

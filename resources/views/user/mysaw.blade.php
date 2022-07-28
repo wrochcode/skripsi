@@ -33,7 +33,7 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
+                                            <th>Rank</th>
                                             <th>Nama Menu</th>
                                             <th>Selisih dari kalori yang diperlukan(TDEE)</th>
                                             <th>Kalori</th>
@@ -53,11 +53,11 @@
                                                 <td><?php echo $recs[$i]['name'];?></td>
                                                 <?php $gap = $recs[$i][ 'calorie'] - $needs;?>
                                                 @if ($gap > 0)
-                                                    <td class="text-success">+<?php echo $gap;?></td>
+                                                    <td class="text-success">+<?php echo $gap;?> Kcal</td>
                                                 @elseif ($gap<0)
-                                                    <td class="text-danger"> <?php echo $gap;?></td>
+                                                    <td class="text-danger"> <?php echo $gap;?> Kcal</td>
                                                 @else
-                                                    <td class="text-dark">+ <?php echo $gap;?></td>
+                                                    <td class="text-dark">+ <?php echo $gap;?> Kcal</td>
                                                 @endif
                                                 <td><?php echo $recs[$i][ 'calorie'];?></td>
                                                 <td><?php echo $recs[$i]['carb'];?></td>
